@@ -5,14 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Smart Economato - Prototipo</title>
   <link rel="stylesheet" href="assets/css/estilos.css">
-  <script type="module" src="src/models/almacen.js"></script>
+  <script type="module" src="src/controllers/almacen.js"></script>
 </head>
 <body>
   <h1>Smart Economato - Prototipo</h1>
 
   <div class="controles">
     <input type="text" id="busqueda" placeholder="Buscar producto..." />
-    <button id="btnBuscar">Buscar</button>
+    <button id="btnBuscar" data-action="buscar">Buscar</button>
 
     <select id="categoriaSelect">
       <option value="">-- Categoría --</option>
@@ -24,16 +24,16 @@
       <option value="Bebidas">Bebidas</option>
       <option value="Condimentos">Condimentos</option>
     </select>
-    <button id="btnFiltrarCategoria">Filtrar</button>
+    <button id="btnFiltrarCategoria" data-action="filtrar">Filtrar</button>
 
     <select id="ordenSelect">
       <option value="asc">Precio ascendente</option>
       <option value="desc">Precio descendente</option>
     </select>
-    <button id="btnOrdenar">Ordenar</button>
+    <button id="btnOrdenar" data-action="ordenar">Ordenar</button>
 
-    <button id="btnStock">Comprobar stock</button>
-    <button id="btnMostrarTodos">Mostrar todos</button>
+    <button id="btnStock" data-action="stock">Comprobar stock</button>
+    <button id="btnMostrarTodos" data-action="mostrar">Mostrar todos</button>
   </div>
 
   <table id="tablaProductos">
