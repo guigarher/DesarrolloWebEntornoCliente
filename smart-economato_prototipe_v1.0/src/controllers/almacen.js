@@ -1,9 +1,22 @@
 // Módulo principal para la gestión del almacén
-import { productos } from '../services/productos.js';
+// ✅ ya NO importamos el array local de productos
+// import { productos } from '../services/productos.js';
 import { filtrarPorCategoria, buscarProducto, ordenarPorPrecio, comprobarStockMinimo } from '../utils/funciones.js';
 import { renderizarTabla } from '../views/almacenui.js';
 
-//Elementos del DOM
+// ✅ importamos las funciones del servicio remoto
+import {
+  getProductos,
+  getProducto,
+  getCategorias,
+  getProveedores,
+  buscarProductoPorCodigoBarras,
+  productosPorCategoria,
+} from '../services/economatoservice.js';
+
+// ------------------------
+// Elementos del DOM
+// ------------------------
 const controles = document.querySelector('.controles');
 const inputBusqueda = document.querySelector('#busqueda');
 const btnBuscar = document.querySelector('#btnBuscar');
@@ -14,12 +27,29 @@ const btnMostrarTodos = document.querySelector('#btnMostrarTodos');
 const selectCategoria = document.querySelector('#categoriaSelect');
 const selectOrden = document.querySelector('#ordenSelect');
 
-//Estado actual de los productos mostrados
-let productosMostrados = [...productos];
+// ------------------------
+// Estado global
+// ------------------------
+let productos = [];          // 🔹 ahora se llenará desde getProductos()
+let productosMostrados = []; // 🔹 los que estás mostrando en la tabla
 
+// ------------------------
+// Carga inicial (antes de todo)
+// ------------------------
+async function cargarInicial() {
+  try {
+    productos = await getProductos();   // obtenemos todo el JSON remoto
+    productosMostrados = [...productos];
+    renderizarTabla(productosMostrados);
+  } catch (e) {
+    console.error('Error al cargar los productos:', e);
+  }
+}
+document.addEventListener('DOMContentLoaded', cargarInicial);
 
-renderizarTabla(productos);
-
+// ------------------------
+// Mapa de acciones (delegación de eventos)
+// ------------------------
 const acciones = {
   buscar: manejarBusqueda,
   filtrar: manejarFiltro,
@@ -33,12 +63,14 @@ controles.addEventListener('click', (e) => {
   if (acciones[action]) acciones[action]();
 });
 
+// ------------------------
+// Acciones
+// ------------------------
 function manejarBusqueda() {
   const nombre = inputBusqueda.value.trim();
   if (nombre) {
     const resultado = buscarProducto(productos, nombre);
     renderizarTabla(resultado ? resultado : []);
-    //renderizarTabla(resultado ? [resultado] : []); si usaramos find en vez de filter
   }
 }
 
