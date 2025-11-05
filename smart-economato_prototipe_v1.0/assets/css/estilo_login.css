@@ -1,0 +1,192 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+:root{
+    --main-color: rgb(231, 57, 51);
+    --secondary-color: rgb(248, 126, 105);
+    --text-color-logo: rgb(215, 75, 0);
+    --background1: #eef2ff; 
+    --background2: #f7f7f7; 
+}
+h2{
+    color: var(--text-color);
+}
+img{
+    height: 40px;
+}
+header{
+    grid-area: header;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    background: linear-gradient(90deg, var(--main-color), var(--secondary-color), var(--secondary-color), var(--main-color));
+    padding: 10px;
+    align-items: center;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    max-width: fit-content;
+    gap: 10px;
+    margin: auto;
+    padding: 36px 28px;
+    border: 2px solid var(--main-color);
+    border-radius: 12px;
+    box-shadow: 0 4px 22px var(--secondary-color);
+    background: var(--background2);
+}
+label{
+    color: var(--text-color);
+}
+input{
+    padding: 10px;
+    border: 2px solid var(--main-color);
+    border-radius: 5px;
+}
+input:focus{
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 8px var(--secondary-color);
+}
+a{
+    text-decoration: none;
+    color: var(--main-color);
+    text-align: center;
+}
+.a__login{
+    align-self: center;
+    color: black;
+}
+.a__login:focus{
+    outline: none;
+    box-shadow: 0 0 8px var(--secondary-color);
+}       
+button{
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--secondary-color);
+    color: rgb(30, 40, 56);
+    cursor: pointer;
+    transition: transform .05s ease, box-shadow .2s ease, background-color .15s ease;
+}
+button:active{
+    transform: scale(0.95);
+}
+button:hover{
+    background-color: rgb(255, 104, 77);
+}
+button:focus{
+    outline: none;
+    box-shadow: 0 0 8px var(--secondary-color);
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+main{
+    grid-area: main;
+    flex: 1;
+    display: flex;
+    background: var(--background1);
+}
+footer{
+    grid-area: footer;
+    text-align: center;
+    background-color: rgb(30, 40, 56);
+    color: var(--text-color);
+    padding: 10px;
+    color:#eef2ff;
+}
+nav{
+    margin: auto;
+}
+/*menu.html*/
+.body__menu{
+    display: grid;
+    grid-template-areas: "header header header"
+                        "aside main main"
+                        "footer footer footer";
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: max-content minmax(0,1fr) minmax(0,1fr);
+}
+aside{
+    grid-area: aside;
+    height: 100%;
+    background: var(--background2);
+    padding: 20px;
+    border-right: 1px solid var(--secondary-color);
+}
+.user{
+    border: 1px solid var(--secondary-color);
+    border-radius: 10px;
+    padding: 10px;
+    background: var(--background1);
+}
+.user__title{
+    color: var(--main-color);
+    margin-bottom: 10px;
+    text-align: center;
+}
+.user p{
+    text-align: center;
+}
+.user button{
+    width: 100%;
+    margin-top: 10px;
+}
+nav{
+    padding: 10px;
+    margin-top: 20px;
+    border: 1px solid var(--main-color);
+    border-radius: 10px;
+    background: var(--background1);
+}
+summary{
+    font-weight: bold;
+    color: var(--main-color);
+    cursor: pointer;
+}
+summary:hover{
+    color: var(--secondary-color);
+}
+ul{
+    list-style: none;
+    margin: 13px;
+}
+li{
+    padding: 20px 0;
+    border-radius: 10px;
+}
+li:hover{
+    color: var(--main-color);  
+    cursor: pointer;
+    background: var(--background2);
+}
+
+@media (max-width: 600px) {
+    header{
+        flex-wrap: wrap;
+    }
+    h1{
+        flex-basis: 100%;   
+    }
+    .body__menu{
+        grid-template-areas: "header"
+                             "aside"
+                             "main"
+                             "footer";
+        grid-template-rows: auto auto 1fr auto;
+        grid-template-columns: 1fr;
+    }
+    aside{
+        border-right: none;
+        border-bottom: 1px solid var(--secondary-color);
+    }
+
+}
