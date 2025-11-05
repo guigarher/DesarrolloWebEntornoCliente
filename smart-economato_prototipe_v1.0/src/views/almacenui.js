@@ -1,6 +1,6 @@
 const tabla   = document.querySelector('#tablaProductos tbody');
 const resumen = document.querySelector('#resumen');
-
+const selectCategoria = document.querySelector('#categoriaSelect');
 // Función para renderizar la tabla de productos
 export function renderizarTabla(datos) {
   tabla.innerHTML = '';
@@ -29,4 +29,17 @@ export function renderizarTabla(datos) {
   const totalProductos = datos.length;
   const valorTotal = datos.reduce((acc, p) => acc + Number(p.precio) * Number(p.stock), 0).toFixed(2);
   resumen.textContent = `Productos mostrados: ${totalProductos} | Valor total del stock: ${valorTotal} €`;
+}
+
+export function mostrarCategorias(categorias) {
+  const opcionTodas = document.createElement('option');
+  opcionTodas.value = '';
+  opcionTodas.textContent = 'Todas las categorías';
+  selectCategoria.appendChild(opcionTodas);   
+  categorias.forEach(cat => {
+    const opcion = document.createElement('option');
+    opcion.value = cat.id;
+    opcion.textContent = cat.nombre;
+    selectCategoria.appendChild(opcion);
+  });
 }
