@@ -2,7 +2,7 @@
 // ✅ ya NO importamos el array local de productos
 // import { productos } from '../services/productos.js';
 import { filtrarPorCategoria, buscarProducto, ordenarPorPrecio, comprobarStockMinimo } from '../utils/funciones.js';
-import { renderizarTabla } from '../views/almacenui.js';
+import { renderizarTabla, mostrarCategorias } from '../views/almacenui.js';
 
 // ✅ importamos las funciones del servicio remoto
 import {
@@ -41,6 +41,8 @@ async function cargarInicial() {
     productos = await getProductos();   // obtenemos todo el JSON remoto
     productosMostrados = [...productos];
     renderizarTabla(productosMostrados);
+    const categorias = await getCategorias();
+    mostrarCategorias(categorias);
   } catch (e) {
     console.error('Error al cargar los productos:', e);
   }
@@ -79,7 +81,7 @@ function manejarFiltro() {
   if (cat) {
     const filtrados = filtrarPorCategoria(productos, cat);
     renderizarTabla(filtrados);
-  }
+  }else renderizarTabla(productosMostrados)
 }
 
 function manejarOrden() {

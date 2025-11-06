@@ -32,14 +32,20 @@ export function renderizarTabla(datos) {
 }
 
 export function mostrarCategorias(categorias) {
-  const opcionTodas = document.createElement('option');
-  opcionTodas.value = '';
-  opcionTodas.textContent = 'Todas las categorías';
-  selectCategoria.appendChild(opcionTodas);   
-  categorias.forEach(cat => {
-    const opcion = document.createElement('option');
-    opcion.value = cat.id;
-    opcion.textContent = cat.nombre;
-    selectCategoria.appendChild(opcion);
+  const selectCategoria = document.getElementById("categoriaSelect")
+
+  selectCategoria.textContent = ""
+
+  const optionDefault = document.createElement("option")
+  optionDefault.value = ""
+  optionDefault.textContent = "---Categoría---"
+  selectCategoria.appendChild(optionDefault)
+
+  categorias.forEach(categoria =>{
+    const option = document.createElement("option")
+    option.value = (categoria.nombre)
+    option.textContent = categoria.nombre
+    selectCategoria.appendChild(option)
   });
+  
 }
