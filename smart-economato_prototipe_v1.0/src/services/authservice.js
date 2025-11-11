@@ -4,9 +4,9 @@ export const AuthService = {
 
     async login(username, password) {
         const res = await fetch(`${API_URL}/usuarios?username=${username}&password=${password}`)
-        const data = Response.json()
+        const data = await res.json()
 
-        if(data.lenght === 0){}
+        if(data.length === 0){}
 
         const user = data[0]
 
