@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () =>{
         const pass = document.getElementById("password").value
 
         try {
-            const user = AuthService.login(username, password)
+            const user = await AuthService.login(username, password)
 
             window.location.href = "index.html"
         } catch (error) {
