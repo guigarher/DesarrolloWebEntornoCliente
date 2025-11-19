@@ -1,13 +1,10 @@
+import { initAlmacen } from "../controllers/almacen.js";
+
 document.addEventListener("DOMContentLoaded", () => {
   const links = document.querySelectorAll(".nav a");
   const content = document.getElementById("content");
-  const menuToggle = document.getElementById("menuToggle");
   const sidebar = document.getElementById("nav");
 
-  // Toggle menú para móviles/tablets
-  menuToggle.addEventListener("click", () => {
-    sidebar.classList.toggle("open");
-  });
 
   // Cargar contenido dinámicamente
   links.forEach(link => {
@@ -24,6 +21,11 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!response.ok) throw new Error("Página no encontrada");
         const html = await response.text();
         content.innerHTML = html;
+
+        if (page === "inventario") {
+          initAlmacen();
+        }
+        
         sidebar.classList.remove("open"); // cerrar menú móvil
       } catch (error) {
         content.innerHTML = `<p style='color:red'>${error.message}</p>`;

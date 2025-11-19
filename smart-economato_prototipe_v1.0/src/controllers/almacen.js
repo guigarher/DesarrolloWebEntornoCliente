@@ -1,10 +1,7 @@
 // Módulo principal para la gestión del almacén
-// ✅ ya NO importamos el array local de productos
-// import { productos } from '../services/productos.js';
+
 import { filtrarPorCategoria, buscarProducto, ordenarPorPrecio, comprobarStockMinimo } from '../utils/funciones.js';
 import { renderizarTabla, mostrarCategorias } from '../views/almacenui.js';
-
-// ✅ importamos las funciones del servicio remoto
 import {
   getProductos,
   getProducto,
@@ -15,77 +12,104 @@ import {
 } from '../services/economatoservice.js';
 
 // ------------------------
-// Elementos del DOM
-// ------------------------
-const controles = document.querySelector('.controles');
-const inputBusqueda = document.querySelector('#busqueda');
-const btnBuscar = document.querySelector('#btnBuscar');
-const btnFiltrar = document.querySelector('#btnFiltrarCategoria');
-const btnOrdenar = document.querySelector('#btnOrdenar');
-const btnStock = document.querySelector('#btnStock');
-const btnMostrarTodos = document.querySelector('#btnMostrarTodos');
-const selectCategoria = document.querySelector('#categoriaSelect');
-const selectOrden = document.querySelector('#ordenSelect');
-
-// ------------------------
 // Estado global
 // ------------------------
-let productos = [];          // 🔹 ahora se llenará desde getProductos()
-let productosMostrados = []; // 🔹 los que estás mostrando en la tabla
+let productos = [];          // ahora se llenará desde getProductos()
+let productosMostrados = []; // los que estamos mostrando en la tabla
+
+// Referencias al DOM (las rellenaremos en initAlmacen)
+let controles;
+let inputBusqueda;
+let btnBuscar;
+let btnFiltrar;
+let btnOrdenar;
+let btnStock;
+let btnMostrarTodos;
+let selectCategoria;
+let selectOrden;
 
 // ------------------------
-// Carga inicial (antes de todo)
+// Carga inicial de datos
 // ------------------------
 async function cargarInicial() {
   try {
     productos = await getProductos();   // obtenemos todo el JSON remoto
     productosMostrados = [...productos];
     renderizarTabla(productosMostrados);
+
     const categorias = await getCategorias();
     mostrarCategorias(categorias);
   } catch (e) {
     console.error('Error al cargar los productos:', e);
   }
 }
-document.addEventListener('DOMContentLoaded', cargarInicial);
 
 // ------------------------
-// Mapa de acciones (delegación de eventos)
+// Inicialización del módulo (la llama routing.js)
 // ------------------------
-const acciones = {
-  buscar: manejarBusqueda,
-  filtrar: manejarFiltro,
-  ordenar: manejarOrden,
-  stock: manejarStock,
-  mostrar: manejarMostrarTodos
-};
+export function initAlmacen() {
+  // 1. Capturamos los elementos del DOM AHORA, que la vista ya está cargada
+  controles        = document.querySelector('.controles');
+  inputBusqueda    = document.querySelector('#busqueda');
+  btnBuscar        = document.querySelector('#btnBuscar');
+  btnFiltrar       = document.querySelector('#btnFiltrarCategoria');
+  btnOrdenar       = document.querySelector('#btnOrdenar');
+  btnStock         = document.querySelector('#btnStock');
+  btnMostrarTodos  = document.querySelector('#btnMostrarTodos');
+  selectCategoria  = document.querySelector('#categoriaSelect');
+  selectOrden      = document.querySelector('#ordenSelect');
 
-controles.addEventListener('click', (e) => {
-  const action = e.target.dataset.action;
-  if (acciones[action]) acciones[action]();
-});
+  if (!controles) {
+    console.error('No se ha encontrado la vista de inventario (.controles). ¿Seguro que pages/inventario.html tiene ese HTML?');
+    return;
+  }
+
+  // 2. Mapa de acciones (delegación de eventos)
+  const acciones = {
+    buscar:  manejarBusqueda,
+    filtrar: manejarFiltro,
+    ordenar: manejarOrden,
+    stock:   manejarStock,
+    mostrar: manejarMostrarTodos
+  };
+
+  // 3. Listener de clicks en los botones dentro de .controles
+  controles.addEventListener('click', (e) => {
+    const action = e.target.dataset.action;
+    if (acciones[action]) {
+      acciones[action]();
+    }
+  });
+
+  // 4. Cargamos los datos por primera vez
+  cargarInicial();
+}
 
 // ------------------------
 // Acciones
 // ------------------------
 function manejarBusqueda() {
-  const nombre = inputBusqueda.value.trim();
+  const nombre = (inputBusqueda?.value || '').trim();
   if (nombre) {
     const resultado = buscarProducto(productos, nombre);
     renderizarTabla(resultado ? resultado : []);
+  } else {
+    renderizarTabla(productosMostrados);
   }
 }
 
 function manejarFiltro() {
-  const cat = selectCategoria.value;
+  const cat = selectCategoria?.value;
   if (cat) {
     const filtrados = filtrarPorCategoria(productos, cat);
     renderizarTabla(filtrados);
-  }else renderizarTabla(productosMostrados)
+  } else {
+    renderizarTabla(productosMostrados);
+  }
 }
 
 function manejarOrden() {
-  const orden = selectOrden.value;
+  const orden = selectOrden?.value;
   const ordenados = ordenarPorPrecio(productosMostrados, orden);
   renderizarTabla(ordenados);
 }
@@ -97,7 +121,7 @@ function manejarStock() {
 
 function manejarMostrarTodos() {
   productosMostrados = [...productos];
-  inputBusqueda.value = '';
-  selectCategoria.value = '';
+  if (inputBusqueda)    inputBusqueda.value = '';
+  if (selectCategoria)  selectCategoria.value = '';
   renderizarTabla(productosMostrados);
 }

@@ -211,3 +211,34 @@ li:hover{
     }
 
 }
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 0.5rem;
+    text-align: left;
+}
+
+th {
+    background: #e0e0e0;
+}
+
+tr.alerta {
+    background: #ffe4e1;
+}
+
+tfoot td {
+    font-weight: bold;
+    background: #f4f4f4;
+}
+.error{
+    color: red;
+    font-weight: bold;
+}
