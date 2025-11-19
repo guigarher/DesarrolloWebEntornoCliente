@@ -168,6 +168,10 @@ li:hover{
     cursor: pointer;
     background: var(--background2);
 }
+.error{
+    color: red;
+    font-weight: bold;
+}
 
 @media (max-width: 600px) {
     header{
