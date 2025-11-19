@@ -1,0 +1,140 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  font-family: "Segoe UI", Helvetica, sans-serif;
+  color: #1A1A1A;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "sidebar content"
+    "footer footer";
+  grid-template-columns: 240px 1fr;
+  grid-template-rows: 100px 1fr 40px;
+  height: 100vh;
+}
+
+/* ===== HEADER ===== */
+.header {
+  grid-area: header;
+  background-color: #FFFFFF;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+  border-bottom: 3px solid #E94B35;
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.header-logo img {
+  height: 50px;
+}
+
+.header-logo h1 {
+  color: #E94B35;
+  font-size: 2.4 rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+/* ===== SIDEBAR ===== */
+.sidebar {
+  grid-area: sidebar;
+  background-color: #303031;
+  color: white;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+.sidebar ul {
+  list-style: none;
+}
+
+.sidebar li {
+  margin: 1rem 0;
+}
+
+.sidebar a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+  color: #E94B35;
+}
+
+/* ===== CONTENT ===== */
+.content {
+  grid-area: content;
+  padding: 1.5rem;
+  overflow-y: auto;
+  background-color: #F5F5F5;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  grid-area: footer;
+  background-color: #303031;
+  color: white;
+  text-align: center;
+  line-height: 40px;
+  font-size: 0.9rem;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 992px) {
+  .grid-container {
+    grid-template-areas:
+      "header"
+      "content"
+      "footer";
+    grid-template-columns: 1fr;
+    grid-template-rows: 70px 1fr 40px;
+  }
+
+  .sidebar {
+    display: none;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background-color: #303031;
+  }
+
+  .sidebar.open {
+    display: block;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
