@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () =>{
                 return;
             }
 
-            window.location.href = "index.html"
+            window.location.href = "menu.html"
         } catch (error) {
             LoginUI.showMessage(error.message, "error");
         }
