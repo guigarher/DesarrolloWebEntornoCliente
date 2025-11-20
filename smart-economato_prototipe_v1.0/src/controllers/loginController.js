@@ -24,7 +24,8 @@ document.addEventListener("DOMContentLoaded", () =>{
                 LoginUI.showMessage("Usuario o contraseña incorrectos", "error");
                 return;
             }
-
+            localStorage.setItem("usuarioActivo", JSON.stringify(user));
+            
             window.location.href = "menu.html"
         } catch (error) {
             LoginUI.showMessage(error.message, "error");

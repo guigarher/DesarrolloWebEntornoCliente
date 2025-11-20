@@ -1,30 +1,32 @@
-  <div class="controles">
-    <input type="text" id="busqueda" placeholder="Buscar producto..." />
-    <button id="btnBuscar" data-action="buscar">Buscar</button>
+  <div class="inventario">
+    <div class="controles">
+      <button id="btnMostrarTodos" data-action="mostrar">Mostrar todos</button>
+      <input type="text" id="busqueda" placeholder="Buscar producto..." />
+      <button id="btnBuscar" data-action="buscar">Buscar</button>
 
-    <select id="categoriaSelect">
-    </select>
-    <button id="btnFiltrarCategoria" data-action="filtrar">Filtrar</button>
+      <select id="categoriaSelect">
+      </select>
+      <button id="btnFiltrarCategoria" data-action="filtrar">Filtrar</button>
 
-    <select id="ordenSelect">
-      <option value="asc">Precio ascendente</option>
-      <option value="desc">Precio descendente</option>
-    </select>
-    <button id="btnOrdenar" data-action="ordenar">Ordenar</button>
+      <select id="ordenSelect">
+        <option value="asc">Precio ascendente</option>
+        <option value="desc">Precio descendente</option>
+      </select>
+      <button id="btnOrdenar" data-action="ordenar">Ordenar</button>
 
-    <button id="btnStock" data-action="stock">Comprobar stock</button>
-    <button id="btnMostrarTodos" data-action="mostrar">Mostrar todos</button>
-  </div>
+      <button id="btnStock" data-action="stock">Comprobar stock</button>
+    </div>
 
-  <table id="tablaProductos">
-    <thead>
-      <tr>
-        <th>ID</th><th>Nombre</th><th>Categoría</th><th>Precio (€)</th>
-        <th>Stock</th><th>Stock Mínimo</th><th>Proveedor</th><th>Isla</th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-    <tfoot>
-      <tr><td colspan="8" id="resumen"></td></tr>
-    </tfoot>
-  </table>
+    <table id="tablaProductos">
+      <thead>
+        <tr>
+          <th>ID</th><th>Nombre</th><th>Categoría</th><th>Precio (€)</th>
+          <th>Stock</th><th>Stock Mínimo</th><th>Proveedor</th><th>Isla</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+      <tfoot>
+        <tr><td colspan="8" id="resumen"></td></tr>
+      </tfoot>
+    </table>
+</div>

@@ -194,3 +194,11 @@ li:hover{
     }
 
 }
+#loginMessage{
+    text-align: center;
+    margin-top: 50px;
+    font-weight: bold;
+    color: var(--main-color);
+    position: absolute;
+    width: 100%;
+}

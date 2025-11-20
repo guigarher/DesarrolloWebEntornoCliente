@@ -4,7 +4,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const links = document.querySelectorAll(".nav a");
   const content = document.getElementById("content");
   const sidebar = document.getElementById("nav");
+  const pageTitle = document.getElementById("page-title");
 
+  const TITULOS = {
+    recepcion:      "Recepción",
+    pedidosProfes:  "Pedidos profesores",
+    resumen:        "Resumen pedidos",
+    baja:           "Baja productos",
+    inventario:     "Inventario",
+    escandallo:     "Escandallo"
+  };
 
   // Cargar contenido dinámicamente
   links.forEach(link => {
@@ -21,6 +30,10 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!response.ok) throw new Error("Página no encontrada");
         const html = await response.text();
         content.innerHTML = html;
+
+        if (pageTitle) {
+          pageTitle.textContent = TITULOS[page] || "Menú";
+        }
 
         if (page === "inventario") {
           initAlmacen();

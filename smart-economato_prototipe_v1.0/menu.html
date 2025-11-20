@@ -11,12 +11,12 @@
     <header>
         <h1>Smart-Economato</h1>
         <img src="assets/img/LOGO CIFP VIRGEN DE CANDELARIA.png" alt="logo virgen de candelaria">
-        <h2>Menú</h2>
+        <h2 id = "page-title">Menú</h2>
     </header>
     <aside>
         <div class="user">
             <div class="user__title"><h2>Usuario activo</h2></div>
-            <p>Guillermo</p>
+            <p id = "user-name">Guillermo</p>
             <a href="login.html"><button type="button">Salir</button></a>
         </div>
         <nav class="nav" id="nav">
@@ -39,5 +39,20 @@
     <footer>
         <p>© 2025 Smart-Economato. Todos los derechos reservados.</p>
     </footer>
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const userNameEl = document.getElementById("user-name");
+      const userData = localStorage.getItem("usuarioActivo");
+
+      if (userData && userNameEl) {
+        try {
+          const user = JSON.parse(userData);
+          userNameEl.textContent = user.nombre;
+        } catch (e) {
+          console.error("Error leyendo usuarioActivo de localStorage", e);
+        }
+      }
+    });
+  </script>
 </body>
 </html>
