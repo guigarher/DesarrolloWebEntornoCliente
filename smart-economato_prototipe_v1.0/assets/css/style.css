@@ -94,6 +94,7 @@ main{
     flex: 1;
     display: flex;
     background: var(--background1);
+    min-width: 0;
 }
 footer{
     grid-area: footer;
@@ -204,11 +205,12 @@ fieldset{
 }
 /*inventario.html*/
 .inventario{
+    width: 100%;             
     padding: 20px;
-    margin: auto;
     margin-top: 25px;
     margin-bottom: 25px;
 }
+
 select{
     padding: 10px;
     border: 2px solid var(--main-color);
@@ -217,6 +219,33 @@ select{
     background: white;
     text-align: center;
 }
+.controles{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;      
+    gap: 10px;
+    justify-content: center;  
+    align-items: center;     
+    margin-bottom: 15px;
+}
+
+.tabla-wrapper {
+    width: 100%;
+    overflow-x: auto;   
+}
+#tablaProductos {
+    width: 100%;
+    min-width: 700px;   
+    border-collapse: collapse;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+
 @media (max-width: 900px) {
     header{
         flex-wrap: wrap;
@@ -236,9 +265,43 @@ select{
         border-right: none;
         border-bottom: 1px solid var(--secondary-color);
     }
-    
-
+    .inventario{
+        width: 100%;
+        padding: 10px;
+    }
+    .controles{
+        padding: 0 20px;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr)); 
+        gap: 10px 20px;
+        width: 100%;
+    }
+    .controles > *{
+        width: 100%;
+    }
+    .controles > :first-child{
+        grid-column: 1 / -1;
+    }
+    .controles > :last-child{
+        grid-column: 1 / -1;
+    }
+    .controles input,
+    .controles select{
+        margin-left: 0;
+    }
+    .tabla-wrapper{
+        width: 100%;
+        overflow-x: auto;   
+    }
+    #tablaProductos{
+        font-size: 0.85rem;
+    }
+    #tablaProductos th,
+    #tablaProductos td{
+        padding: 0.35rem;
+    }
 }
+
 @media (max-width: 700px) {
     .form-group{
         flex-direction: column;
