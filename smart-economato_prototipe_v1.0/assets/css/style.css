@@ -171,8 +171,7 @@ li:hover{
 }
 /*recepcion.html*/
 #form-recepcion{
-    margin-top: 25px;
-    margin-bottom: 25px;
+    margin-block: auto;
 }
 .form-group{
     margin-top: 20px;
@@ -300,6 +299,10 @@ table {
     #tablaProductos td{
         padding: 0.35rem;
     }
+    #form-recepcion{
+        margin-top: 25px;
+        margin-bottom: 25px;
+}
 }
 
 @media (max-width: 700px) {
