@@ -1,4 +1,4 @@
-import { initAlmacen } from "../controllers/almacen.js";
+import { initAlmacen } from "../controllers/inventarioController.js";
 import { initRecepcion } from "../controllers/recepcionController.js";
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -21,10 +21,6 @@ document.addEventListener("DOMContentLoaded", () => {
     link.addEventListener("click", async (e) => {
       e.preventDefault();
       const page = e.target.dataset.page;
-
-      // Cambiar estado activo del menú
-      links.forEach(l => l.classList.remove("active"));
-      e.target.classList.add("active");
 
       try {
         const response = await fetch(`pages/${page}.html`);

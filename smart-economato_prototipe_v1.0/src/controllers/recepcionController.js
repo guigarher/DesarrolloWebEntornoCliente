@@ -1,6 +1,9 @@
 import { getProveedores } from "../services/economatoservice.js";
+import { buscarProductoPorCodigoBarras } from "../services/economatoservice.js";    
 
 export async function initRecepcion() {
+
+    const productosAlbaran = [];
     //formulario
     const form = document.getElementById("form-recepcion");
     //albaran
@@ -31,4 +34,40 @@ export async function initRecepcion() {
         console.error("Error al cargar proveedores:", error);
     }
 
+    addProductoBtn.addEventListener("click", async (e) => {
+        e.preventDefault();
+        const codigoBarras = codigoBarrasInput.value.trim();
+        const cantidad = Number(cantidadInput.value);
+        const nombreProducto = nombreProductoInput.value.trim();
+        const pvp = Number(pvpInput.value);
+
+        if (!codigoBarras){
+            alert("El código de barras es obligatorio.");
+            return;
+        }
+        if(!cantidad || cantidad <= 0){
+            alert("La cantidad debe ser un número positivo.");
+            return;
+        }
+        if(!nombreProducto){
+            alert("El nombre del producto es obligatorio.");
+            return;
+        }
+        if(!pvp || pvp <= 0){
+            alert("El PVP debe ser un número positivo.");
+            return;
+        }
+
+        const comprobarCodigo = await buscarProductoPorCodigoBarras(codigoBarras);
+        if (!productoCatalogo) {
+            alert("Producto no encontrado en el inventario.");
+            return;
+        }
+
+        const producto = { codigoBarras, cantidad, nombreProducto, pvp };
+        productosAlbaran.push(producto);
+
+        
+        
+        });
 }
