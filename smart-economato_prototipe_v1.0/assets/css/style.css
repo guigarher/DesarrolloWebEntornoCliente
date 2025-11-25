@@ -200,7 +200,7 @@ fieldset{
     margin: 12px;
 }
 .form-field input{
-    width: 250px;
+    width: 100%;
 }
 /*inventario.html*/
 .inventario{
@@ -242,6 +242,10 @@ table {
     border-collapse: collapse;
     background: white;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+/*recepcion*/
+.select-recepcion {
+    margin-left: 0px;
 }
 
 

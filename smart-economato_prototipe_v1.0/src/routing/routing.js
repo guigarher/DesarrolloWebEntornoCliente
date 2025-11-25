@@ -1,4 +1,5 @@
 import { initAlmacen } from "../controllers/almacen.js";
+import { initRecepcion } from "../controllers/recepcionController.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   const links = document.querySelectorAll(".nav a");
@@ -37,6 +38,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (page === "inventario") {
           initAlmacen();
+        }
+
+        if (page === "recepcion") {
+          initRecepcion();
         }
         
         sidebar.classList.remove("open"); // cerrar menú móvil

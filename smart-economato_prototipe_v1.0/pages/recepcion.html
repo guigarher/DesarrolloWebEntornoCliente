@@ -4,40 +4,58 @@
                 <legend>Albarán</legend>
                 <label class="form-field">
                     <span>Nº Albarán</span>
-                    <input type="text" required>
+                    <input type="text" id ="numAlbaran" name="numAlbaran" required>
                 </label>
                 <label class="form-field">
                     <span>Fecha</span>
-                    <input type="date" required>
+                    <input type="date" id="fecha" name="fecha" required>
                 </label>
                 <label class="form-field">
                     <span>Proveedor</span>
-                    <input type="text" required>
-                </label>
+                    <select id="proveedorId" name="proveedorId" class="select-recepcion" required>
+                        <option value="">Selecciona proveedor…</option>
+                    </select>
+                    </label>
                 <label class="form-field">
                     <span>Incidencias</span>
-                    <input type="text">
+                    <input type="text" id="incidencias" name="incidencias">
                 </label>
             </fieldset>
             <fieldset>
                 <legend>Productos</legend>
                 <label class="form-field">
                     <span>Código de barras</span>
-                    <input type="text" required>
+                    <input type="text" id="codigoBarras" name="codigoBarras" required>
                 </label>
                 <label class="form-field">
                     <span>Cantidad (kg/L/ud)</span>
-                    <input type="number" required>
+                    <input type="number" id="cantidad" name="cantidad" required>
                 </label>
                 <label class="form-field">
                     <span>Nombre Producto</span>
-                    <input type="text" required>
+                    <input type="text" id="nombreProducto" name="nombreProducto" required>
                 </label>
                 <label class="form-field">
                     <span>PVP (€)</span>
-                    <input type="number" required>
+                    <input type="number" id="pvp" name="pvp" required>
                 </label>
             </fieldset>
         </div>
+            <button type="button" id="btnAddLinea" class="form-button">Añadir producto</button>
+            <div class="table-wrap">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Producto</th>
+                        <th>Cantidad</th>
+                        <th>PVP (€)</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody id="tablaLineas">
+                    </tbody>
+                </table>
+                </div>
             <button class="form-button" type="submit">Registrar Recepción</button>
        </form> 
