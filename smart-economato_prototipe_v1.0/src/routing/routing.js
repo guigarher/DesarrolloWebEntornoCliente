@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const content = document.getElementById("content");
   const sidebar = document.getElementById("nav");
   const pageTitle = document.getElementById("page-title");
+  const allDetails = document.querySelectorAll('aside details');
 
   const TITULOS = {
     recepcion:      "Recepción",
@@ -15,6 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
     inventario:     "Inventario",
     escandallo:     "Escandallo"
   };
+
 
   // Cargar contenido dinámicamente
   links.forEach(link => {
@@ -44,6 +46,15 @@ document.addEventListener("DOMContentLoaded", () => {
       } catch (error) {
         content.innerHTML = `<p style='color:red'>${error.message}</p>`;
       }
+    });
+  });
+  allDetails.forEach(det => {
+    det.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 900) {
+        det.removeAttribute('open');
+        }
+      });
     });
   });
 });
