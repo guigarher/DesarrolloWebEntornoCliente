@@ -1,5 +1,6 @@
 import { getProveedores } from "../services/economatoservice.js";
-import { buscarProductoPorCodigoBarras } from "../services/economatoservice.js";    
+import { buscarProductoPorCodigoBarras } from "../services/economatoservice.js";
+import { renderizarTablaRecepcion } from "../views/recepcionui.js";    
 
 export async function initRecepcion() {
 
@@ -59,13 +60,15 @@ export async function initRecepcion() {
         }
 
         const comprobarCodigo = await buscarProductoPorCodigoBarras(codigoBarras);
-        if (!productoCatalogo) {
+        if (!comprobarCodigo) {
             alert("Producto no encontrado en el inventario.");
             return;
         }
 
         const producto = { codigoBarras, cantidad, nombreProducto, pvp };
         productosAlbaran.push(producto);
+
+        renderizarTablaRecepcion(productosAlbaran);
 
         
         

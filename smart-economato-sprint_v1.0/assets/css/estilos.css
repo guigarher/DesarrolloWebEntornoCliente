@@ -1,0 +1,118 @@
+.controles {
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+input,
+select,
+button {
+    padding: 0.6rem 1rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 0.9rem;
+}
+
+button {
+    background: #3d3e3e;
+    color: white;
+    cursor: pointer;
+    border: none;
+    transition: 0.2s;
+}
+
+button:hover {
+    background: #808283;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 0.5rem;
+    text-align: left;
+}
+
+th {
+    background: #e0e0e0;
+}
+
+tr.alerta {
+    background: #ffe4e1;
+}
+
+tfoot td {
+    font-weight: bold;
+    background: #f4f4f4;
+}
+
+/****** FORMULARIO. ****/
+
+.login-container {
+  max-width: 400px;
+  margin: 80px auto;
+  padding: 30px;
+  background-color: #fff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  border-radius: 12px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+/* Estilo del logo */
+.logo {
+  width: 120px;    /* ajusta el tamaño del logo aquí */
+  height: auto;    /* mantiene proporciones correctas */
+  margin-bottom: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Formulario y botones */
+#loginForm input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+#loginForm button {
+  
+  padding: 10px 20px 10px 20px;
+  background-color:  #3d3e3e;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#loginForm button:hover {
+  background-color:  #808283;
+  font-weight: bold;
+}
+
+.error {
+    color: #ce0a0a;
+    font-weight: bold;
+}
+.warning {
+    color: #cd7b0f;
+    font-weight: bold;
+}
+.success {
+    color: #0f6ecd;
+    font-weight: bold;
+}

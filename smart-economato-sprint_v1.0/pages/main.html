@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SmartEconomato</title>
+  <link rel="stylesheet" href="../assets/css/main.css" />
+  <link rel="stylesheet" href="../assets/css/estilos.css" />
+</head>
+<body>
+  <div class="grid-container">
+
+    <header class="header">
+      <div class="header-logo">
+        <img src="../assets/images/logo-cifp.jpg" alt="Logo CIFP Virgen de Candelaria">
+        <h1>SmartEconomato</h1>
+      </div>
+      <button class="menu-toggle" id="menuToggle">☰</button>
+    </header>
+
+    <aside class="sidebar" id="sidebar">
+      <nav>
+        <ul>
+          <li><a href="#" data-page="inicio">Inicio</a></li>
+          <li><a href="#" data-page="almacen">Productos</a></li>
+          <li><a href="#" data-page="pedidos">Pedidos</a></li>
+          <li><a href="#" data-page="usuarios">Usuarios</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main id="content" class="content">
+      <h2>Bienvenido a SmartEconomato</h2>
+      <p>Selecciona una sección del menú lateral o superior para comenzar...</p>
+    </main>
+
+    <footer class="footer">
+         SmartEconomato — C.I.F.P. Virgen de Candelaria
+    </footer>
+
+  </div>
+
+  <script  type="module" src="../src/controllers/mainController.js"></script>  
+</body>
+</html>

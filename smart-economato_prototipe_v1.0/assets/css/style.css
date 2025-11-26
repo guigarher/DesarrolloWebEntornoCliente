@@ -170,8 +170,19 @@ li:hover{
     background: var(--background2);
 }
 /*recepcion.html*/
+
 #form-recepcion{
-    margin-block: auto;
+    width: 100%;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.recepcion{
+    width: 100%;
+    margin: auto;
+}
+.select-recepcion {
+    margin-left: 0px;
 }
 .form-group{
     margin-top: 20px;
@@ -192,7 +203,6 @@ fieldset{
     margin-top: 10px;
     color: var(--main-color);
 }
-
 .form-field{
     display: flex;
     flex-direction: column;
@@ -201,6 +211,15 @@ fieldset{
 }
 .form-field input{
     width: 100%;
+}
+.tabla-wrapper {
+    width: 100%;
+    overflow-x: auto;   
+}
+.tablaProductosRecepcion {
+    width: 100%;  
+    min-width: 400px;
+    border-collapse: collapse;
 }
 /*inventario.html*/
 .inventario{
@@ -243,10 +262,7 @@ table {
     background: white;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
-/*recepcion*/
-.select-recepcion {
-    margin-left: 0px;
-}
+
 
 @media (max-width: 900px) {
     header{

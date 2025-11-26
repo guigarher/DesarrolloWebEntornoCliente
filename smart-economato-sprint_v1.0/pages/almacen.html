@@ -1,0 +1,33 @@
+<section id="controles" class="controles">
+    <input id="busqueda" placeholder="Buscar producto...">
+    <button id="btnBuscar">Buscar</button>
+
+    <select id="categoriaSelect" d></select>
+    
+    
+
+    <select id="ordenSelect">
+      <option value="">-- Ordenar --</option>
+      <option value="asc">Precio Asc.</option>
+      <option value="desc">Precio Desc.</option>
+    </select>
+    
+
+    <button>Stock mínimo</button>
+    <button id="btnAllProducts">Mostrar todos</button>
+
+    <button id="btnLogout">Cerrar Sesión</button>
+    
+  </section>
+
+  <table id="tablaProductos">
+    <thead>
+      <tr>
+        <th>ID</th><th>Producto</th><th>Categoría</th>
+        <th>Precio</th><th>Stock</th><th>Stock Mínimo</th>
+        <th>Proveedor</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+    <tfoot><tr><td id="resumen" colspan="8"></td></tr></tfoot>
+  </table>
