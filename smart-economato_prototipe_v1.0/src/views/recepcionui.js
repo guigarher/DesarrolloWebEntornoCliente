@@ -1,9 +1,9 @@
 
 export function renderizarTablaRecepcion(producto) {
-    const tablaLineasBody = document.getElementById("tablaLineas");
+    const tablaLineasBody = document.getElementById("tablaBody");
     tablaLineasBody.innerHTML = '';
     
-    producto.forEach(p => {
+    producto.forEach((p, index) => {
         const fila = document.createElement('tr');
 
         const celdaCodigo = document.createElement('td');
@@ -21,6 +21,7 @@ export function renderizarTablaRecepcion(producto) {
         const celdaBtnEliminar = document.createElement('td');
         const btnEliminar = document.createElement('button');
         btnEliminar.textContent = 'Eliminar';
+        btnEliminar.classList.add("btn-eliminar-linea");
 
         fila.appendChild(celdaCodigo);
         fila.appendChild(celdaProducto);

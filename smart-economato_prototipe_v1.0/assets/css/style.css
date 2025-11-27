@@ -221,6 +221,10 @@ fieldset{
     min-width: 400px;
     border-collapse: collapse;
 }
+.tablaProductosRecepcion td:nth-child(4),
+.tablaProductosRecepcion th:nth-child(4) {
+    white-space: nowrap;
+}
 /*inventario.html*/
 .inventario{
     width: 100%;             

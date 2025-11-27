@@ -2,6 +2,25 @@
        <form id="form-recepcion">
         <div class="form-group">
             <fieldset>
+                <legend>Producto</legend>
+                <label class="form-field">
+                    <span>Código de barras</span>
+                    <input type="text" id="codigoBarras" name="codigoBarras" autofocus>
+                </label>
+                <label class="form-field">
+                    <span>Cantidad (kg/L/ud)</span>
+                    <input type="number" id="cantidad" name="cantidad">
+                </label>
+                <label class="form-field">
+                    <span>Nombre Producto</span>
+                    <input type="text" id="nombreProducto" name="nombreProducto">
+                </label>
+                <label class="form-field">
+                    <span>PVP (€)</span>
+                    <input type="number" id="pvp" name="pvp">
+                </label>
+            </fieldset>
+            <fieldset>
                 <legend>Albarán</legend>
                 <label class="form-field">
                     <span>Nº Albarán</span>
@@ -22,25 +41,6 @@
                     <input type="text" id="incidencias" name="incidencias">
                 </label>
             </fieldset>
-            <fieldset>
-                <legend>Productos</legend>
-                <label class="form-field">
-                    <span>Código de barras</span>
-                    <input type="text" id="codigoBarras" name="codigoBarras" required>
-                </label>
-                <label class="form-field">
-                    <span>Cantidad (kg/L/ud)</span>
-                    <input type="number" id="cantidad" name="cantidad" required>
-                </label>
-                <label class="form-field">
-                    <span>Nombre Producto</span>
-                    <input type="text" id="nombreProducto" name="nombreProducto" required>
-                </label>
-                <label class="form-field">
-                    <span>PVP (€)</span>
-                    <input type="number" id="pvp" name="pvp" required>
-                </label>
-            </fieldset>
         </div>
             <button type="button" id="btnAddLinea" class="form-button">Añadir producto</button>
             <div class="tabla-wrapper">
@@ -54,7 +54,7 @@
                     <th></th>
                 </tr>
                 </thead>
-                <tbody id="tablaLineas">
+                <tbody id="tablaBody">
                 </tbody>
             </table>
         </div>

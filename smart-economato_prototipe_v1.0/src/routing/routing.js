@@ -1,13 +1,13 @@
 import { initAlmacen } from "../controllers/inventarioController.js";
 import { initRecepcion } from "../controllers/recepcionController.js";
-
+// Manejo de la navegación y carga dinámica de contenido
 document.addEventListener("DOMContentLoaded", () => {
   const links = document.querySelectorAll(".nav a");
   const content = document.getElementById("content");
   const sidebar = document.getElementById("nav");
   const pageTitle = document.getElementById("page-title");
   const allDetails = document.querySelectorAll('aside details');
-
+  // Mapa de títulos para cada página
   const TITULOS = {
     recepcion:      "Recepción",
     pedidosProfes:  "Pedidos profesores",
@@ -41,13 +41,12 @@ document.addEventListener("DOMContentLoaded", () => {
         if (page === "recepcion") {
           initRecepcion();
         }
-        
-        sidebar.classList.remove("open"); // cerrar menú móvil
       } catch (error) {
         content.innerHTML = `<p style='color:red'>${error.message}</p>`;
       }
     });
   });
+  // Cerrar detalles en móvil al hacer clic en un enlace
   allDetails.forEach(det => {
     det.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
