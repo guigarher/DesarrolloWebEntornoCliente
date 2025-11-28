@@ -267,7 +267,32 @@ table {
     background: white;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
+/*registro.html*/
+#form-registro legend{
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    color: var(--main-color);
+}
+#form-registro{
+    width: 100%;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.registro{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin: auto;
+}
 
+.form-field-registro{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 12px;
+}
 @media (max-width: 1370px) {
     fieldset{
     border: 2px solid var(--main-color);

@@ -14,7 +14,8 @@ document.addEventListener("DOMContentLoaded", () => {
     resumen:        "Resumen pedidos",
     baja:           "Baja productos",
     inventario:     "Inventario",
-    escandallo:     "Escandallo"
+    escandallo:     "Escandallo",
+    registro:       "Registro"
   };
 
 

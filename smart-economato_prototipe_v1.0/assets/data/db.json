@@ -150,7 +150,7 @@
       "nombre": "Tomate Raf",
       "precio": 4.2,
       "precioUnitario": "kg",
-      "stock": 298,
+      "stock": 307,
       "stockMinimo": 30,
       "categoriaId": 1,
       "proveedorId": 2,
@@ -202,7 +202,7 @@
       "nombre": "Solomillo de Ternera",
       "precio": 24.9,
       "precioUnitario": "kg",
-      "stock": 35,
+      "stock": 69.5,
       "stockMinimo": 12,
       "categoriaId": 3,
       "proveedorId": 3,
@@ -1520,6 +1520,70 @@
           "cantidad": 3,
           "nombreProducto": "Tomate Raf",
           "pvp": 4.2
+        }
+      ]
+    },
+    {
+      "id": "60d7",
+      "numeroAlbaran": "3",
+      "fecha": "2025-11-28",
+      "proveedorId": 2,
+      "proveedorNombre": "Frutas y Verduras Frescas SL",
+      "incidencias": "",
+      "lineas": [
+        {
+          "codigoBarras": "8410001000015",
+          "cantidad": 3,
+          "nombreProducto": "Tomate Raf",
+          "pvp": 4.2
+        }
+      ]
+    },
+    {
+      "id": "34c6",
+      "numeroAlbaran": "3",
+      "fecha": "2025-11-28",
+      "proveedorId": 2,
+      "proveedorNombre": "Frutas y Verduras Frescas SL",
+      "incidencias": "",
+      "lineas": [
+        {
+          "codigoBarras": "8410001000015",
+          "cantidad": 3,
+          "nombreProducto": "Tomate Raf",
+          "pvp": 4.2
+        }
+      ]
+    },
+    {
+      "id": "952b",
+      "numeroAlbaran": "3",
+      "fecha": "2025-11-28",
+      "proveedorId": 2,
+      "proveedorNombre": "Frutas y Verduras Frescas SL",
+      "incidencias": "",
+      "lineas": [
+        {
+          "codigoBarras": "8410001000015",
+          "cantidad": 3,
+          "nombreProducto": "Tomate Raf",
+          "pvp": 4.2
+        }
+      ]
+    },
+    {
+      "id": "a4b5",
+      "numeroAlbaran": "123",
+      "fecha": "2025-11-28",
+      "proveedorId": 3,
+      "proveedorNombre": "Carnicerías Selectas del Norte",
+      "incidencias": "",
+      "lineas": [
+        {
+          "codigoBarras": "8410001000039",
+          "cantidad": 34.5,
+          "nombreProducto": "Solomillo de Ternera",
+          "pvp": 24.9
         }
       ]
     }
