@@ -150,7 +150,7 @@
       "nombre": "Tomate Raf",
       "precio": 4.2,
       "precioUnitario": "kg",
-      "stock": 295,
+      "stock": 298,
       "stockMinimo": 30,
       "categoriaId": 1,
       "proveedorId": 2,
@@ -1493,6 +1493,22 @@
   "albaranes": [
     {
       "id": "f6e0",
+      "numeroAlbaran": "3",
+      "fecha": "2025-11-28",
+      "proveedorId": 2,
+      "proveedorNombre": "Frutas y Verduras Frescas SL",
+      "incidencias": "",
+      "lineas": [
+        {
+          "codigoBarras": "8410001000015",
+          "cantidad": 3,
+          "nombreProducto": "Tomate Raf",
+          "pvp": 4.2
+        }
+      ]
+    },
+    {
+      "id": "983b",
       "numeroAlbaran": "3",
       "fecha": "2025-11-28",
       "proveedorId": 2,
