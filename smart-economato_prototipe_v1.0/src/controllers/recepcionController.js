@@ -1,8 +1,8 @@
 import { 
     getProveedores,
     buscarProductoPorCodigoBarras,
-    crearAlbaran,
-    incrementarStockPorCodigo
+    incrementarStockPorCodigo,
+    crearAlbaran              
 } from "../services/economatoservice.js";
 import { renderizarTablaRecepcion } from "../views/recepcionui.js";    
 
@@ -50,18 +50,20 @@ export async function initRecepcion() {
             proveedorSelect.value = "";
             return;
         }
+        // Buscar el producto
         try {
             const producto = await buscarProductoPorCodigoBarras(codigoBarras);
-            if (producto) {
-                nombreProductoInput.value = producto.nombre;
-                pvpInput.value = Number(producto.precio.toFixed(2));
-                proveedorSelect.value = producto.proveedorId;
-            } else {
+            if (!producto) {
+                alert("Este código de barras no existe en el inventario.");
                 nombreProductoInput.value = "";
                 pvpInput.value = "";
                 proveedorSelect.value = "";
-                
+                return;
             }
+            // Si existe, autocompletamos
+            nombreProductoInput.value = producto.nombre;
+            pvpInput.value = Number(producto.precio).toFixed(2);
+            proveedorSelect.value = producto.proveedorId;
         } catch (error) {
             console.error("Error al buscar producto:", error);
         }
@@ -94,6 +96,20 @@ export async function initRecepcion() {
             alert("El número de albarán es obligatorio.");
             return;
         }
+        if(proveedorSelect.value === ""){
+            alert("Debes seleccionar un proveedor.");
+            return;
+        }
+        if(fechaInput.value === ""){
+            alert("La fecha del albarán es obligatoria.");
+            return;
+        }
+        // Verificar si el producto existe en el inventario
+        const productoExistente = await buscarProductoPorCodigoBarras(codigoBarras);
+        if (!productoExistente) {
+            alert("Este producto no existe aún en el inventario.");
+            return;
+        }
         // Crear objeto producto
         const producto = { codigoBarras, cantidad, nombreProducto, pvp };
         // Verificar si el producto ya está en la lista
@@ -114,21 +130,38 @@ export async function initRecepcion() {
     });
      // Eliminar producto de la tabla
     tablaBody.addEventListener("click", (e) => { 
-        if (!e.target.matches(".btn-eliminar-linea")) return;{
+        if (!e.target.matches(".btn-eliminar-linea")) return;
             const fila = e.target.closest("tr");
             const codigoBarrasEliminar = fila.querySelector("td").textContent.trim();
             const index = productosAlbaran.findIndex(p => p.codigoBarras === codigoBarrasEliminar);
             productosAlbaran.splice(index, 1);
             renderizarTablaRecepcion(productosAlbaran);
-        }
     });
-    // Enviar albarán
-    form.addEventListener("submit", async (e) => {
-        e.preventDefault();
+    // Enviar albarán / Actualizar stock
+    const btnRegistrar = document.getElementById("btnRegistrarRecepcion");
+    if (!btnRegistrar) {
+        return;
+    }
+    // Manejar clic en registrar recepción
+    btnRegistrar.addEventListener("click", async () => {
         if (productosAlbaran.length === 0) {
-            alert("Añade al menos un producto al albarán.");
+        alert("Añade al menos un producto antes de registrar la recepción.");
+        return;
+        }
+        // Validaciones albarán
+        if (numAlbaranInput.value.trim() === "") {
+            alert("El número de albarán es obligatorio.");
             return;
         }
+        if (proveedorSelect.value === "") {
+            alert("Debes seleccionar un proveedor.");
+            return;
+        }
+        if (fechaInput.value === "") {
+            alert("La fecha del albarán es obligatoria.");
+            return;
+        }
+        // Construir objeto albarán
         const nuevoAlbaran = {
             numeroAlbaran: numAlbaranInput.value.trim(),
             fecha: fechaInput.value,
@@ -143,17 +176,21 @@ export async function initRecepcion() {
             }))
         };
         try {
+            // Crear albarán en el sistema
             await crearAlbaran(nuevoAlbaran);
+            // Actualizar stock para cada producto
             for (const producto of productosAlbaran) {
                 await incrementarStockPorCodigo(producto.codigoBarras, producto.cantidad);
             }
+            // Confirmación al usuario
+            alert("Albarán registrado y stock actualizado correctamente.");
+            // Resetear formulario y lista de productos
             form.reset();
             productosAlbaran.length = 0;
             renderizarTablaRecepcion(productosAlbaran);
             fechaInput.valueAsDate = new Date();
         } catch (error) {
-            console.error("Error al crear albarán o actualizar stock:", error);
-            alert("Hubo un error al procesar el albarán. Revisa la consola para más detalles.");
+            console.error("Error al registrar albarán o actualizar stock:", error);
         }
     });
 }
