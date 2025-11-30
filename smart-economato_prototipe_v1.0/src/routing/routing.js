@@ -1,5 +1,6 @@
 import { initAlmacen } from "../controllers/inventarioController.js";
 import { initRecepcion } from "../controllers/recepcionController.js";
+import { initRegistro } from "../controllers/registroController.js";  
 // Manejo de la navegación y carga dinámica de contenido
 document.addEventListener("DOMContentLoaded", () => {
   const links = document.querySelectorAll(".nav a");
@@ -41,6 +42,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (page === "recepcion") {
           initRecepcion();
+        }
+        
+        if (page === "registro") {
+          initRegistro();
         }
       } catch (error) {
         content.innerHTML = `<p style='color:red'>${error.message}</p>`;

@@ -268,32 +268,78 @@ table {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 /*registro.html*/
-#form-registro legend{
+#form-proveedor,
+#form-producto,
+#form-categoria,
+#form-usuario {
+    width: 100%;
+    margin: 0 auto 30px;   
+}
+#form-proveedor legend,
+#form-producto legend,
+#form-categoria legend,
+#form-usuario legend {
     font-size: 1.2em;
     margin-bottom: 10px;
     margin-top: 10px;
     color: var(--main-color);
 }
-#form-registro{
-    width: 100%;
-    margin: auto;
-    margin-top: 50px;
-    margin-bottom: 50px;
-}
 .registro{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     width: 100%;
-    margin: auto;
+    max-width: 900px;
+    margin: 20px auto 60px;  
+    gap: 16px;               
+    align-items: stretch;   
 }
-
 .form-field-registro{
     display: flex;
     flex-direction: column;
     gap: 8px;
     margin: 12px;
 }
+.registro-tabs {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  padding: 4px 10px 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+  border-bottom: 2px solid var(--main-color);
+}
+.registro-tab {
+  text-align: center;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  background: var(--background2);
+  border: 2px solid var(--main-color);
+  cursor: pointer;
+  transition: background .2s ease, transform .1s ease;
+  min-width: 170px;   
+  flex-grow: 0;      
+  flex-shrink: 0;     
+}
+.registro-tab.active {
+  background: var(--main-color);
+  color: white;
+}
+.registro-section {
+  display: none;
+  width: 100%;
+}
+.registro-section.active {
+  display: block;
+}
 @media (max-width: 1370px) {
+    .fieldset-registro{
+    border: 2px solid var(--main-color);
+    border-radius: 10px;
+    padding: 10px;
+    background: var(--background2);
+    min-width: 500px;
+    }
     fieldset{
     border: 2px solid var(--main-color);
     border-radius: 10px;
@@ -303,6 +349,15 @@ table {
 }
     }
 @media (max-width: 900px) {
+    .registro-tabs {
+      display: grid;
+      grid-template-columns: 160px 160px;
+      gap: 10px;
+  }
+  .registro-tab {
+      min-width: auto;
+      width: 100%;
+  }
     header{
         flex-wrap: wrap;
     }
@@ -363,6 +418,13 @@ table {
 }
 
 @media (max-width: 700px) {
+    .fieldset-registro{
+    border: 2px solid var(--main-color);
+    border-radius: 10px;
+    padding: 10px;
+    background: var(--background2);
+    min-width: 285px;
+    }
     #form-recepcion{
         width: 90%;
     }
