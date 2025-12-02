@@ -208,4 +208,9 @@ export async function initRecepcion() {
             console.error("Error al registrar albarán o actualizar stock:", error);
         }
     });
+    // Enfocar campo código de barras al cargar la página
+    setTimeout(() => {
+        const codigoInput = document.getElementById("codigoBarras");
+        if (codigoInput) codigoInput.focus();
+    }, 50);
 }

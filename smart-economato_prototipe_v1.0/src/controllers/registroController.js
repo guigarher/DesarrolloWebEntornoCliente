@@ -16,8 +16,10 @@ export async function initRegistro() {
   const categoriaSelect = document.getElementById("categoria");
   const proveedorSelect = document.getElementById("proveedorProducto");
   const imagenInput         = document.getElementById("imagen");
+    const cantidadInput = document.getElementById("cantidad");
   const registrarProductoBtn = document.getElementById("btnRegistrarProducto");
-  const cantidadInput = document.getElementById("cantidad");
+  //Formulario de registro de proveedor
+  
   
 
   tabs.forEach(tab => {
@@ -77,13 +79,13 @@ export async function initRegistro() {
   const alergenos = Array.from(alergenosCheckboxes).map(chk => chk.value);
 
   //VALIDACIONES
-  if (!nombre) {
-    alert("El nombre del producto es obligatorio.");
+  if (!codigoBarras) {
+    alert("El código de barras es obligatorio.");
     return;
   }
 
-  if (!codigoBarras) {
-    alert("El código de barras es obligatorio.");
+  if (!nombre) {
+    alert("El nombre del producto es obligatorio.");
     return;
   }
 
@@ -99,6 +101,10 @@ export async function initRegistro() {
 
   if (stock<0) {
     alert("El stock no puede ser negativo.");
+    return;
+  }
+  if (stockMinimo<0) {
+    alert("El stock mínimo no puede ser negativo.");
     return;
   }
 
@@ -133,16 +139,6 @@ export async function initRegistro() {
         }
       }
       return;
-  }
-
-  if (stock < 0) {
-    alert("El stock no puede ser negativo.");
-    return;
-  }
-
-  if (stockMinimo < 0) {
-    alert("El stock mínimo no puede ser negativo.");
-    return;
   }
 
   //Construir objeto producto
@@ -189,7 +185,9 @@ export async function initRegistro() {
     alert("Error al registrar el producto. Revisa la consola para más detalles.");
   }
 });
-
-
-
+// Enfocar campo código de barras al cargar la página
+    setTimeout(() => {
+        const codigoInput = document.getElementById("codigoBarras");
+        if (codigoInput) codigoInput.focus();
+    }, 50);
 }
