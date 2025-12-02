@@ -53,8 +53,23 @@ export async function initRecepcion() {
         // Buscar el producto
         try {
             const producto = await buscarProductoPorCodigoBarras(codigoBarras);
+            
             if (!producto) {
-                alert("Este código de barras no existe en el inventario.");
+                const irCrear = confirm(
+                "Este código de barras no existe en el inventario.\n\n¿Deseas crear este producto?"
+                );
+
+                if (irCrear) {
+        
+                const linkRegistro = document.querySelector('.nav a[data-page="registro"]'); 
+                
+
+                if (linkRegistro) {
+                    linkRegistro.click();  
+                } else {
+                    console.warn("No se encontró el enlace de registro en el menú.");
+                }
+            }
                 nombreProductoInput.value = "";
                 pvpInput.value = "";
                 proveedorSelect.value = "";

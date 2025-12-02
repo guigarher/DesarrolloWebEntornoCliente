@@ -2,11 +2,11 @@
 
   <!--NAVEGACIÓN-->
   <div class="registro-tabs">
-    <button type="button" class="registro-tab active" data-target="seccion-proveedor">
-      Registrar Proveedor
-    </button>
-    <button type="button" class="registro-tab" data-target="seccion-producto">
+    <button type="button" class="registro-tab active" data-target="seccion-producto">
       Registrar Producto
+    </button>
+    <button type="button" class="registro-tab" data-target="seccion-proveedor">
+      Registrar Proveedor
     </button>
     <button type="button" class="registro-tab" data-target="seccion-categoria">
       Registrar Categoría
@@ -16,8 +16,123 @@
     </button>
   </div>
 
+<!--PRODUCTO-->
+  <section id="seccion-producto" class="registro-section active">
+    <form id="form-producto">
+      <fieldset class="fieldset-registro">
+        <legend>Registrar nuevo producto</legend>
+
+        <label class="form-field-registro">
+          <span>Código de barras</span>
+          <input type="text" id="codigoBarras" autofocus>
+        </label>
+
+        <label class="form-field-registro">
+          <span>Nombre producto</span>
+          <input type="text" id="nombreProducto">
+        </label>
+
+        <label class="form-field-registro">
+          <span>Precio</span>
+          <input type="number" id="pvp" step="0.01">
+        </label>
+
+        <label class="form-field-registro">
+          <span>Unidad medida</span>
+          <select id="unidadMedida" class="select-registro">
+            <option value="">Selecciona...</option>
+            <option value="kg">kg</option>
+            <option value="l">l</option>
+            <option value="ud">ud</option>
+          </select>
+        </label>
+
+        <label class="form-field-registro">
+          <span>Stock mínimo</span>
+          <input type="number" id="stockMinimo">
+        </label>
+
+        <label class="form-field-registro">
+          <span>Marca</span>
+          <input type="text" id="marca">
+        </label>
+
+        <label class="form-field-registro">
+          <span>Descripción</span>
+          <input type="text" id="descripcion">
+        </label>
+
+        <label class="form-field-registro">
+          <span>Imagen (nombre archivo)</span>
+          <input type="text" id="imagen" placeholder="ej: tomate-raf.jpg">
+      </label>
+
+        <label class="form-field-registro">
+          <span>Fecha de caducidad</span>
+          <input type="date" id="caducidad">
+        </label>
+
+        <label class="form-field-registro">
+          <span>Categoría</span>
+          <select id="categoria" class="select-registro">
+            <option value="">Selecciona categoría...</option>
+          </select>
+        </label>
+
+        <label class="form-field-registro">
+          <span>Proveedor</span>
+          <select id="proveedorProducto" class="select-registro">
+            <option value="">Selecciona proveedor...</option>
+          </select>
+        </label>
+      </fieldset>
+      <fieldset class="fieldset-registro-alergenos">
+      <legend>Alérgenos</legend>
+
+      <label class="checkbox-alergeno">
+        <input type="checkbox" name="alergenos" value="Gluten">
+        Gluten
+      </label>
+
+      <label class="checkbox-alergeno">
+        <input type="checkbox" name="alergenos" value="Lácteos">
+        Lácteos
+      </label>
+
+      <label class="checkbox-alergeno">
+        <input type="checkbox" name="alergenos" value="Huevos">
+        Huevos
+      </label>
+
+      <label class="checkbox-alergeno">
+        <input type="checkbox" name="alergenos" value="Pescado">
+        Pescado
+      </label>
+
+      <label class="checkbox-alergeno">
+        <input type="checkbox" name="alergenos" value="Crustáceos">
+        Crustáceos
+      </label>
+
+      <label class="checkbox-alergeno">
+        <input type="checkbox" name="alergenos" value="Moluscos">
+        Moluscos
+      </label>
+
+      <label class="checkbox-alergeno">
+        <input type="checkbox" name="alergenos" value="Sulfitos">
+        Sulfitos
+      </label>
+    </fieldset>
+
+      <button class="form-button" id="btnRegistrarProducto" type="button">
+        Registrar Producto
+      </button>
+    </form>
+  </section>
+
   <!--PROVEEDOR-->
-  <section id="seccion-proveedor" class="registro-section active">
+  <section id="seccion-proveedor" class="registro-section">
     <form id="form-proveedor">
       <fieldset class="fieldset-registro">
         <legend>Registrar nuevo proveedor</legend>
@@ -50,64 +165,6 @@
 
       <button class="form-button" id="btnRegistrarProveedor" type="button">
         Registrar Proveedor
-      </button>
-    </form>
-  </section>
-
-  <!--PRODUCTO-->
-  <section id="seccion-producto" class="registro-section">
-    <form id="form-producto">
-      <fieldset class="fieldset-registro">
-        <legend>Registrar nuevo producto</legend>
-
-        <label class="form-field-registro">
-          <span>Nombre producto</span>
-          <input type="text" id="nombreProducto">
-        </label>
-
-        <label class="form-field-registro">
-          <span>Código de barras</span>
-          <input type="text" id="codigoBarras">
-        </label>
-
-        <label class="form-field-registro">
-          <span>Precio</span>
-          <input type="number" id="precio" step="0.01">
-        </label>
-
-        <label class="form-field-registro">
-          <span>Unidad medida</span>
-          <select id="unidadMedida" class="select-registro">
-            <option value="">Selecciona...</option>
-            <option value="kg">kg</option>
-            <option value="l">l</option>
-            <option value="ud">ud</option>
-          </select>
-        </label>
-
-        <label class="form-field-registro">
-          <span>Stock mínimo</span>
-          <input type="number" id="stockMinimo">
-        </label>
-
-        <label class="form-field-registro">
-          <span>Categoría</span>
-          <select id="categoriaId" class="select-registro">
-            <option value="">Selecciona categoría...</option>
-          </select>
-        </label>
-
-        <label class="form-field-registro">
-          <span>Proveedor</span>
-          <select id="proveedorIdProducto" class="select-registro">
-            <option value="">Selecciona proveedor...</option>
-          </select>
-        </label>
-
-      </fieldset>
-
-      <button class="form-button" id="btnRegistrarProducto" type="button">
-        Registrar Producto
       </button>
     </form>
   </section>
