@@ -1488,6 +1488,24 @@
         "id": 3,
         "nombre": "Carnicerías Selectas del Norte"
       }
+    },
+    {
+      "id": "a1d2",
+      "nombre": "Almogrote",
+      "precio": 8,
+      "precioUnitario": "ud",
+      "unidadMedida": "ud",
+      "stock": 0,
+      "stockMinimo": 5,
+      "categoriaId": 8,
+      "proveedorId": 5,
+      "marca": "masapé",
+      "codigoBarras": "123",
+      "fechaCaducidad": null,
+      "alergenos": [],
+      "descripcion": "almogrote rico rico",
+      "imagen": "",
+      "activo": true
     }
   ],
   "albaranes": [

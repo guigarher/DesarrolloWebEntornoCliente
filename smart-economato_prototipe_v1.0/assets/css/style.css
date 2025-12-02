@@ -336,6 +336,8 @@ table {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: center;
+    gap: 2px; 
 }
 .checkbox-alergeno{
     display: flex;
@@ -433,7 +435,7 @@ table {
     display: flex;
     flex-direction: row;
     gap: 2px;
-    margin: 12px;
+    margin: 6px;
     font-size: 0.85rem ;
 }
     .fieldset-registro{
