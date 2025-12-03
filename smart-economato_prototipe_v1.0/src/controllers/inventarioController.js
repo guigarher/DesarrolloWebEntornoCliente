@@ -8,7 +8,7 @@ import {
 import {
   renderizarTabla,
   mostrarCategorias
-} from '../views/almacenui.js';
+} from '../views/inventarioui.js';
 
 import {
   getProductos,
@@ -100,13 +100,19 @@ function manejarBusqueda() {
 
 function manejarFiltro() {
   const cat = selectCategoria?.value;
-  if (cat) {
-    const filtrados = filtrarPorCategoria(productosMostrados, cat);
-    actualizarTabla(filtrados);      
-  } else {
-    actualizarTabla(productos);       
+
+  if (!cat) {
+    actualizarTabla(productos);
+    return;
   }
+
+  const id = Number(cat); 
+
+  const filtrados = productos.filter(p => p.categoriaId === id);
+
+  actualizarTabla(filtrados);
 }
+
 
 function manejarOrden() {
   const orden = selectOrden?.value || 'asc';

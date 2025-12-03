@@ -16,10 +16,16 @@ export async function initRegistro() {
   const categoriaSelect = document.getElementById("categoria");
   const proveedorSelect = document.getElementById("proveedorProducto");
   const imagenInput         = document.getElementById("imagen");
-    const cantidadInput = document.getElementById("cantidad");
+  const cantidadInput = document.getElementById("cantidad");
   const registrarProductoBtn = document.getElementById("btnRegistrarProducto");
   //Formulario de registro de proveedor
-  
+  const nombreProveedorInput = document.getElementById("nombreProveedor");
+  const nombreContactoInput = document.getElementById("nombreContacto");
+  const numTelInput = document.getElementById("numeroTelefono");
+  const mailInput = document.getElementById("emailProveedor");
+  const dirInput = document.getElementById("DireccionProveedor");
+  const btnRegistroProveedor = document.getElementById("btnRegistrarProveedor");
+
   
 
   tabs.forEach(tab => {
@@ -61,7 +67,7 @@ export async function initRegistro() {
   registrarProductoBtn.addEventListener("click", async (e) => {
   e.preventDefault();
 
-  //Leer valores del formulario
+  //Leer valores del formulario producto
   const nombre       = nombreProductoInput.value.trim();
   const codigoBarras = codigoBarrasInput.value.trim();
   const precio       = Number(pvpInput.value);
@@ -190,4 +196,9 @@ export async function initRegistro() {
         const codigoInput = document.getElementById("codigoBarras");
         if (codigoInput) codigoInput.focus();
     }, 50);
+
+
+    btnRegistroProveedor.addEventListener("click", async(e)=>{
+      e.preventDefault();
+    })
 }
