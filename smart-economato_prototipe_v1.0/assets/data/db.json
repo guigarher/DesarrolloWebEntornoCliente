@@ -75,6 +75,14 @@
       "telefono": "+34 98 890 12 34",
       "email": "comercial@vinospeninsulares.es",
       "direccion": "Bodegas Rioja, 56, Logroño"
+    },
+    {
+      "id": "6d69",
+      "nombre": "pepe el flecha",
+      "contacto": "pepito",
+      "telefono": "123",
+      "email": "123@123",
+      "direccion": "123"
     }
   ],
   "categorias": [

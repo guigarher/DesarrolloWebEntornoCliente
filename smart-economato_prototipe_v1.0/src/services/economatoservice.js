@@ -129,3 +129,33 @@ export async function crearProducto(producto) {
   return await res.json();
 }
 
+//Crear un nuevo proveedor
+export async function crearProveedor(proveedor){
+  const res = await fetch(`${API_URL}/proveedores`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(proveedor),
+  });
+
+  if(!res.ok){
+    throw new Error("Error al crear el proveedor");
+  }
+
+  return await res.json();
+}
+
+//Crear una nueva categoria
+export async function crearCategoria(categoria){
+  const res = await fetch(`${API_URL}/categorias`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json"},
+    body: JSON.stringify(categoria),
+  });
+
+  if(!res.ok){
+    throw new Error("Error al crear la categoría");
+  }
+
+  return await res.json();
+}
+

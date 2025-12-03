@@ -1,4 +1,4 @@
-import { crearProducto, getProveedores, getCategorias } from "../services/economatoservice.js"; 
+import { crearProducto, getProveedores, getCategorias, crearProveedor, crearCategoria } from "../services/economatoservice.js"; 
 
 export async function initRegistro() {
   // Elementos del DOM
@@ -23,11 +23,16 @@ export async function initRegistro() {
   const nombreContactoInput = document.getElementById("nombreContacto");
   const numTelInput = document.getElementById("numeroTelefono");
   const mailInput = document.getElementById("emailProveedor");
-  const dirInput = document.getElementById("DireccionProveedor");
+  const dirInput = document.getElementById("direccionProveedor");
   const btnRegistroProveedor = document.getElementById("btnRegistrarProveedor");
 
-  
+  //Formulario de registro de categoría
+  const nombreCategoriaInput = document.getElementById("nombreCategoria");
+  const descripcionCategoriaInput = document.getElementById("descripcionCategoria");
 
+  const btnRegistrarCategoria = document.getElementById("btnRegistrarCategoria");
+  
+  
   tabs.forEach(tab => {
     tab.addEventListener("click", () => {
       const target = tab.dataset.target;
@@ -64,6 +69,7 @@ export async function initRegistro() {
     console.error("Error al cargar categorías:", error);
   }
 
+  //Registrar producto
   registrarProductoBtn.addEventListener("click", async (e) => {
   e.preventDefault();
 
@@ -190,15 +196,95 @@ export async function initRegistro() {
     console.error("Error al registrar producto:", error);
     alert("Error al registrar el producto. Revisa la consola para más detalles.");
   }
+  
 });
+
 // Enfocar campo código de barras al cargar la página
     setTimeout(() => {
         const codigoInput = document.getElementById("codigoBarras");
         if (codigoInput) codigoInput.focus();
     }, 50);
 
-
+    //Registrar proveedor
     btnRegistroProveedor.addEventListener("click", async(e)=>{
       e.preventDefault();
-    })
+
+      //Leer valores formulario proveedor
+      const nombre = nombreProveedorInput.value.trim();
+      const contacto = nombreContactoInput.value.trim();
+      const telefono = numTelInput.value.trim();
+      const email = mailInput.value.trim();
+      const direccion = dirInput.value.trim();
+
+      //Validaciones
+
+      if(!nombre){
+        alert("El nombre del proveedor es obligatorio");
+        return;
+      }
+      if (email && !email.includes("@")) {
+        alert("El email del proveedor no parece válido.");
+        return;
+      }
+      
+      //Construir objeto proveedor
+      const nuevoProveedor = {
+        nombre,
+        contacto,
+        telefono,
+        email,
+        direccion
+      };
+
+      try {
+      const creado = await crearProveedor(nuevoProveedor);
+
+      alert(`Proveedor "${creado.nombre}" registrado con éxito`);
+
+      // Añadirlo al <select> de proveedores para usarlo
+      const option = document.createElement("option");
+      option.value = creado.id;
+      option.textContent = creado.nombre;
+      proveedorSelect.appendChild(option);
+      proveedorSelect.value = creado.id;
+
+      // Limpiar formulario proveedor
+      nombreProveedorInput.value   = "";
+      nombreContactoInput.value    = "";
+      numTelInput.value            = "";
+      mailInput.value              = "";
+      dirInput.value               = "";
+
+    } catch (error) {
+      alert("Error al registrar el proveedor.");
+    }
+  });
+
+  //Registrar categoria
+  btnRegistrarCategoria.addEventListener("click", async(e)=>{
+    e.preventDefault();
+
+    //Leer valores formulario categoria
+    const nombre = nombreCategoriaInput.value.trim();
+    const descripcion = descripcionCategoriaInput.value.trim();
+
+    //Validaciones
+    if(!nombre){
+      alert("El nombre de la categoría es obligatorio");
+      return;
+    }
+
+    //Construir objeto categoria
+    const nuevaCategoria = {
+      nombre,
+      descripcion
+    };
+
+    try{
+      const creado = await crearCategoria(nuevaCategoria);
+    } catch (error) {
+      alert("Error al registrar la categoría.");
+    }
+  });
 }
+
