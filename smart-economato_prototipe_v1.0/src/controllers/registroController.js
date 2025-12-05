@@ -17,6 +17,7 @@ export async function initRegistro() {
   const proveedorSelect = document.getElementById("proveedorProducto");
   const imagenInput         = document.getElementById("imagen");
   const cantidadInput = document.getElementById("cantidad");
+
   const registrarProductoBtn = document.getElementById("btnRegistrarProducto");
   //Formulario de registro de proveedor
   const nombreProveedorInput = document.getElementById("nombreProveedor");
@@ -24,6 +25,7 @@ export async function initRegistro() {
   const numTelInput = document.getElementById("numeroTelefono");
   const mailInput = document.getElementById("emailProveedor");
   const dirInput = document.getElementById("direccionProveedor");
+
   const btnRegistroProveedor = document.getElementById("btnRegistrarProveedor");
 
   //Formulario de registro de categoría
@@ -31,6 +33,17 @@ export async function initRegistro() {
   const descripcionCategoriaInput = document.getElementById("descripcionCategoria");
 
   const btnRegistrarCategoria = document.getElementById("btnRegistrarCategoria");
+
+  //Formulario de registro de usuario
+  const usernameInput = document.getElementById("usernameUsuario");
+  const passwordInput = document.getElementById("passwordUsuario");
+  const roleSelect = document.getElementById("rolUsuario");
+  const nombreInput = document.getElementById("nombreUsuario");
+  const apellidosInput = document.getElementById("apellidosUsuario");
+  const emailInput = document.getElementById("emailUsuario");
+  const tlfInput = document.getElementById("telefonoUsuario");
+
+  const btnRegistrarUsuario = document.getElementById("btnRegistrarUsuario");
   
   
   tabs.forEach(tab => {
@@ -287,5 +300,24 @@ export async function initRegistro() {
       alert("Error al registrar la categoría.");
     }
   });
+
+  //Registrar usuario
+  btnRegistrarUsuario.addEventListener("click", async(e)=>{
+    e.preventDefault;
+
+    //Leer valores formulario usuario
+    const username = usernameInput.value.trim();
+    const password = passwordInput.value.trim();
+    const role = roleSelect.value;
+    const nombre = nombreInput.value.trim();
+    const apellidos = apellidosInput.value.trim();
+    const email = emailInput.value.trim();
+    const telefono = tlfInput.value.trim();
+
+    //Validaciones
+    
+
+  });
+
 }
 
