@@ -83,6 +83,14 @@
       "telefono": "123",
       "email": "123@123",
       "direccion": "123"
+    },
+    {
+      "id": "0b83",
+      "nombre": "asd",
+      "contacto": "asd",
+      "telefono": "asd",
+      "email": "asd@asd",
+      "direccion": "asd"
     }
   ],
   "categorias": [
@@ -150,6 +158,16 @@
       "id": "13",
       "nombre": "Bebidas",
       "descripcion": "Vinos, aguas y refrescos"
+    },
+    {
+      "id": "6bd9",
+      "nombre": "café",
+      "descripcion": "cafes"
+    },
+    {
+      "id": "98c4",
+      "nombre": "asd",
+      "descripcion": "asd"
     }
   ],
   "productos": [

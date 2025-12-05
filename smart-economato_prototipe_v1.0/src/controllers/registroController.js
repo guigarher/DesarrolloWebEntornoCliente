@@ -282,6 +282,7 @@ export async function initRegistro() {
 
     try{
       const creado = await crearCategoria(nuevaCategoria);
+      alert(`Categoría "${creado.nombre}" registrada con éxito`);
     } catch (error) {
       alert("Error al registrar la categoría.");
     }

@@ -345,6 +345,9 @@ table {
     gap: 2px;
     margin: 12px;
 }
+.select-registro{
+    margin-left: 0;
+}
 @media (max-width: 1370px) {
     .fieldset-registro{
     border: 2px solid var(--main-color);
