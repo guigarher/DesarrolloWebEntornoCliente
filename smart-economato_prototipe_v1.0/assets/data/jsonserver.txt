@@ -1,1 +1,1 @@
-Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass; npx json-server --watch db.json --port 3000
+cd .\DesarrolloWebEntornoCliente\smart-economato_prototipe_v1.0\assets\data\ Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass; npx json-server --watch db.json --port 3000

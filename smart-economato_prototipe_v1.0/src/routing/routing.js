@@ -1,8 +1,8 @@
 import { initAlmacen } from "../controllers/inventarioController.js";
 import { initRecepcion } from "../controllers/recepcionController.js";
 import { initRegistro } from "../controllers/registroController.js";  
-//Comprobar si hay un usuario logeado en localStorage
-const usuarioData = localStorage.getItem("usuarioActivo");
+//Comprobar si hay un usuario logeado en sessionStorage
+const usuarioData = sessionStorage.getItem("usuarioActivo");
 
 if (!usuarioData) {
   // Si NO hay usuario, lo mandamos al login
@@ -15,9 +15,8 @@ let usuarioActivo = null;
 try {
   usuarioActivo = JSON.parse(usuarioData);
 } catch (e) {
-  console.error("Error leyendo usuarioActivo de localStorage", e);
   // Si está corrupto, limpiamos y mandamos al login
-  localStorage.removeItem("usuarioActivo");
+  sessionStorage.removeItem("usuarioActivo");
   window.location.href = "login.html";
   throw e;
 }
@@ -33,8 +32,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const btnLogout = document.getElementById("btn-logout");
   if (btnLogout) {
     btnLogout.addEventListener("click", () => {
-      // Borramos al usuario del localStorage
-      localStorage.removeItem("usuarioActivo");
+      // Borramos al usuario del sessionStorage
+      sessionStorage.removeItem("usuarioActivo");
       // Volvemos al login
       window.location.href = "login.html";
     });
@@ -64,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (page === "registro" && usuarioActivo.role === "Alumno") {
         alert("No tienes permiso para acceder a esta sección.");
-        return; // salimos de la función y NO hacemos fetch
+        return; 
     }
 
       try {

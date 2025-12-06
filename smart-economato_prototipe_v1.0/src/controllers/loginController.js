@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () =>{
                 role: user.role
             }
 
-            localStorage.setItem("usuarioActivo", JSON.stringify(usuarioActivo));
+            sessionStorage.setItem("usuarioActivo", JSON.stringify(usuarioActivo));
             
             window.location.href = "menu.html"
         } catch (error) {
