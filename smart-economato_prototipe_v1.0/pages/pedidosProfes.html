@@ -1,0 +1,29 @@
+<div class="pedidos-profesores">
+  <!-- Buscador de productos -->
+  <div class="buscador-productos">
+    <label>
+      Buscar producto:
+      <input type="text" id="input-buscar-producto" placeholder="Tomate, pan, leche...">
+    </label>
+
+    <!-- Lista de sugerencias que se va rellenando al escribir -->
+    <ul id="lista-sugerencias"></ul>
+  </div>
+
+  <!-- Tabla con líneas ya añadidas al pedido -->
+  <table id="tabla-pedido-profesor">
+    <thead>
+      <tr>
+        <th>Producto</th>
+        <th>Proveedor</th>
+        <th>Cantidad</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Aquí pintamos las líneas de pedidoActual.lineas -->
+    </tbody>
+  </table>
+
+  <button id="btn-guardar-pedido">Guardar pedido de este profesor</button>
+</div>

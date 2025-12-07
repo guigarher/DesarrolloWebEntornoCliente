@@ -348,6 +348,13 @@ table {
 .select-registro{
     margin-left: 0;
 }
+/*pedidos-profesores*/
+.pedidos-profesores{
+    width: 100%;             
+    padding: 20px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
 @media (max-width: 1370px) {
     .fieldset-registro{
     border: 2px solid var(--main-color);

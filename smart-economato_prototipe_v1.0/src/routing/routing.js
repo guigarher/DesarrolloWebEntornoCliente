@@ -1,6 +1,7 @@
 import { initAlmacen } from "../controllers/inventarioController.js";
 import { initRecepcion } from "../controllers/recepcionController.js";
 import { initRegistro } from "../controllers/registroController.js";  
+import { initPedidosProfesores } from "../controllers/pedidosProfesController.js";
 //Comprobar si hay un usuario logeado en sessionStorage
 const usuarioData = sessionStorage.getItem("usuarioActivo");
 
@@ -64,7 +65,11 @@ document.addEventListener("DOMContentLoaded", () => {
       if (page === "registro" && usuarioActivo.role === "Alumno") {
         alert("No tienes permiso para acceder a esta sección.");
         return; 
-    }
+      }
+      if (page === "pedidosProfes" && usuarioActivo.role === "Alumno") {
+          alert("No tienes permiso para acceder a esta sección.");
+          return;
+      } 
 
       try {
         const response = await fetch(`pages/${page}.html`);
@@ -82,6 +87,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (page === "recepcion") {
           initRecepcion();
+        }
+
+        if (page === "pedidosProfes") {
+          initPedidosProfesores();
         }
         
         if (page === "registro") {

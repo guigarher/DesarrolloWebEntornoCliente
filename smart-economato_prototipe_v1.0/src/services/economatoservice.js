@@ -159,3 +159,18 @@ export async function crearCategoria(categoria){
   return await res.json();
 }
 
+//Crear un nuevo usuario
+export async function crearUsuario(usuario){
+  const res = await fetch(`${API_URL}/usuarios`, {
+    method: "POST",
+    header: { "Constent-Type": "application/json"},
+    body: JSON.stringify(usuario),
+  });
+
+  if(!res.ok){
+    throw new Error("Error al crear usuario");
+  }
+
+  return await res.json();
+}
+

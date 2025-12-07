@@ -1,4 +1,4 @@
-import { crearProducto, getProveedores, getCategorias, crearProveedor, crearCategoria } from "../services/economatoservice.js"; 
+import { crearProducto, getProveedores, getCategorias, crearProveedor, crearCategoria, crearUsuario } from "../services/economatoservice.js"; 
 
 export async function initRegistro() {
   // Elementos del DOM
@@ -315,9 +315,48 @@ export async function initRegistro() {
     const telefono = tlfInput.value.trim();
 
     //Validaciones
-    
+    if(!username){
+      alert("Debes rellenar el campo usuario");
+    }
+    if(!password){
+      alert("Debes rellenar el campo contraseña");
+    }
+    if(!role){
+      alert("Debes seleccionar un rol");
+    }
+    if(!nombre){
+      alert("Debes rellenar el campo nombre");
+    }
+    if(!apellidos){
+      alert("Debes rellenar el campo apellidos");
+    }
+    if(!email){
+      alert("Debes rellenar el campo email");
+    }
+    if(!telefono){
+      alert("Debes rellenar el campo telefono");
+    }
+
+    //Construir objeto usuario
+    const nuevoUsuario = {
+      username,
+      password,
+      role,
+      nombre,
+      apellidos,
+      email,
+      telefono
+    };
+
+    try{
+      const creado = await crearUsuario(nuevoUsuario);
+      alert(`Usuario "${creado.nombre}" registrado con éxito`);
+    } catch (error) {
+      alert("Error al registrar el usuario.");
+    }
 
   });
+
 
 }
 
