@@ -174,3 +174,45 @@ export async function crearUsuario(usuario){
   return await res.json();
 }
 
+
+// Pedidos de profesores
+export async function crearPedidoProfesor(pedido) {
+  const res = await fetch(`${API_URL}/pedidosProfesores`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(pedido),
+  });
+
+  if (!res.ok) {
+    throw new Error("Error al crear el pedido del profesor");
+  }
+
+  return await res.json(); 
+}
+
+export async function getPedidosProfesores() {
+  const res = await fetch(`${API_URL}/pedidosProfesores`);
+
+  if (!res.ok) {
+    throw new Error("Error al obtener los pedidos de profesores");
+  }
+
+  return await res.json(); 
+}
+
+//marcar un pedido como recibido / inactivo:
+export async function actualizarEstadoPedido(id, nuevoEstado) {
+  const res = await fetch(`${API_URL}/pedidosProfesores/${id}`, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ estado: nuevoEstado }),
+  });
+
+  if (!res.ok) {
+    throw new Error("Error al actualizar el pedido");
+  }
+
+  return await res.json();
+}
+
+

@@ -9,16 +9,6 @@
       "apellidos": "Castrillo Estévez",
       "email": "tcasest@gobiernodecanarias.org",
       "telefono": "+34 91 123 45 67"
-    },
-    {
-      "id": "8a1c",
-      "username": "gui",
-      "password": "gui",
-      "role": "almacen",
-      "nombre": "gui",
-      "apellidos": "gar",
-      "email": "asd",
-      "telefono": "asd"
     }
   ],
   "proveedores": [
@@ -1641,5 +1631,8 @@
         }
       ]
     }
+  ],
+  "pedidosProfesores": [
+    
   ]
 }

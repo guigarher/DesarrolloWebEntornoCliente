@@ -1,13 +1,20 @@
 <div class="pedidos-profesores">
-  <!-- Buscador de productos -->
+  <!-- Buscador de productos del inventario -->
   <div class="buscador-productos">
     <label>
-      Buscar producto:
+      Buscar producto (inventario):
       <input type="text" id="input-buscar-producto" placeholder="Tomate, pan, leche...">
     </label>
-
-    <!-- Lista de sugerencias que se va rellenando al escribir -->
     <ul id="lista-sugerencias"></ul>
+  </div>
+
+  <!-- Producto fuera de inventario -->
+  <div class="producto-libre">
+    <label>
+      Añadir producto fuera de inventario:
+      <input type="text" id="input-producto-libre" placeholder="Ej: Café descafeinado especial">
+    </label>
+    <button id="btn-add-producto-libre" type="button">Añadir</button>
   </div>
 
   <!-- Tabla con líneas ya añadidas al pedido -->
@@ -20,9 +27,7 @@
         <th></th>
       </tr>
     </thead>
-    <tbody>
-      <!-- Aquí pintamos las líneas de pedidoActual.lineas -->
-    </tbody>
+    <tbody></tbody>
   </table>
 
   <button id="btn-guardar-pedido">Guardar pedido de este profesor</button>

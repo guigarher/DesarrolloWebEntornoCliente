@@ -20,8 +20,8 @@ export function pintarSugerenciasUI({ productos, texto, ul, onSeleccionProducto 
     li.textContent = prod.nombre;
 
     li.addEventListener("click", () => {
-      onSeleccionProducto(prod);   // → esto llama al pedirCantidadYAgregar del controller
-      ul.innerHTML = "";           // limpiamos sugerencias
+      onSeleccionProducto(prod);   
+      ul.innerHTML = "";          
     });
 
     ul.appendChild(li);
@@ -40,10 +40,18 @@ export function renderizarTablaPedidoUI({ lineasPedido, productos }) {
     tdNombre.textContent = linea.nombreProducto;
 
     const producto = productos.find(p => p.id === linea.productoId);
-    const nombreProveedor = producto?.proveedor?.nombre || `ID ${linea.proveedorId}`;
+
+    let nombreProveedor;
+    if (!producto && linea.proveedorId == null) {
+      // Producto fuera de inventario
+      nombreProveedor = "Pendiente de proveedor";
+    } else {
+      nombreProveedor = producto?.proveedor?.nombre || `ID ${linea.proveedorId}`;
+    }
 
     const tdProveedor = document.createElement("td");
     tdProveedor.textContent = nombreProveedor;
+
 
     const tdCantidad = document.createElement("td");
     tdCantidad.textContent = linea.cantidad;
@@ -52,9 +60,6 @@ export function renderizarTablaPedidoUI({ lineasPedido, productos }) {
     const btnEliminar = document.createElement("button");
     btnEliminar.textContent = "Eliminar";
     btnEliminar.addEventListener("click", () => {
-      // OJO: eliminar lo sigue haciendo el controller,
-      // aquí solo lanzamos un evento si luego quieres hacerlo más fino.
-      // De momento el controller llama a esta función después de borrar.
       lineasPedido.splice(index, 1);
       renderizarTablaPedidoUI({ lineasPedido, productos });
     });
