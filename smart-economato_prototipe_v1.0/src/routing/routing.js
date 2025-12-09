@@ -2,6 +2,8 @@ import { initAlmacen } from "../controllers/inventarioController.js";
 import { initRecepcion } from "../controllers/recepcionController.js";
 import { initRegistro } from "../controllers/registroController.js";  
 import { initPedidosProfesores } from "../controllers/pedidosProfesController.js";
+import { initResumenPedidos } from "../controllers/resumenPedidosController.js";
+
 //Comprobar si hay un usuario logeado en sessionStorage
 const usuarioData = sessionStorage.getItem("usuarioActivo");
 
@@ -95,6 +97,10 @@ document.addEventListener("DOMContentLoaded", () => {
         
         if (page === "registro") {
           initRegistro();
+        }
+
+        if (page === "resumen") {
+          initResumenPedidos();
         }
       } catch (error) {
         content.innerHTML = `<p style='color:red'>${error.message}</p>`;

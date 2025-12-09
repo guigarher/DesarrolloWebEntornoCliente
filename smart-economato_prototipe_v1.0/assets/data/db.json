@@ -176,7 +176,7 @@
       "nombre": "Tomate Raf",
       "precio": 4.2,
       "precioUnitario": "kg",
-      "stock": 307,
+      "stock": 350,
       "stockMinimo": 30,
       "categoriaId": 1,
       "proveedorId": 2,
@@ -202,7 +202,7 @@
       "nombre": "Lechuga Iceberg",
       "precio": 1.15,
       "precioUnitario": "unidad",
-      "stock": 435,
+      "stock": 439,
       "stockMinimo": 40,
       "categoriaId": 2,
       "proveedorId": 2,
@@ -228,7 +228,7 @@
       "nombre": "Solomillo de Ternera",
       "precio": 24.9,
       "precioUnitario": "kg",
-      "stock": 69.5,
+      "stock": 88.5,
       "stockMinimo": 12,
       "categoriaId": 3,
       "proveedorId": 3,
@@ -1532,6 +1532,78 @@
       "descripcion": "almogrote rico rico",
       "imagen": "",
       "activo": true
+    },
+    {
+      "id": "42e0",
+      "nombre": "cafe",
+      "precio": 4,
+      "precioUnitario": "kg",
+      "unidadMedida": "kg",
+      "stock": 4,
+      "stockMinimo": 0,
+      "categoriaId": 8,
+      "proveedorId": 6,
+      "marca": "mocay",
+      "codigoBarras": "123123",
+      "fechaCaducidad": "0323-02-23",
+      "alergenos": [],
+      "descripcion": "",
+      "imagen": "",
+      "activo": true
+    },
+    {
+      "id": "b3ad",
+      "nombre": "asd",
+      "precio": 123,
+      "precioUnitario": "l",
+      "unidadMedida": "l",
+      "stock": 0,
+      "stockMinimo": 0,
+      "categoriaId": "98c4",
+      "proveedorId": "0b83",
+      "marca": "",
+      "codigoBarras": "asd",
+      "fechaCaducidad": "0123-03-12",
+      "alergenos": [],
+      "descripcion": "",
+      "imagen": "",
+      "activo": true
+    },
+    {
+      "id": "66f4",
+      "nombre": "caca",
+      "precio": 123123,
+      "precioUnitario": "kg",
+      "unidadMedida": "kg",
+      "stock": 0,
+      "stockMinimo": 0,
+      "categoriaId": null,
+      "proveedorId": null,
+      "marca": "",
+      "codigoBarras": "123123123",
+      "fechaCaducidad": "0123-03-12",
+      "alergenos": [],
+      "descripcion": "",
+      "imagen": "",
+      "activo": true
+    },
+    {
+      "id": "3f90",
+      "nombre": "coco",
+      "precio": 453,
+      "precioUnitario": "kg",
+      "unidadMedida": "kg",
+      "stock": 4,
+      "stockMinimo": 0,
+      "categoriaId": null,
+      "proveedorId": null,
+      "marca": "",
+      "codigoBarras": "65656",
+      "fechaCaducidad": null,
+      "alergenos": [],
+      "descripcion": "",
+      "imagen": "",
+      "activo": true
     }
   ],
   "albaranes": [
@@ -1630,9 +1702,750 @@
           "pvp": 24.9
         }
       ]
+    },
+    {
+      "id": "f3a2",
+      "numero": "asd",
+      "fecha": "9/12/2025, 13:50:43",
+      "proveedorId": 2,
+      "incidencias": "",
+      "lineas": [
+        {
+          "productoId": "1",
+          "nombreProducto": "Tomate Raf",
+          "codigoBarras": null,
+          "cantidad": 4
+        }
+      ],
+      "pedidosIds": [
+        "dfc0"
+      ]
+    },
+    {
+      "id": "dbf7",
+      "numero": "asd",
+      "fecha": "9/12/2025, 13:51:26",
+      "proveedorId": 2,
+      "incidencias": "",
+      "lineas": [
+        {
+          "productoId": "1",
+          "nombreProducto": "Tomate Raf",
+          "codigoBarras": "8410001000015",
+          "cantidad": 4
+        }
+      ],
+      "pedidosIds": [
+        "f582"
+      ]
+    },
+    {
+      "id": "f322",
+      "numero": "123",
+      "fecha": "9/12/2025, 14:01:28",
+      "proveedorId": 3,
+      "incidencias": "",
+      "lineas": [
+        {
+          "productoId": "3",
+          "nombreProducto": "Solomillo de Ternera",
+          "codigoBarras": "8410001000039",
+          "cantidad": 4
+        }
+      ],
+      "pedidosIds": [
+        "e2e2"
+      ]
+    },
+    {
+      "id": "bfef",
+      "numeroAlbaran": "123",
+      "fecha": "9/12/2025, 20:29:04",
+      "proveedorId": 2,
+      "proveedorNombre": "Proveedor ID 2",
+      "incidencias": "",
+      "lineas": [
+        {
+          "productoId": "1",
+          "nombreProducto": "Tomate Raf",
+          "codigoBarras": "8410001000015",
+          "cantidad": 4
+        },
+        {
+          "productoId": "2",
+          "nombreProducto": "Lechuga Iceberg",
+          "codigoBarras": "8410001000022",
+          "cantidad": 4
+        }
+      ],
+      "pedidosProfesoresIds": [
+        "3116"
+      ]
+    },
+    {
+      "id": "9ce0",
+      "numeroAlbaran": "123",
+      "fecha": "9/12/2025, 20:40:55",
+      "proveedorId": 2,
+      "proveedorNombre": "Proveedor ID 2",
+      "incidencias": "",
+      "lineas": [
+        {
+          "productoId": "1",
+          "nombreProducto": "Tomate Raf",
+          "codigoBarras": "8410001000015",
+          "cantidad": 4
+        }
+      ],
+      "pedidosProfesoresIds": [
+        "c09b"
+      ]
+    },
+    {
+      "id": "3c96",
+      "numeroAlbaran": "123",
+      "fecha": "9/12/2025, 20:54:40",
+      "proveedorId": 2,
+      "proveedorNombre": "Proveedor ID 2",
+      "incidencias": "",
+      "lineas": [
+        {
+          "productoId": "1",
+          "nombreProducto": "Tomate Raf",
+          "codigoBarras": "8410001000015",
+          "cantidad": 4
+        }
+      ],
+      "pedidosProfesoresIds": [
+        "eb03"
+      ]
+    },
+    {
+      "id": "54ab",
+      "numeroAlbaran": "123",
+      "fecha": "9/12/2025, 20:54:57",
+      "proveedorId": 2,
+      "proveedorNombre": "Proveedor ID 2",
+      "incidencias": "",
+      "lineas": [
+        {
+          "productoId": "1",
+          "nombreProducto": "Tomate Raf",
+          "codigoBarras": "8410001000015",
+          "cantidad": 4
+        }
+      ],
+      "pedidosProfesoresIds": [
+        "eb03"
+      ]
+    },
+    {
+      "id": "ccda",
+      "numeroAlbaran": "123",
+      "fecha": "9/12/2025, 21:00:11",
+      "proveedorId": 2,
+      "proveedorNombre": "Proveedor ID 2",
+      "incidencias": "",
+      "lineas": [
+        {
+          "productoId": "1",
+          "nombreProducto": "Tomate Raf",
+          "codigoBarras": "8410001000015",
+          "cantidad": 4
+        }
+      ],
+      "pedidosProfesoresIds": [
+        "eb03"
+      ]
+    },
+    {
+      "id": "07be",
+      "numeroAlbaran": "123",
+      "fecha": "9/12/2025, 21:03:31",
+      "proveedorId": 2,
+      "proveedorNombre": "Proveedor ID 2",
+      "incidencias": "",
+      "lineas": [
+        {
+          "productoId": "1",
+          "nombreProducto": "Tomate Raf",
+          "codigoBarras": "8410001000015",
+          "cantidad": 4
+        }
+      ],
+      "pedidosProfesoresIds": [
+        "eb03"
+      ]
+    },
+    {
+      "id": "a53f",
+      "numeroAlbaran": "123",
+      "fecha": "9/12/2025, 21:03:36",
+      "proveedorId": 2,
+      "proveedorNombre": "Proveedor ID 2",
+      "incidencias": "",
+      "lineas": [
+        {
+          "productoId": "1",
+          "nombreProducto": "Tomate Raf",
+          "codigoBarras": "8410001000015",
+          "cantidad": 4
+        }
+      ],
+      "pedidosProfesoresIds": [
+        "eb03"
+      ]
+    },
+    {
+      "id": "8ec5",
+      "numeroAlbaran": "123",
+      "fecha": "9/12/2025, 21:03:39",
+      "proveedorId": 3,
+      "proveedorNombre": "Proveedor ID 3",
+      "incidencias": "",
+      "lineas": [
+        {
+          "productoId": "3",
+          "nombreProducto": "Solomillo de Ternera",
+          "codigoBarras": "8410001000039",
+          "cantidad": 4
+        }
+      ],
+      "pedidosProfesoresIds": [
+        "eb03"
+      ]
+    },
+    {
+      "id": "41de",
+      "numeroAlbaran": "123",
+      "fecha": "9/12/2025, 21:03:55",
+      "proveedorId": 2,
+      "proveedorNombre": "Proveedor ID 2",
+      "incidencias": "",
+      "lineas": [
+        {
+          "productoId": "1",
+          "nombreProducto": "Tomate Raf",
+          "codigoBarras": "8410001000015",
+          "cantidad": 4
+        }
+      ],
+      "pedidosProfesoresIds": [
+        "eb03"
+      ]
+    },
+    {
+      "id": "b92b",
+      "numeroAlbaran": "123",
+      "fecha": "9/12/2025, 21:03:58",
+      "proveedorId": 3,
+      "proveedorNombre": "Proveedor ID 3",
+      "incidencias": "",
+      "lineas": [
+        {
+          "productoId": "3",
+          "nombreProducto": "Solomillo de Ternera",
+          "codigoBarras": "8410001000039",
+          "cantidad": 4
+        }
+      ],
+      "pedidosProfesoresIds": [
+        "eb03"
+      ]
+    },
+    {
+      "id": "72c8",
+      "numeroAlbaran": "123",
+      "fecha": "9/12/2025, 21:14:06",
+      "proveedorId": 2,
+      "proveedorNombre": "Proveedor ID 2",
+      "incidencias": "",
+      "lineas": [
+        {
+          "productoId": "1",
+          "nombreProducto": "Tomate Raf",
+          "codigoBarras": "8410001000015",
+          "cantidad": 4
+        }
+      ],
+      "pedidosProfesoresIds": [
+        "eb03"
+      ]
+    },
+    {
+      "id": "8f4c",
+      "numeroAlbaran": "1234",
+      "fecha": "9/12/2025, 21:14:27",
+      "proveedorId": 3,
+      "proveedorNombre": "Proveedor ID 3",
+      "incidencias": "",
+      "lineas": [
+        {
+          "productoId": "3",
+          "nombreProducto": "Solomillo de Ternera",
+          "codigoBarras": "8410001000039",
+          "cantidad": 4
+        }
+      ],
+      "pedidosProfesoresIds": [
+        "eb03"
+      ]
+    },
+    {
+      "id": "8916",
+      "numeroAlbaran": "3333",
+      "fecha": "9/12/2025, 22:33:01",
+      "proveedorId": 3,
+      "proveedorNombre": "Proveedor ID 3",
+      "incidencias": "",
+      "lineas": [
+        {
+          "productoId": "3",
+          "nombreProducto": "Solomillo de Ternera",
+          "codigoBarras": "8410001000039",
+          "cantidad": 3
+        }
+      ],
+      "pedidosProfesoresIds": [
+        "409f"
+      ]
+    },
+    {
+      "id": "6a6d",
+      "numeroAlbaran": "444",
+      "fecha": "9/12/2025, 22:33:05",
+      "proveedorId": 2,
+      "proveedorNombre": "Proveedor ID 2",
+      "incidencias": "",
+      "lineas": [
+        {
+          "productoId": "1",
+          "nombreProducto": "Tomate Raf",
+          "codigoBarras": "8410001000015",
+          "cantidad": 3
+        }
+      ],
+      "pedidosProfesoresIds": [
+        "409f"
+      ]
     }
   ],
   "pedidosProfesores": [
-    
+    {
+      "id": "dfc0",
+      "profesor": "Tanausú",
+      "fecha": "9/12/2025, 13:44:43",
+      "estado": "recibido",
+      "lineas": [
+        {
+          "productoId": "1",
+          "nombreProducto": "Tomate Raf",
+          "proveedorId": 2,
+          "cantidad": 4
+        },
+        {
+          "productoId": "6",
+          "nombreProducto": "Gambas Blancas",
+          "proveedorId": 4,
+          "cantidad": 4
+        },
+        {
+          "productoId": "42",
+          "nombreProducto": "Refresco de Cola",
+          "proveedorId": 8,
+          "cantidad": 4
+        }
+      ]
+    },
+    {
+      "id": "f582",
+      "profesor": "Tanausú",
+      "fecha": "9/12/2025, 13:51:19",
+      "estado": "recibido",
+      "lineas": [
+        {
+          "productoId": "1",
+          "nombreProducto": "Tomate Raf",
+          "proveedorId": 2,
+          "codigoBarras": "8410001000015",
+          "cantidad": 4
+        },
+        {
+          "productoId": "3",
+          "nombreProducto": "Solomillo de Ternera",
+          "proveedorId": 3,
+          "codigoBarras": "8410001000039",
+          "cantidad": 4
+        }
+      ]
+    },
+    {
+      "id": "3116",
+      "profesor": "Tanausú",
+      "fecha": "9/12/2025, 14:00:31",
+      "estado": "recibido",
+      "lineas": [
+        {
+          "productoId": "1",
+          "nombreProducto": "Tomate Raf",
+          "proveedorId": 2,
+          "codigoBarras": "8410001000015",
+          "cantidad": 4
+        },
+        {
+          "productoId": "2",
+          "nombreProducto": "Lechuga Iceberg",
+          "proveedorId": 2,
+          "codigoBarras": "8410001000022",
+          "cantidad": 4
+        }
+      ]
+    },
+    {
+      "id": "e2e2",
+      "profesor": "Tanausú",
+      "fecha": "9/12/2025, 14:00:55",
+      "estado": "recibido",
+      "lineas": [
+        {
+          "productoId": "3",
+          "nombreProducto": "Solomillo de Ternera",
+          "proveedorId": 3,
+          "codigoBarras": "8410001000039",
+          "cantidad": 4
+        }
+      ]
+    },
+    {
+      "id": "c09b",
+      "profesor": "Tanausú",
+      "fecha": "9/12/2025, 20:40:05",
+      "estado": "recibido",
+      "lineas": [
+        {
+          "productoId": "1",
+          "nombreProducto": "Tomate Raf",
+          "proveedorId": 2,
+          "codigoBarras": "8410001000015",
+          "cantidad": 4
+        },
+        {
+          "productoId": "3",
+          "nombreProducto": "Solomillo de Ternera",
+          "proveedorId": 3,
+          "codigoBarras": "8410001000039",
+          "cantidad": 4
+        }
+      ]
+    },
+    {
+      "id": "eb03",
+      "profesor": "Tanausú",
+      "fecha": "9/12/2025, 20:54:33",
+      "estado": "recibido",
+      "lineas": []
+    },
+    {
+      "id": "b3e3",
+      "profesor": "Tanausú",
+      "fecha": "9/12/2025, 22:27:44",
+      "estado": "recibido",
+      "lineas": []
+    },
+    {
+      "id": "409f",
+      "profesor": "Tanausú",
+      "fecha": "9/12/2025, 22:32:47",
+      "estado": "recibido",
+      "lineas": []
+    }
+  ],
+  "pedidosProveedores": [
+    {
+      "id": "1e39",
+      "proveedorId": 2,
+      "nombreProveedor": "Proveedor ID 2",
+      "fechaCreacion": "2025-12-09T20:29:04.660Z",
+      "numeroAlbaran": "123",
+      "estado": "recibido",
+      "incidencias": "",
+      "lineas": [
+        {
+          "productoId": "1",
+          "nombreProducto": "Tomate Raf",
+          "codigoBarras": "8410001000015",
+          "cantidad": 4
+        },
+        {
+          "productoId": "2",
+          "nombreProducto": "Lechuga Iceberg",
+          "codigoBarras": "8410001000022",
+          "cantidad": 4
+        }
+      ],
+      "pedidosProfesoresIds": [
+        "3116"
+      ]
+    },
+    {
+      "id": "d7d7",
+      "proveedorId": 2,
+      "nombreProveedor": "Proveedor ID 2",
+      "fechaCreacion": "2025-12-09T20:40:55.062Z",
+      "numeroAlbaran": "123",
+      "estado": "recibido",
+      "incidencias": "",
+      "lineas": [
+        {
+          "productoId": "1",
+          "nombreProducto": "Tomate Raf",
+          "codigoBarras": "8410001000015",
+          "cantidad": 4
+        }
+      ],
+      "pedidosProfesoresIds": [
+        "c09b"
+      ]
+    },
+    {
+      "id": "8e59",
+      "proveedorId": 2,
+      "nombreProveedor": "Proveedor ID 2",
+      "fechaCreacion": "2025-12-09T20:54:41.004Z",
+      "numeroAlbaran": "123",
+      "estado": "recibido",
+      "incidencias": "",
+      "lineas": [
+        {
+          "productoId": "1",
+          "nombreProducto": "Tomate Raf",
+          "codigoBarras": "8410001000015",
+          "cantidad": 4
+        }
+      ],
+      "pedidosProfesoresIds": [
+        "eb03"
+      ]
+    },
+    {
+      "id": "5456",
+      "proveedorId": 2,
+      "nombreProveedor": "Proveedor ID 2",
+      "fechaCreacion": "2025-12-09T20:54:57.234Z",
+      "numeroAlbaran": "123",
+      "estado": "recibido",
+      "incidencias": "",
+      "lineas": [
+        {
+          "productoId": "1",
+          "nombreProducto": "Tomate Raf",
+          "codigoBarras": "8410001000015",
+          "cantidad": 4
+        }
+      ],
+      "pedidosProfesoresIds": [
+        "eb03"
+      ]
+    },
+    {
+      "id": "82a3",
+      "proveedorId": 2,
+      "nombreProveedor": "Proveedor ID 2",
+      "fechaCreacion": "2025-12-09T21:00:11.057Z",
+      "numeroAlbaran": "123",
+      "estado": "recibido",
+      "incidencias": "",
+      "lineas": [
+        {
+          "productoId": "1",
+          "nombreProducto": "Tomate Raf",
+          "codigoBarras": "8410001000015",
+          "cantidad": 4
+        }
+      ],
+      "pedidosProfesoresIds": [
+        "eb03"
+      ]
+    },
+    {
+      "id": "52b4",
+      "proveedorId": 2,
+      "nombreProveedor": "Proveedor ID 2",
+      "fechaCreacion": "2025-12-09T21:03:31.238Z",
+      "numeroAlbaran": "123",
+      "estado": "recibido",
+      "incidencias": "",
+      "lineas": [
+        {
+          "productoId": "1",
+          "nombreProducto": "Tomate Raf",
+          "codigoBarras": "8410001000015",
+          "cantidad": 4
+        }
+      ],
+      "pedidosProfesoresIds": [
+        "eb03"
+      ]
+    },
+    {
+      "id": "d648",
+      "proveedorId": 2,
+      "nombreProveedor": "Proveedor ID 2",
+      "fechaCreacion": "2025-12-09T21:03:37.005Z",
+      "numeroAlbaran": "123",
+      "estado": "recibido",
+      "incidencias": "",
+      "lineas": [
+        {
+          "productoId": "1",
+          "nombreProducto": "Tomate Raf",
+          "codigoBarras": "8410001000015",
+          "cantidad": 4
+        }
+      ],
+      "pedidosProfesoresIds": [
+        "eb03"
+      ]
+    },
+    {
+      "id": "f14b",
+      "proveedorId": 3,
+      "nombreProveedor": "Proveedor ID 3",
+      "fechaCreacion": "2025-12-09T21:03:39.829Z",
+      "numeroAlbaran": "123",
+      "estado": "recibido",
+      "incidencias": "",
+      "lineas": [
+        {
+          "productoId": "3",
+          "nombreProducto": "Solomillo de Ternera",
+          "codigoBarras": "8410001000039",
+          "cantidad": 4
+        }
+      ],
+      "pedidosProfesoresIds": [
+        "eb03"
+      ]
+    },
+    {
+      "id": "7414",
+      "proveedorId": 2,
+      "nombreProveedor": "Proveedor ID 2",
+      "fechaCreacion": "2025-12-09T21:03:55.356Z",
+      "numeroAlbaran": "123",
+      "estado": "recibido",
+      "incidencias": "",
+      "lineas": [
+        {
+          "productoId": "1",
+          "nombreProducto": "Tomate Raf",
+          "codigoBarras": "8410001000015",
+          "cantidad": 4
+        }
+      ],
+      "pedidosProfesoresIds": [
+        "eb03"
+      ]
+    },
+    {
+      "id": "4a5d",
+      "proveedorId": 3,
+      "nombreProveedor": "Proveedor ID 3",
+      "fechaCreacion": "2025-12-09T21:03:58.343Z",
+      "numeroAlbaran": "123",
+      "estado": "recibido",
+      "incidencias": "",
+      "lineas": [
+        {
+          "productoId": "3",
+          "nombreProducto": "Solomillo de Ternera",
+          "codigoBarras": "8410001000039",
+          "cantidad": 4
+        }
+      ],
+      "pedidosProfesoresIds": [
+        "eb03"
+      ]
+    },
+    {
+      "id": "d9b5",
+      "proveedorId": 2,
+      "nombreProveedor": "Proveedor ID 2",
+      "fechaCreacion": "2025-12-09T21:14:06.930Z",
+      "numeroAlbaran": "123",
+      "estado": "recibido",
+      "incidencias": "",
+      "lineas": [
+        {
+          "productoId": "1",
+          "nombreProducto": "Tomate Raf",
+          "codigoBarras": "8410001000015",
+          "cantidad": 4
+        }
+      ],
+      "pedidosProfesoresIds": [
+        "eb03"
+      ]
+    },
+    {
+      "id": "43b9",
+      "proveedorId": 3,
+      "nombreProveedor": "Proveedor ID 3",
+      "fechaCreacion": "2025-12-09T21:14:27.868Z",
+      "numeroAlbaran": "1234",
+      "estado": "recibido",
+      "incidencias": "",
+      "lineas": [
+        {
+          "productoId": "3",
+          "nombreProducto": "Solomillo de Ternera",
+          "codigoBarras": "8410001000039",
+          "cantidad": 4
+        }
+      ],
+      "pedidosProfesoresIds": [
+        "eb03"
+      ]
+    },
+    {
+      "id": "d7cb",
+      "proveedorId": 3,
+      "nombreProveedor": "Proveedor ID 3",
+      "fechaCreacion": "2025-12-09T22:33:01.453Z",
+      "numeroAlbaran": "3333",
+      "estado": "recibido",
+      "incidencias": "",
+      "lineas": [
+        {
+          "productoId": "3",
+          "nombreProducto": "Solomillo de Ternera",
+          "codigoBarras": "8410001000039",
+          "cantidad": 3
+        }
+      ],
+      "pedidosProfesoresIds": [
+        "409f"
+      ]
+    },
+    {
+      "id": "7789",
+      "proveedorId": 2,
+      "nombreProveedor": "Proveedor ID 2",
+      "fechaCreacion": "2025-12-09T22:33:05.339Z",
+      "numeroAlbaran": "444",
+      "estado": "recibido",
+      "incidencias": "",
+      "lineas": [
+        {
+          "productoId": "1",
+          "nombreProducto": "Tomate Raf",
+          "codigoBarras": "8410001000015",
+          "cantidad": 3
+        }
+      ],
+      "pedidosProfesoresIds": [
+        "409f"
+      ]
+    }
   ]
 }

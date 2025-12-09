@@ -93,8 +93,8 @@ export async function initRegistro() {
   const unidad       = unidadMedidaSelect.value;
   const stock        = Number(cantidadInput.value || 0);
   const stockMinimo  = Number(stockMinimoInput.value || 0);
-  const categoriaId  = Number(categoriaSelect.value);
-  const proveedorId  = Number(proveedorSelect.value);
+  const categoriaId  = (categoriaSelect.value);
+  const proveedorId  = (proveedorSelect.value);
   const marca        = marcaInput.value.trim();
   const descripcion  = descripcionInput.value.trim();
   const fechaCad     = caducidadInput.value || null;
@@ -174,8 +174,8 @@ export async function initRegistro() {
     unidadMedida: unidad,     
     stock,
     stockMinimo,
-    categoriaId,
-    proveedorId,
+    categoriaId: categoriaId ? Number(categoriaId) : null,
+    proveedorId: proveedorId ? Number(proveedorId) : null,
     marca,
     codigoBarras,
     fechaCaducidad: fechaCad,

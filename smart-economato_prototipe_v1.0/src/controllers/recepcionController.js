@@ -2,7 +2,7 @@ import {
     getProveedores,
     buscarProductoPorCodigoBarras,
     incrementarStockPorCodigo,
-    crearAlbaran              
+    crearAlbaran             
 } from "../services/economatoservice.js";
 import { renderizarTablaRecepcion } from "../views/recepcionui.js";    
 

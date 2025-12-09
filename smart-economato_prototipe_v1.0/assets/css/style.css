@@ -355,6 +355,13 @@ table {
     margin-top: 25px;
     margin-bottom: 25px;
 }
+/*resumen-pedidos*/
+.resumen-pedidos{
+    width: 100%;             
+    padding: 20px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
 @media (max-width: 1370px) {
     .fieldset-registro{
     border: 2px solid var(--main-color);
@@ -445,8 +452,8 @@ table {
     display: flex;
     flex-direction: row;
     gap: 2px;
-    margin: 6px;
-    font-size: 0.85rem ;
+    margin: 4px;
+    font-size: 0.70rem ;
 }
     .fieldset-registro{
     border: 2px solid var(--main-color);

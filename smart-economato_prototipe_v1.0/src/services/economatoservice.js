@@ -21,9 +21,7 @@ export async function getProducto(id) {
 // Buscar producto por código de barras
 export async function buscarProductoPorCodigoBarras(ean) {
   const code = String(ean).trim();
-
   if (!code) return null;
-
 
   const res = await fetch(
     `${API_URL}/productos?codigoBarras=${encodeURIComponent(code)}`
@@ -34,7 +32,6 @@ export async function buscarProductoPorCodigoBarras(ean) {
   }
 
   const productos = await res.json();
-
   return productos[0] ?? null;
 }
 
@@ -214,5 +211,57 @@ export async function actualizarEstadoPedido(id, nuevoEstado) {
 
   return await res.json();
 }
+// Actualizar parcialmente un pedido de profesor (lineas, estado, etc.)
+export async function actualizarPedidoProfesor(id, cambios) {
+  const res = await fetch(`${API_URL}/pedidosProfesores/${id}`, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(cambios),
+  });
+
+  if (!res.ok) {
+    throw new Error("Error al actualizar el pedido de profesor");
+  }
+
+  return await res.json();
+}
 
 
+// Crear un nuevo pedido al proveedor
+export async function crearPedidoProveedor(pedidoProveedor) {
+  const res = await fetch(`${API_URL}/pedidosProveedores`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(pedidoProveedor),
+  });
+
+  if (!res.ok) {
+    throw new Error("Error al crear el pedido al proveedor");
+  }
+
+  return await res.json();
+}
+
+export async function getPedidosProveedores() {
+  const res = await fetch(`${API_URL}/pedidosProveedores`);
+
+  if (!res.ok) {
+    throw new Error("Error al obtener los pedidos a proveedores");
+  }
+
+  return await res.json();
+}
+
+export async function actualizarEstadoPedidoProveedor(id, nuevoEstado) {
+  const res = await fetch(`${API_URL}/pedidosProveedores/${id}`, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ estado: nuevoEstado }),
+  });
+
+  if (!res.ok) {
+    throw new Error("Error al actualizar el pedido a proveedor");
+  }
+
+  return await res.json();
+}

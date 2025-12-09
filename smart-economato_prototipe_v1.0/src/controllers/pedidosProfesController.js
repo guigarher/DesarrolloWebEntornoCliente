@@ -1,3 +1,4 @@
+// src/controllers/pedidosProfesoresController.js
 import { getProductos, crearPedidoProfesor } from "../services/economatoservice.js";
 import { pintarSugerenciasUI, renderizarTablaPedidoUI } from "../views/pedidosProfesUI.js";
 
@@ -7,9 +8,9 @@ let lineasPedido = [];
 export async function initPedidosProfesores() {
   productos = await getProductos();
 
-  const inputBuscar    = document.getElementById("input-buscar-producto");
-  const listaSugerencias = document.getElementById("lista-sugerencias");
-  const btnGuardar     = document.getElementById("btn-guardar-pedido");
+  const inputBuscar        = document.getElementById("input-buscar-producto");
+  const listaSugerencias   = document.getElementById("lista-sugerencias");
+  const btnGuardar         = document.getElementById("btn-guardar-pedido");
   const inputProductoLibre = document.getElementById("input-producto-libre");
   const btnProductoLibre   = document.getElementById("btn-add-producto-libre");
 
@@ -26,6 +27,7 @@ export async function initPedidosProfesores() {
     });
   });
 
+  // Añadir producto "libre" (fuera de inventario)
   btnProductoLibre.addEventListener("click", () => {
     const nombreLibre = inputProductoLibre.value.trim();
     if (!nombreLibre) {
@@ -45,7 +47,7 @@ export async function initPedidosProfesores() {
 }
 
 // --------------------------
-// Añadir línea al pedido
+// Añadir línea al pedido (producto del inventario)
 // --------------------------
 function pedirCantidadYAgregar(producto) {
   const cantidadStr = prompt(
@@ -68,6 +70,7 @@ function pedirCantidadYAgregar(producto) {
       productoId: producto.id,
       nombreProducto: producto.nombre,
       proveedorId: producto.proveedorId,
+      codigoBarras: producto.codigoBarras, // ⭐ ahora también guardamos el EAN
       cantidad
     });
   }
@@ -75,6 +78,9 @@ function pedirCantidadYAgregar(producto) {
   renderizarTablaPedidoUI({ lineasPedido, productos });
 }
 
+// --------------------------
+// Añadir línea al pedido (producto libre / fuera de inventario)
+// --------------------------
 function pedirCantidadProductoLibre(nombreProducto) {
   const cantidadStr = prompt(
     `Cantidad de "${nombreProducto}" (unidades / kg / etc.):`
@@ -96,7 +102,6 @@ function pedirCantidadProductoLibre(nombreProducto) {
     unidadMedida: ""
   };
 
-  // Reutilizamos la misma lógica de añadir línea
   const existente = lineasPedido.find(
     l => l.productoId === productoLibre.id
   );
@@ -108,6 +113,7 @@ function pedirCantidadProductoLibre(nombreProducto) {
       productoId: productoLibre.id,
       nombreProducto: productoLibre.nombre,
       proveedorId: productoLibre.proveedorId,
+      codigoBarras: null,  // no tiene código de barras
       cantidad
     });
   }
@@ -115,8 +121,9 @@ function pedirCantidadProductoLibre(nombreProducto) {
   renderizarTablaPedidoUI({ lineasPedido, productos });
 }
 
-
+// --------------------------
 // Guardar pedido del profesor
+// --------------------------
 async function guardarPedidoProfesor() {
   if (lineasPedido.length === 0) {
     alert("No hay productos en el pedido");
@@ -145,16 +152,14 @@ async function guardarPedidoProfesor() {
   };
 
   try {
-    const pedidoCreado = await crearPedidoProfesor(pedido);
+    await crearPedidoProfesor(pedido);
     alert(`Pedido guardado para el profesor: ${profesor}`);
   } catch {
     alert("Error al guardar el pedido.");
     return;
   }
 
-
   // Limpiamos el pedido actual
   lineasPedido = [];
   renderizarTablaPedidoUI({ lineasPedido, productos });
 }
-
