@@ -22,7 +22,7 @@ export function renderizarTabla(datos) {
     const fila = document.createElement('tr');
     if (Number(p.stock) <= Number(p.stockMinimo)) fila.classList.add('alerta');
     fila.innerHTML = `
-      <td>${p.id}</td>
+      <td>${p.codigoBarras}</td>
       <td>${p.nombre}</td>
       <td>${p.categoria?.nombre ?? ''}</td>
       <td>${Number(p.precio).toFixed(2)}</td>
