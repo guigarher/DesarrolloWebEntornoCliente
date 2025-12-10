@@ -14,20 +14,15 @@ import {
   pintarResumenProveedoresUI
 } from "../views/resumenPedidosUI.js";
 
-/**
- * Estado en memoria para controlar bien qué líneas siguen pendientes.
- * Así no nos cargamos las de otros proveedores al marcar recibido uno solo.
- */
+
 let estado = {
   productos: [],
   pedidos: [],
   proveedores: [],
-  lineasPendientes: [] // cada elemento: { pedidoId, profesor, proveedorId, productoId, nombreProducto, codigoBarras, cantidad }
+  lineasPendientes: [] 
 };
 
-/**
- * Punto de entrada de la página de resumen.
- */
+
 export async function initResumenPedidos() {
   try {
     const [productos, pedidos, proveedores] = await Promise.all([
@@ -40,24 +35,18 @@ export async function initResumenPedidos() {
     estado.pedidos = pedidos;
     estado.proveedores = proveedores;
 
-    // 🆕 1) Limpiar del backend las líneas sin proveedor
-    //     que ya tienen producto registrado (como el café)
     await limpiarLineasResueltas(productos);
 
-    // 2) Volvemos a calcular los pedidos pendientes con el estado ya limpio
     const pedidosPendientes = estado.pedidos.filter(p => p.estado === "pendiente");
 
-    // 3) Construimos las líneas pendientes usando también la lista de productos
     estado.lineasPendientes = construirLineasPendientes(pedidosPendientes, productos);
 
-    // 4) Pintar tabla de pedidos profesores (arriba)
     pintarTablaPedidosProfesoresUI({
       pedidos: pedidosPendientes,
       productos,
       calcularImportePedido
     });
 
-    // 5) Pintar resumen inicial por proveedor (debajo)
     repintarResumen();
 
   } catch (e) {
@@ -67,7 +56,6 @@ export async function initResumenPedidos() {
 }
 
 async function limpiarLineasResueltas(productos) {
-  // Nombres de productos existentes, normalizados
   const nombresProductos = new Set(
     productos
       .map(p => (p.nombre || "").toLowerCase().trim())
@@ -84,13 +72,12 @@ async function limpiarLineasResueltas(productos) {
       const tieneProveedor = linea.proveedorId != null && linea.proveedorId !== "";
       const existeProducto = nombresProductos.has(nombreLinea);
 
-      // Si no tiene proveedor y el producto YA existe → la consideramos resuelta y NO la dejamos
+      
       if (!tieneProveedor && existeProducto) {
         hayCambios = true;
-        continue; // NO la añadimos a nuevasLineas
+        continue; 
       }
 
-      // El resto de líneas se mantienen
       nuevasLineas.push(linea);
     }
 
@@ -103,7 +90,6 @@ async function limpiarLineasResueltas(productos) {
           estado: nuevoEstado
         });
 
-        // Actualizamos también en memoria
         pedido.lineas = actualizado.lineas;
         pedido.estado = actualizado.estado;
       } catch (e) {
@@ -116,7 +102,6 @@ async function limpiarLineasResueltas(productos) {
 function construirLineasPendientes(pedidosPendientes, productos) {
   const lineas = [];
 
-  // Conjunto de nombres de productos ya registrados (normalizados a minúsculas)
   const nombresProductos = new Set(
     productos
       .map(p => (p.nombre || "").toLowerCase().trim())
@@ -129,10 +114,8 @@ function construirLineasPendientes(pedidosPendientes, productos) {
     lineasPedido.forEach(linea => {
       const nombreLinea = (linea.nombreProducto || "").toLowerCase().trim();
 
-      // ¿Ya existe este producto en la BBDD?
       const existeProducto = nombresProductos.has(nombreLinea);
 
-      // 1) Si la línea tiene proveedor normal → va al grupo de ese proveedor
       if (linea.proveedorId != null && linea.proveedorId !== "") {
         lineas.push({
           pedidoId: pedido.id,
@@ -146,7 +129,6 @@ function construirLineasPendientes(pedidosPendientes, productos) {
         return;
       }
 
-      // 2) Si NO tiene proveedor y TAMPOCO existe como producto → "Pendiente de proveedor"
       if (!existeProducto) {
         lineas.push({
           pedidoId: pedido.id,
@@ -160,8 +142,6 @@ function construirLineasPendientes(pedidosPendientes, productos) {
         return;
       }
 
-      // 3) Si NO tiene proveedor pero el producto YA existe → no lo añadimos al resumen
-      // (desaparece de "productos sin proveedor")
     });
   });
 
@@ -170,9 +150,6 @@ function construirLineasPendientes(pedidosPendientes, productos) {
 
 
 
-/**
- * Calcula el importe total de un pedido de profesor.
- */
 function calcularImportePedido(pedido, productos) {
   let total = 0;
   pedido.lineas.forEach(linea => {
@@ -183,9 +160,6 @@ function calcularImportePedido(pedido, productos) {
   return total;
 }
 
-/**
- * Vuelve a agrupar lineasPendientes por proveedor y repinta el resumen en la UI.
- */
 function repintarResumen() {
   const resumenProveedores = agruparPorProveedor(estado.lineasPendientes, estado.productos);
 
@@ -194,7 +168,6 @@ function repintarResumen() {
     onMarcarProveedorRecibido: async ({ proveedorId, numeroAlbaran, incidencias }) => {
       await procesarRecepcionProveedor({ proveedorId, numeroAlbaran, incidencias });
 
-      // Tras procesar el proveedor, repintamos tabla y resumen con el nuevo estado
       const pedidosPendientesActualizados = estado.pedidos.filter(p => p.estado === "pendiente");
 
       pintarTablaPedidosProfesoresUI({
@@ -208,17 +181,9 @@ function repintarResumen() {
   });
 }
 
-/**
- * Procesa la recepción de TODOS los productos pendientes de un proveedor concreto.
- * - Actualiza stock solo de esas líneas
- * - Genera albarán
- * - Genera pedidoProveedor
- * - Marca pedidos de profesor como "recibido" SOLO si ya no les queda ninguna línea pendiente
- */
 async function procesarRecepcionProveedor({ proveedorId, numeroAlbaran, incidencias }) {
   const { productos, proveedores } = estado;
 
-  // 1) Buscar líneas PENDIENTES de este proveedor
   const lineasProveedor = estado.lineasPendientes.filter(
     l => (l.proveedorId ?? "LIBRE") === proveedorId
   );
@@ -228,7 +193,6 @@ async function procesarRecepcionProveedor({ proveedorId, numeroAlbaran, incidenc
     return;
   }
 
-  // 2) Actualizar stock SOLO de esas líneas
   for (const linea of lineasProveedor) {
     if (!linea.codigoBarras) continue;
 
@@ -239,7 +203,6 @@ async function procesarRecepcionProveedor({ proveedorId, numeroAlbaran, incidenc
     }
   }
 
-  // 3) Construir las líneas para el albarán
   const lineasAlbaran = lineasProveedor.map(l => {
     const prodInv = productos.find(p => p.id === l.productoId);
     return {
@@ -250,7 +213,6 @@ async function procesarRecepcionProveedor({ proveedorId, numeroAlbaran, incidenc
     };
   });
 
-  // 4) Resolver nombre del proveedor
   let nombreProveedor;
   if (proveedorId === "LIBRE" || proveedorId == null) {
     nombreProveedor = "Pendiente de proveedor";
@@ -259,7 +221,6 @@ async function procesarRecepcionProveedor({ proveedorId, numeroAlbaran, incidenc
     nombreProveedor = proveedor?.nombre || `Proveedor ID ${proveedorId}`;
   }
 
-  // 5) Crear ALBARÁN
   const pedidosProfesoresIds = Array.from(
     new Set(lineasProveedor.map(l => l.pedidoId))
   );
@@ -282,7 +243,6 @@ async function procesarRecepcionProveedor({ proveedorId, numeroAlbaran, incidenc
     return;
   }
 
-  // 6) Crear PEDIDO A PROVEEDOR
   const pedidoProveedor = {
     proveedorId,
     nombreProveedor,
@@ -298,26 +258,18 @@ async function procesarRecepcionProveedor({ proveedorId, numeroAlbaran, incidenc
     await crearPedidoProveedor(pedidoProveedor);
   } catch (e) {
     console.error("Error al crear pedidoProveedor:", e);
-    // No hacemos return porque albarán y stock ya se han registrado
   }
 
-  // 7) Actualizar líneas pendientes en memoria:
-  //    eliminamos solo las de este proveedor (ya recibidas)
   const nuevasLineasPendientes = estado.lineasPendientes.filter(
     l => (l.proveedorId ?? "LIBRE") !== proveedorId
   );
 
   estado.lineasPendientes = nuevasLineasPendientes;
 
-  // 8) Actualizar cada pedido de profesor en la BBDD:
-    //    - Quitamos de sus 'lineas' las del proveedor recibido
-    //    - Si ya no quedan líneas → estado = 'recibido'
-    //    - Si quedan → estado = 'pendiente'
     for (const pedidoId of pedidosProfesoresIds) {
         const pedido = estado.pedidos.find(p => p.id === pedidoId);
         if (!pedido) continue;
 
-        // Líneas que QUEDAN pendientes en este pedido (las que NO son de este proveedor)
         const lineasRestantes = (pedido.lineas || []).filter(
             l => (l.proveedorId ?? "LIBRE") !== proveedorId
         );
@@ -325,13 +277,11 @@ async function procesarRecepcionProveedor({ proveedorId, numeroAlbaran, incidenc
         const nuevoEstado = lineasRestantes.length > 0 ? "pendiente" : "recibido";
 
         try {
-            // Actualizamos en json-server
             const pedidoActualizado = await actualizarPedidoProfesor(pedidoId, {
             lineas: lineasRestantes,
             estado: nuevoEstado,
             });
 
-            // Actualizamos también en memoria
             pedido.lineas = pedidoActualizado.lineas;
             pedido.estado = pedidoActualizado.estado;
 
@@ -344,9 +294,6 @@ async function procesarRecepcionProveedor({ proveedorId, numeroAlbaran, incidenc
   alert("Albarán registrado, stock actualizado y pedidos actualizados.");
 }
 
-/**
- * Agrupa las líneas pendientes por proveedor para la UI de resumen.
- */
 function agruparPorProveedor(lineasPendientes, productos) {
   const mapaProveedores = new Map();
 
@@ -384,7 +331,6 @@ function agruparPorProveedor(lineasPendientes, productos) {
     });
   });
 
-  // Convertimos el mapa a array y resolvemos nombreProveedor
   const resultado = Array.from(mapaProveedores.values()).map(grupoProv => {
     let nombreProveedor;
 
