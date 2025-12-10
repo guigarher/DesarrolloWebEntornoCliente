@@ -1570,24 +1570,6 @@
       "activo": true
     },
     {
-      "id": "66f4",
-      "nombre": "caca",
-      "precio": 123123,
-      "precioUnitario": "kg",
-      "unidadMedida": "kg",
-      "stock": 0,
-      "stockMinimo": 0,
-      "categoriaId": null,
-      "proveedorId": null,
-      "marca": "",
-      "codigoBarras": "123123123",
-      "fechaCaducidad": "0123-03-12",
-      "alergenos": [],
-      "descripcion": "",
-      "imagen": "",
-      "activo": true
-    },
-    {
       "id": "3f90",
       "nombre": "coco",
       "precio": 453,
@@ -2158,6 +2140,21 @@
       "fecha": "9/12/2025, 22:32:47",
       "estado": "recibido",
       "lineas": []
+    },
+    {
+      "id": "7901",
+      "profesor": "Tanausú",
+      "fecha": "10/12/2025, 10:02:59",
+      "estado": "pendiente",
+      "lineas": [
+        {
+          "productoId": "1",
+          "nombreProducto": "Tomate Raf",
+          "proveedorId": 2,
+          "codigoBarras": "8410001000015",
+          "cantidad": 4
+        }
+      ]
     }
   ],
   "pedidosProveedores": [

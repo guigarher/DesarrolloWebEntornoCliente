@@ -363,6 +363,9 @@ table {
     margin-bottom: 25px;
 }
 @media (max-width: 1370px) {
+    #form-producto{
+        width: 90%;
+    }
     .fieldset-registro{
     border: 2px solid var(--main-color);
     border-radius: 10px;

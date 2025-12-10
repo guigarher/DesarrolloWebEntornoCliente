@@ -17,6 +17,8 @@ export async function initRegistro() {
   const proveedorSelect = document.getElementById("proveedorProducto");
   const imagenInput         = document.getElementById("imagen");
   const cantidadInput = document.getElementById("cantidad");
+  const btnBuscarOpenFood = document.getElementById("btnBuscarOpenFood");
+
 
   const registrarProductoBtn = document.getElementById("btnRegistrarProducto");
   //Formulario de registro de proveedor
@@ -81,6 +83,92 @@ export async function initRegistro() {
   } catch (error) {
     console.error("Error al cargar categorías:", error);
   }
+
+// Buscar datos en Open Food Facts
+btnBuscarOpenFood.addEventListener("click", async () => {
+  const ean = codigoBarrasInput.value.trim();
+
+  if (!ean) {
+    alert("Introduce primero un código de barras.");
+    return;
+  }
+
+  try {
+    const res = await fetch(`https://world.openfoodfacts.org/api/v0/product/${encodeURIComponent(ean)}.json`);
+    if (!res.ok) {
+      alert("No se pudo conectar con Open Food Facts.");
+      return;
+    }
+
+    const data = await res.json();
+
+    // producto encontrado
+    if (data.status === 0) {
+      alert("Producto no encontrado en Open Food Facts.");
+      return;
+    }
+
+    const p = data.product;
+
+    // Nombre del producto (prioriza español si lo hay)
+    if (!nombreProductoInput.value) {
+      if (p.product_name_es) {
+        nombreProductoInput.value = p.product_name_es;
+      } else if (p.product_name) {
+        nombreProductoInput.value = p.product_name;
+      }
+    }
+
+    // Marca
+    if (!marcaInput.value && p.brands) {
+      marcaInput.value = p.brands;
+    }
+
+    // Imagen
+    if (!imagenInput.value && p.image_url) {
+      try {
+        const urlObj = new URL(p.image_url);
+        const partes = urlObj.pathname.split("/");
+        const nombreArchivo = partes[partes.length - 1];
+        imagenInput.value = nombreArchivo;
+      } catch {
+        
+      }
+    }
+
+    if (Array.isArray(p.allergens_tags) && p.allergens_tags.length > 0) {
+      const mapAlergenos = {
+        gluten: "Gluten",
+        milk: "Lácteos",
+        egg: "Huevos",
+        fish: "Pescado",
+        crustaceans: "Crustáceos",
+        molluscs: "Moluscos",
+        sulphur_dioxide_and_sulphites: "Sulfitos"
+      };
+
+      const checkboxes = document.querySelectorAll('input[name="alergenos"]');
+
+      p.allergens_tags.forEach(tag => {
+        const clave = tag.split(":")[1];
+        const nombreAlergeno = mapAlergenos[clave];
+        if (!nombreAlergeno) return;
+
+        checkboxes.forEach(chk => {
+          if (chk.value === nombreAlergeno) {
+            chk.checked = true;
+          }
+        });
+      });
+    }
+
+    alert("Datos cargados desde Open Food Facts (si estaban disponibles). Puedes revisarlos antes de guardar.");
+
+  } catch (error) {
+    console.error("Error consultando Open Food Facts:", error);
+    alert("Error al consultar Open Food Facts. Revisa la consola si necesitas más detalles.");
+  }
+});
 
   //Registrar producto
   registrarProductoBtn.addEventListener("click", async (e) => {
