@@ -125,6 +125,7 @@ export function pintarResumenProveedoresUI({
           // ✅ Botón: todo correcto, recepción automática
           const btnTodoCorrecto = document.createElement("button");
           btnTodoCorrecto.textContent = "Recibir TODO correcto (auto)";
+          btnTodoCorrecto.classList.add("btn-todo-correcto");
 
           btnTodoCorrecto.addEventListener("click", async () => {
             const numeroAlbaran = prompt(
@@ -142,6 +143,7 @@ export function pintarResumenProveedoresUI({
           // ⚠️ Botón: recepción parcial → ir a Recepción
           const btnParcial = document.createElement("button");
           btnParcial.textContent = "Recepción parcial (ir a Recepción)";
+          btnParcial.classList.add("btn-recepcion-parcial");
 
           btnParcial.addEventListener("click", async () => {
             const numeroAlbaran = prompt(

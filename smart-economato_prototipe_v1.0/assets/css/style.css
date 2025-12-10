@@ -378,6 +378,9 @@ h4,
 .tabla-resumen{
     margin: 15px 0 15px;
 }
+.btn-todo-correcto{
+    margin-right: 20px;
+}
 
 @media (max-width: 1370px) {
     #form-producto{
