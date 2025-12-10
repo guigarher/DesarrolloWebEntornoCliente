@@ -173,7 +173,7 @@
       "nombre": "Tomate Raf",
       "precio": 4.2,
       "precioUnitario": "kg",
-      "stock": 354,
+      "stock": 374,
       "stockMinimo": 30,
       "categoriaId": 1,
       "proveedorId": 2,
@@ -199,7 +199,7 @@
       "nombre": "Lechuga Iceberg",
       "precio": 1.15,
       "precioUnitario": "unidad",
-      "stock": 440,
+      "stock": 450,
       "stockMinimo": 40,
       "categoriaId": 2,
       "proveedorId": 2,
@@ -225,7 +225,7 @@
       "nombre": "Solomillo de Ternera",
       "precio": 24.9,
       "precioUnitario": "kg",
-      "stock": 88.5,
+      "stock": 92.5,
       "stockMinimo": 12,
       "categoriaId": 3,
       "proveedorId": 3,
@@ -2031,6 +2031,356 @@
           "pvp": 1.15
         }
       ]
+    },
+    {
+      "id": "9da0",
+      "numeroAlbaran": "123123123",
+      "fecha": "10/12/2025, 20:57:45",
+      "proveedorId": 2,
+      "proveedorNombre": "Proveedor ID 2",
+      "incidencias": "Recepción incompleta (requiere recepción manual)",
+      "lineas": [
+        {
+          "productoId": "1",
+          "nombreProducto": "Tomate Raf",
+          "codigoBarras": "8410001000015",
+          "cantidad": 4
+        },
+        {
+          "productoId": "2",
+          "nombreProducto": "Lechuga Iceberg",
+          "codigoBarras": "8410001000022",
+          "cantidad": 5
+        }
+      ],
+      "pedidosProfesoresIds": [
+        "7901",
+        "0b03"
+      ]
+    },
+    {
+      "id": "257b",
+      "numeroAlbaran": "123",
+      "fecha": "10/12/2025, 20:58:03",
+      "proveedorId": 2,
+      "proveedorNombre": "Proveedor ID 2",
+      "incidencias": "Recepción incompleta (requiere recepción manual)",
+      "lineas": [
+        {
+          "productoId": "1",
+          "nombreProducto": "Tomate Raf",
+          "codigoBarras": "8410001000015",
+          "cantidad": 4
+        },
+        {
+          "productoId": "2",
+          "nombreProducto": "Lechuga Iceberg",
+          "codigoBarras": "8410001000022",
+          "cantidad": 5
+        }
+      ],
+      "pedidosProfesoresIds": [
+        "7901",
+        "0b03"
+      ]
+    },
+    {
+      "id": "a99c",
+      "numeroAlbaran": "cacas",
+      "fecha": "10/12/2025, 20:58:55",
+      "proveedorId": 2,
+      "proveedorNombre": "Proveedor ID 2",
+      "incidencias": "Recepción incompleta (requiere recepción manual)",
+      "lineas": [
+        {
+          "productoId": "1",
+          "nombreProducto": "Tomate Raf",
+          "codigoBarras": "8410001000015",
+          "cantidad": 4
+        },
+        {
+          "productoId": "2",
+          "nombreProducto": "Lechuga Iceberg",
+          "codigoBarras": "8410001000022",
+          "cantidad": 5
+        }
+      ],
+      "pedidosProfesoresIds": [
+        "7901",
+        "0b03"
+      ]
+    },
+    {
+      "id": "39b8",
+      "numeroAlbaran": "213",
+      "fecha": "10/12/2025, 20:59:12",
+      "proveedorId": 2,
+      "proveedorNombre": "Proveedor ID 2",
+      "incidencias": "Recepción incompleta (requiere recepción manual)",
+      "lineas": [
+        {
+          "productoId": "1",
+          "nombreProducto": "Tomate Raf",
+          "codigoBarras": "8410001000015",
+          "cantidad": 4
+        },
+        {
+          "productoId": "2",
+          "nombreProducto": "Lechuga Iceberg",
+          "codigoBarras": "8410001000022",
+          "cantidad": 5
+        }
+      ],
+      "pedidosProfesoresIds": [
+        "7901",
+        "0b03"
+      ]
+    },
+    {
+      "id": "a53f",
+      "numeroAlbaran": "asd",
+      "fecha": "10/12/2025, 21:09:39",
+      "proveedorId": 2,
+      "proveedorNombre": "Proveedor ID 2",
+      "incidencias": "Recepción incompleta (requiere recepción manual)",
+      "lineas": [
+        {
+          "productoId": "1",
+          "nombreProducto": "Tomate Raf",
+          "codigoBarras": "8410001000015",
+          "cantidad": 4
+        },
+        {
+          "productoId": "2",
+          "nombreProducto": "Lechuga Iceberg",
+          "codigoBarras": "8410001000022",
+          "cantidad": 5
+        }
+      ],
+      "pedidosProfesoresIds": [
+        "7901",
+        "0b03"
+      ]
+    },
+    {
+      "id": "ae22",
+      "numeroAlbaran": "456456",
+      "fecha": "10/12/2025, 21:22:42",
+      "proveedorId": 2,
+      "proveedorNombre": "Proveedor ID 2",
+      "incidencias": "Recepción incompleta (requiere recepción manual)",
+      "lineas": [
+        {
+          "productoId": "1",
+          "nombreProducto": "Tomate Raf",
+          "codigoBarras": "8410001000015",
+          "cantidad": 4
+        },
+        {
+          "productoId": "2",
+          "nombreProducto": "Lechuga Iceberg",
+          "codigoBarras": "8410001000022",
+          "cantidad": 5
+        }
+      ],
+      "pedidosProfesoresIds": [
+        "7901",
+        "0b03"
+      ]
+    },
+    {
+      "id": "96dc",
+      "numeroAlbaran": "346345",
+      "fecha": "10/12/2025, 21:35:09",
+      "proveedorId": 2,
+      "proveedorNombre": "Proveedor ID 2",
+      "incidencias": "",
+      "lineas": [
+        {
+          "productoId": "1",
+          "nombreProducto": "Tomate Raf",
+          "codigoBarras": "8410001000015",
+          "cantidad": 4
+        },
+        {
+          "productoId": "2",
+          "nombreProducto": "Lechuga Iceberg",
+          "codigoBarras": "8410001000022",
+          "cantidad": 5
+        }
+      ],
+      "pedidosProfesoresIds": [
+        "7901",
+        "0b03"
+      ]
+    },
+    {
+      "id": "beb0",
+      "numeroAlbaran": "666",
+      "fecha": "10/12/2025, 21:35:52",
+      "proveedorId": 2,
+      "proveedorNombre": "Proveedor ID 2",
+      "incidencias": "Recepción incompleta (requiere recepción manual)",
+      "lineas": [
+        {
+          "productoId": "1",
+          "nombreProducto": "Tomate Raf",
+          "codigoBarras": "8410001000015",
+          "cantidad": 4
+        },
+        {
+          "productoId": "2",
+          "nombreProducto": "Lechuga Iceberg",
+          "codigoBarras": "8410001000022",
+          "cantidad": 4
+        }
+      ],
+      "pedidosProfesoresIds": [
+        "0a1c"
+      ]
+    },
+    {
+      "id": "e0aa",
+      "numeroAlbaran": "7457",
+      "fecha": "10/12/2025, 21:36:33",
+      "proveedorId": 2,
+      "proveedorNombre": "Proveedor ID 2",
+      "incidencias": "Recepción incompleta (requiere recepción manual)",
+      "lineas": [
+        {
+          "productoId": "1",
+          "nombreProducto": "Tomate Raf",
+          "codigoBarras": "8410001000015",
+          "cantidad": 4
+        },
+        {
+          "productoId": "2",
+          "nombreProducto": "Lechuga Iceberg",
+          "codigoBarras": "8410001000022",
+          "cantidad": 4
+        }
+      ],
+      "pedidosProfesoresIds": [
+        "0a1c"
+      ]
+    },
+    {
+      "id": "3c1d",
+      "numeroAlbaran": "7457",
+      "fecha": "2025-12-10",
+      "proveedorId": 2,
+      "proveedorNombre": "Frutas y Verduras Frescas SL",
+      "incidencias": "",
+      "lineas": [
+        {
+          "codigoBarras": "8410001000015",
+          "cantidad": 4,
+          "nombreProducto": "Tomate Raf",
+          "pvp": 4.2
+        }
+      ]
+    },
+    {
+      "id": "246d",
+      "numeroAlbaran": "1",
+      "fecha": "10/12/2025, 21:37:10",
+      "proveedorId": 3,
+      "proveedorNombre": "Proveedor ID 3",
+      "incidencias": "",
+      "lineas": [
+        {
+          "productoId": "3",
+          "nombreProducto": "Solomillo de Ternera",
+          "codigoBarras": "8410001000039",
+          "cantidad": 4
+        }
+      ],
+      "pedidosProfesoresIds": [
+        "0a1c"
+      ]
+    },
+    {
+      "id": "7230",
+      "numeroAlbaran": "88",
+      "fecha": "2025-12-10",
+      "proveedorId": 2,
+      "proveedorNombre": "Frutas y Verduras Frescas SL",
+      "incidencias": "",
+      "lineas": [
+        {
+          "codigoBarras": "8410001000015",
+          "cantidad": 4,
+          "nombreProducto": "Tomate Raf",
+          "pvp": 4.2
+        }
+      ]
+    },
+    {
+      "id": "7751",
+      "numeroAlbaran": "55",
+      "fecha": "2025-12-10",
+      "proveedorId": 2,
+      "proveedorNombre": "Frutas y Verduras Frescas SL",
+      "incidencias": "",
+      "lineas": [
+        {
+          "codigoBarras": "8410001000015",
+          "cantidad": 4,
+          "nombreProducto": "Tomate Raf",
+          "pvp": 4.2
+        }
+      ]
+    },
+    {
+      "id": "b4ed",
+      "numeroAlbaran": "3232323",
+      "fecha": "2025-12-10",
+      "proveedorId": 2,
+      "proveedorNombre": "Frutas y Verduras Frescas SL",
+      "incidencias": "",
+      "lineas": [
+        {
+          "codigoBarras": "8410001000015",
+          "cantidad": 3,
+          "nombreProducto": "Tomate Raf",
+          "pvp": 4.2
+        }
+      ]
+    },
+    {
+      "id": "d1ab",
+      "numeroAlbaran": "345345",
+      "fecha": "2025-12-10",
+      "proveedorId": 2,
+      "proveedorNombre": "Frutas y Verduras Frescas SL",
+      "incidencias": "",
+      "lineas": [
+        {
+          "codigoBarras": "8410001000022",
+          "cantidad": 5,
+          "nombreProducto": "Lechuga Iceberg",
+          "pvp": 1.15
+        }
+      ]
+    },
+    {
+      "id": "3780",
+      "numeroAlbaran": "56",
+      "fecha": "10/12/2025, 21:56:43",
+      "proveedorId": 2,
+      "proveedorNombre": "Proveedor ID 2",
+      "incidencias": "",
+      "lineas": [
+        {
+          "productoId": "1",
+          "nombreProducto": "Tomate Raf",
+          "codigoBarras": "8410001000015",
+          "cantidad": 1
+        }
+      ],
+      "pedidosProfesoresIds": [
+        "dcaa"
+      ]
     }
   ],
   "pedidosProfesores": [
@@ -2166,16 +2516,44 @@
       "id": "7901",
       "profesor": "Tanausú",
       "fecha": "10/12/2025, 10:02:59",
+      "estado": "recibido",
+      "lineas": []
+    },
+    {
+      "id": "0b03",
+      "profesor": "Tanausú",
+      "fecha": "10/12/2025, 20:57:30",
+      "estado": "recibido",
+      "lineas": []
+    },
+    {
+      "id": "0a1c",
+      "profesor": "Tanausú",
+      "fecha": "10/12/2025, 21:35:36",
+      "estado": "recibido",
+      "lineas": []
+    },
+    {
+      "id": "d322",
+      "profesor": "Tanausú",
+      "fecha": "10/12/2025, 21:47:32",
       "estado": "pendiente",
       "lineas": [
         {
-          "productoId": "1",
-          "nombreProducto": "Tomate Raf",
-          "proveedorId": 2,
-          "codigoBarras": "8410001000015",
+          "productoId": "3",
+          "nombreProducto": "Solomillo de Ternera",
+          "proveedorId": 3,
+          "codigoBarras": "8410001000039",
           "cantidad": 4
         }
       ]
+    },
+    {
+      "id": "dcaa",
+      "profesor": "Tanausú",
+      "fecha": "10/12/2025, 21:55:32",
+      "estado": "recibido",
+      "lineas": []
     }
   ],
   "pedidosProveedores": [
@@ -2463,6 +2841,287 @@
       ],
       "pedidosProfesoresIds": [
         "409f"
+      ]
+    },
+    {
+      "id": "017d",
+      "proveedorId": 2,
+      "nombreProveedor": "Proveedor ID 2",
+      "fechaCreacion": "2025-12-10T20:57:45.715Z",
+      "numeroAlbaran": "123123123",
+      "estado": "pendiente",
+      "incidencias": "Recepción incompleta",
+      "lineas": [
+        {
+          "productoId": "1",
+          "nombreProducto": "Tomate Raf",
+          "codigoBarras": "8410001000015",
+          "cantidad": 4
+        },
+        {
+          "productoId": "2",
+          "nombreProducto": "Lechuga Iceberg",
+          "codigoBarras": "8410001000022",
+          "cantidad": 5
+        }
+      ],
+      "pedidosProfesoresIds": [
+        "7901",
+        "0b03"
+      ]
+    },
+    {
+      "id": "428f",
+      "proveedorId": 2,
+      "nombreProveedor": "Proveedor ID 2",
+      "fechaCreacion": "2025-12-10T20:58:03.661Z",
+      "numeroAlbaran": "123",
+      "estado": "pendiente",
+      "incidencias": "Recepción incompleta",
+      "lineas": [
+        {
+          "productoId": "1",
+          "nombreProducto": "Tomate Raf",
+          "codigoBarras": "8410001000015",
+          "cantidad": 4
+        },
+        {
+          "productoId": "2",
+          "nombreProducto": "Lechuga Iceberg",
+          "codigoBarras": "8410001000022",
+          "cantidad": 5
+        }
+      ],
+      "pedidosProfesoresIds": [
+        "7901",
+        "0b03"
+      ]
+    },
+    {
+      "id": "a682",
+      "proveedorId": 2,
+      "nombreProveedor": "Proveedor ID 2",
+      "fechaCreacion": "2025-12-10T20:58:55.048Z",
+      "numeroAlbaran": "cacas",
+      "estado": "pendiente",
+      "incidencias": "Recepción incompleta",
+      "lineas": [
+        {
+          "productoId": "1",
+          "nombreProducto": "Tomate Raf",
+          "codigoBarras": "8410001000015",
+          "cantidad": 4
+        },
+        {
+          "productoId": "2",
+          "nombreProducto": "Lechuga Iceberg",
+          "codigoBarras": "8410001000022",
+          "cantidad": 5
+        }
+      ],
+      "pedidosProfesoresIds": [
+        "7901",
+        "0b03"
+      ]
+    },
+    {
+      "id": "2b56",
+      "proveedorId": 2,
+      "nombreProveedor": "Proveedor ID 2",
+      "fechaCreacion": "2025-12-10T20:59:12.481Z",
+      "numeroAlbaran": "213",
+      "estado": "pendiente",
+      "incidencias": "Recepción incompleta",
+      "lineas": [
+        {
+          "productoId": "1",
+          "nombreProducto": "Tomate Raf",
+          "codigoBarras": "8410001000015",
+          "cantidad": 4
+        },
+        {
+          "productoId": "2",
+          "nombreProducto": "Lechuga Iceberg",
+          "codigoBarras": "8410001000022",
+          "cantidad": 5
+        }
+      ],
+      "pedidosProfesoresIds": [
+        "7901",
+        "0b03"
+      ]
+    },
+    {
+      "id": "6c91",
+      "proveedorId": 2,
+      "nombreProveedor": "Proveedor ID 2",
+      "fechaCreacion": "2025-12-10T21:09:39.954Z",
+      "numeroAlbaran": "asd",
+      "estado": "pendiente",
+      "incidencias": "Recepción incompleta",
+      "lineas": [
+        {
+          "productoId": "1",
+          "nombreProducto": "Tomate Raf",
+          "codigoBarras": "8410001000015",
+          "cantidad": 4
+        },
+        {
+          "productoId": "2",
+          "nombreProducto": "Lechuga Iceberg",
+          "codigoBarras": "8410001000022",
+          "cantidad": 5
+        }
+      ],
+      "pedidosProfesoresIds": [
+        "7901",
+        "0b03"
+      ]
+    },
+    {
+      "id": "edb1",
+      "proveedorId": 2,
+      "nombreProveedor": "Proveedor ID 2",
+      "fechaCreacion": "2025-12-10T21:22:42.830Z",
+      "numeroAlbaran": "456456",
+      "estado": "pendiente",
+      "incidencias": "Recepción incompleta",
+      "lineas": [
+        {
+          "productoId": "1",
+          "nombreProducto": "Tomate Raf",
+          "codigoBarras": "8410001000015",
+          "cantidad": 4
+        },
+        {
+          "productoId": "2",
+          "nombreProducto": "Lechuga Iceberg",
+          "codigoBarras": "8410001000022",
+          "cantidad": 5
+        }
+      ],
+      "pedidosProfesoresIds": [
+        "7901",
+        "0b03"
+      ]
+    },
+    {
+      "id": "48b0",
+      "proveedorId": 2,
+      "nombreProveedor": "Proveedor ID 2",
+      "fechaCreacion": "2025-12-10T21:35:09.425Z",
+      "numeroAlbaran": "346345",
+      "estado": "recibido",
+      "incidencias": "",
+      "lineas": [
+        {
+          "productoId": "1",
+          "nombreProducto": "Tomate Raf",
+          "codigoBarras": "8410001000015",
+          "cantidad": 4
+        },
+        {
+          "productoId": "2",
+          "nombreProducto": "Lechuga Iceberg",
+          "codigoBarras": "8410001000022",
+          "cantidad": 5
+        }
+      ],
+      "pedidosProfesoresIds": [
+        "7901",
+        "0b03"
+      ]
+    },
+    {
+      "id": "388d",
+      "proveedorId": 2,
+      "nombreProveedor": "Proveedor ID 2",
+      "fechaCreacion": "2025-12-10T21:35:52.680Z",
+      "numeroAlbaran": "666",
+      "estado": "pendiente",
+      "incidencias": "Recepción incompleta",
+      "lineas": [
+        {
+          "productoId": "1",
+          "nombreProducto": "Tomate Raf",
+          "codigoBarras": "8410001000015",
+          "cantidad": 4
+        },
+        {
+          "productoId": "2",
+          "nombreProducto": "Lechuga Iceberg",
+          "codigoBarras": "8410001000022",
+          "cantidad": 4
+        }
+      ],
+      "pedidosProfesoresIds": [
+        "0a1c"
+      ]
+    },
+    {
+      "id": "e849",
+      "proveedorId": 2,
+      "nombreProveedor": "Proveedor ID 2",
+      "fechaCreacion": "2025-12-10T21:36:33.727Z",
+      "numeroAlbaran": "7457",
+      "estado": "pendiente",
+      "incidencias": "Recepción incompleta",
+      "lineas": [
+        {
+          "productoId": "1",
+          "nombreProducto": "Tomate Raf",
+          "codigoBarras": "8410001000015",
+          "cantidad": 4
+        },
+        {
+          "productoId": "2",
+          "nombreProducto": "Lechuga Iceberg",
+          "codigoBarras": "8410001000022",
+          "cantidad": 4
+        }
+      ],
+      "pedidosProfesoresIds": [
+        "0a1c"
+      ]
+    },
+    {
+      "id": "d093",
+      "proveedorId": 3,
+      "nombreProveedor": "Proveedor ID 3",
+      "fechaCreacion": "2025-12-10T21:37:10.230Z",
+      "numeroAlbaran": "1",
+      "estado": "recibido",
+      "incidencias": "",
+      "lineas": [
+        {
+          "productoId": "3",
+          "nombreProducto": "Solomillo de Ternera",
+          "codigoBarras": "8410001000039",
+          "cantidad": 4
+        }
+      ],
+      "pedidosProfesoresIds": [
+        "0a1c"
+      ]
+    },
+    {
+      "id": "1566",
+      "proveedorId": 2,
+      "nombreProveedor": "Proveedor ID 2",
+      "fechaCreacion": "2025-12-10T21:56:43.251Z",
+      "numeroAlbaran": "56",
+      "estado": "recibido",
+      "incidencias": "",
+      "lineas": [
+        {
+          "productoId": "1",
+          "nombreProducto": "Tomate Raf",
+          "codigoBarras": "8410001000015",
+          "cantidad": 1
+        }
+      ],
+      "pedidosProfesoresIds": [
+        "dcaa"
       ]
     }
   ]

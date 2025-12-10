@@ -161,14 +161,19 @@ function calcularImportePedido(pedido, productos) {
 }
 
 function repintarResumen() {
-  const resumenProveedores = agruparPorProveedor(estado.lineasPendientes, estado.productos);
+  const resumenProveedores = agruparPorProveedor(
+    estado.lineasPendientes,
+    estado.productos
+  );
 
   pintarResumenProveedoresUI({
     resumen: resumenProveedores,
-    onMarcarProveedorRecibido: async ({ proveedorId, numeroAlbaran, incidencias }) => {
-      await procesarRecepcionProveedor({ proveedorId, numeroAlbaran, incidencias });
+    onMarcarProveedorRecibido: async ({ proveedorId, numeroAlbaran, todoCorrecto }) => {
+      await procesarRecepcionProveedor({ proveedorId, numeroAlbaran, todoCorrecto });
 
-      const pedidosPendientesActualizados = estado.pedidos.filter(p => p.estado === "pendiente");
+      const pedidosPendientesActualizados = estado.pedidos.filter(
+        p => p.estado === "pendiente"
+      );
 
       pintarTablaPedidosProfesoresUI({
         pedidos: pedidosPendientesActualizados,
@@ -181,7 +186,9 @@ function repintarResumen() {
   });
 }
 
-async function procesarRecepcionProveedor({ proveedorId, numeroAlbaran, incidencias }) {
+
+
+async function procesarRecepcionProveedor({ proveedorId, numeroAlbaran, todoCorrecto }) {
   const { productos, proveedores } = estado;
 
   const lineasProveedor = estado.lineasPendientes.filter(
@@ -193,16 +200,7 @@ async function procesarRecepcionProveedor({ proveedorId, numeroAlbaran, incidenc
     return;
   }
 
-  for (const linea of lineasProveedor) {
-    if (!linea.codigoBarras) continue;
-
-    try {
-      await incrementarStockPorCodigo(linea.codigoBarras, linea.cantidad);
-    } catch (e) {
-      console.error("Error actualizando stock para línea:", linea, e);
-    }
-  }
-
+  // Construimos las líneas del albarán (lo usamos en ambos casos)
   const lineasAlbaran = lineasProveedor.map(l => {
     const prodInv = productos.find(p => p.id === l.productoId);
     return {
@@ -225,74 +223,124 @@ async function procesarRecepcionProveedor({ proveedorId, numeroAlbaran, incidenc
     new Set(lineasProveedor.map(l => l.pedidoId))
   );
 
-  const albaran = {
-    numeroAlbaran,
-    fecha: new Date().toLocaleString("es-ES"),
-    proveedorId,
-    proveedorNombre: nombreProveedor,
-    incidencias,
-    lineas: lineasAlbaran,
-    pedidosProfesoresIds
-  };
+  //CASO 1: TODO CORRECTO → recibir todo, sumar stock, cerrar pedidos
+  if (todoCorrecto) {
 
-  try {
-    await crearAlbaran(albaran);
-  } catch (e) {
-    console.error("Error al crear albarán:", e);
-    alert("Error al crear el albarán.");
+    // 1) Actualizar stock
+    for (const linea of lineasProveedor) {
+      if (!linea.codigoBarras) continue;
+
+      try {
+        await incrementarStockPorCodigo(linea.codigoBarras, linea.cantidad);
+      } catch (e) {
+        console.error("Error actualizando stock para línea:", linea, e);
+      }
+    }
+
+    // 2) Crear albarán
+    const albaran = {
+      numeroAlbaran,
+      fecha: new Date().toLocaleString("es-ES"),
+      proveedorId,
+      proveedorNombre: nombreProveedor,
+      incidencias: "",
+      lineas: lineasAlbaran,
+      pedidosProfesoresIds
+    };
+
+    try {
+      await crearAlbaran(albaran);
+    } catch (e) {
+      console.error("Error al crear albarán:", e);
+      alert("Error al crear el albarán.");
+      return;
+    }
+
+    // 3) Crear pedidoProveedor marcado como recibido
+    const pedidoProveedor = {
+      proveedorId,
+      nombreProveedor,
+      fechaCreacion: new Date().toISOString(),
+      numeroAlbaran,
+      estado: "recibido",
+      incidencias: "",
+      lineas: lineasAlbaran,
+      pedidosProfesoresIds
+    };
+
+    try {
+      await crearPedidoProveedor(pedidoProveedor);
+    } catch (e) {
+      console.error("Error al crear pedidoProveedor:", e);
+    }
+
+    // 4) Quitar líneas de ese proveedor de las pendientes
+    const nuevasLineasPendientes = estado.lineasPendientes.filter(
+      l => (l.proveedorId ?? "LIBRE") !== proveedorId
+    );
+    estado.lineasPendientes = nuevasLineasPendientes;
+
+    // 5) Actualizar pedidos de profesor
+    for (const pedidoId of pedidosProfesoresIds) {
+      const pedido = estado.pedidos.find(p => p.id === pedidoId);
+      if (!pedido) continue;
+
+      const lineasRestantes = (pedido.lineas || []).filter(
+        l => (l.proveedorId ?? "LIBRE") !== proveedorId
+      );
+
+      const nuevoEstado = lineasRestantes.length > 0 ? "pendiente" : "recibido";
+
+      try {
+        const pedidoActualizado = await actualizarPedidoProfesor(pedidoId, {
+          lineas: lineasRestantes,
+          estado: nuevoEstado,
+        });
+
+        pedido.lineas = pedidoActualizado.lineas;
+        pedido.estado = pedidoActualizado.estado;
+
+      } catch (e) {
+        console.error("Error al actualizar pedido de profesor:", pedidoId, e);
+      }
+    }
+
+    alert("Albarán registrado, stock actualizado y pedidos marcados como recibidos.");
     return;
   }
 
-  const pedidoProveedor = {
-    proveedorId,
-    nombreProveedor,
-    fechaCreacion: new Date().toISOString(),
-    numeroAlbaran,
-    estado: "recibido",
-    incidencias,
-    lineas: lineasAlbaran,
-    pedidosProfesoresIds
-  };
+    //CASO 2: NO está todo correcto
 
-  try {
-    await crearPedidoProveedor(pedidoProveedor);
-  } catch (e) {
-    console.error("Error al crear pedidoProveedor:", e);
+    // Guardamos nº albarán para pre-rellenar en Recepción
+    sessionStorage.setItem("albaranEnCurso", numeroAlbaran);
+
+    // Guardamos también qué proveedor y qué pedidos están afectados
+    sessionStorage.setItem(
+      "recepcionParcialInfo",
+      JSON.stringify({
+        proveedorId,
+        pedidosProfesoresIds
+      })
+    );
+
+    alert(
+      "Recepción incompleta.\n\n" +
+      "Te llevo a la pantalla de Recepción para que registres " +
+      "solo los productos que han llegado."
+    );
+
+    const enlaceRecepcion = document.querySelector('.nav a[data-page="recepcion"]');
+    if (enlaceRecepcion) {
+      enlaceRecepcion.click();
+    } else {
+      alert("No se encontró la pantalla de Recepción en el menú.");
+    }
   }
 
-  const nuevasLineasPendientes = estado.lineasPendientes.filter(
-    l => (l.proveedorId ?? "LIBRE") !== proveedorId
-  );
-
-  estado.lineasPendientes = nuevasLineasPendientes;
-
-    for (const pedidoId of pedidosProfesoresIds) {
-        const pedido = estado.pedidos.find(p => p.id === pedidoId);
-        if (!pedido) continue;
-
-        const lineasRestantes = (pedido.lineas || []).filter(
-            l => (l.proveedorId ?? "LIBRE") !== proveedorId
-        );
-
-        const nuevoEstado = lineasRestantes.length > 0 ? "pendiente" : "recibido";
-
-        try {
-            const pedidoActualizado = await actualizarPedidoProfesor(pedidoId, {
-            lineas: lineasRestantes,
-            estado: nuevoEstado,
-            });
-
-            pedido.lineas = pedidoActualizado.lineas;
-            pedido.estado = pedidoActualizado.estado;
-
-        } catch (e) {
-            console.error("Error al actualizar pedido de profesor:", pedidoId, e);
-        }
-    }
 
 
-  alert("Albarán registrado, stock actualizado y pedidos actualizados.");
-}
+
+
 
 function agruparPorProveedor(lineasPendientes, productos) {
   const mapaProveedores = new Map();

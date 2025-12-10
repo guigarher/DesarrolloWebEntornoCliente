@@ -118,29 +118,49 @@ export function pintarResumenProveedoresUI({
 
         div.appendChild(btnIrRegistro);
         } else {
-        //botón normal de albarán recepción
-        const btnRecibirProv = document.createElement("button");
-        btnRecibirProv.textContent =
-            "Marcar pedidos de este proveedor como recibidos";
+          // 🔹 Contenedor para los dos botones
+          const contBotones = document.createElement("div");
+          contBotones.classList.add("acciones-proveedor");
 
-        btnRecibirProv.addEventListener("click", async () => {
+          // ✅ Botón: todo correcto, recepción automática
+          const btnTodoCorrecto = document.createElement("button");
+          btnTodoCorrecto.textContent = "Recibir TODO correcto (auto)";
+
+          btnTodoCorrecto.addEventListener("click", async () => {
             const numeroAlbaran = prompt(
-            `Número de albarán para ${grupo.nombreProveedor}:`
+              `Número de albarán para ${grupo.nombreProveedor}:`
             );
             if (!numeroAlbaran) return;
 
-            const incidencias =
-            prompt("Incidencias (puedes dejarlo vacío si todo está correcto):") || "";
+            await onMarcarProveedorRecibido({
+              proveedorId: grupo.proveedorId,
+              numeroAlbaran,
+              todoCorrecto: true
+            });
+          });
+
+          // ⚠️ Botón: recepción parcial → ir a Recepción
+          const btnParcial = document.createElement("button");
+          btnParcial.textContent = "Recepción parcial (ir a Recepción)";
+
+          btnParcial.addEventListener("click", async () => {
+            const numeroAlbaran = prompt(
+              `Número de albarán para ${grupo.nombreProveedor}:`
+            );
+            if (!numeroAlbaran) return;
 
             await onMarcarProveedorRecibido({
-            proveedorId: grupo.proveedorId,
-            numeroAlbaran,
-            incidencias
+              proveedorId: grupo.proveedorId,
+              numeroAlbaran,
+              todoCorrecto: false
             });
-        });
+          });
 
-        div.appendChild(btnRecibirProv);
-    }
+          contBotones.appendChild(btnTodoCorrecto);
+          contBotones.appendChild(btnParcial);
+          div.appendChild(contBotones);
+        }
+
 
 
 
