@@ -1,6 +1,9 @@
-Smart-Economato (prototipo)
+Smart Economato - Prototipo
+Autor: Guillermo García Hernández
+Módulo: Desarrollo Web Entorno Cliente/ Desarrollo de Interfaces Web
+Año: 25/26
 
-Este proyecto es un prototipo de aplicación web para gestionar un economato: login, inventario, recepción de mercancía, registro de productos/proveedores/categorías/usuarios y gestión de pedidos de profesores.
+Este proyecto es un prototipo de aplicación web para gestionar un economato.
 
 Está desarrollado en HTML + CSS + JavaScript (ES Modules) y usa un backend simulado con JSON-Server.
 
@@ -338,3 +341,6 @@ resumen agrupa por proveedor →
 economato marca “recibido” →
 stock se actualiza →
 pedidos pasan a estado recibido.
+
+
+8. Por terminar más páginas, como las de baja de productos o escandallo, o logs o historal de pedidos y albaranes,... y mucho márgen de mejora para lo que ya hay.
