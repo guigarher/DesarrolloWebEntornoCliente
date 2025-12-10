@@ -64,11 +64,11 @@ document.addEventListener("DOMContentLoaded", () => {
       e.preventDefault();
       const page = e.target.dataset.page;
 
-      if (page === "registro" && usuarioActivo.role === "Alumno") {
+      if (page === "registro" && usuarioActivo.role === "alumno") {
         alert("No tienes permiso para acceder a esta sección.");
         return; 
       }
-      if (page === "pedidosProfes" && usuarioActivo.role === "Alumno") {
+      if (page === "pedidosProfes" && usuarioActivo.role === "alumno") {
           alert("No tienes permiso para acceder a esta sección.");
           return;
       } 

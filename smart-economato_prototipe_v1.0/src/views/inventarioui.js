@@ -1,7 +1,4 @@
-
-// Función para renderizar la tabla de productos
 export function renderizarTabla(datos) {
-  // 👇 buscamos los elementos AHORA, no al cargar el módulo
   const tabla   = document.querySelector('#tablaProductos tbody');
   const resumen = document.querySelector('#resumen');
 
@@ -29,7 +26,6 @@ export function renderizarTabla(datos) {
       <td>${p.stock}</td>
       <td>${p.stockMinimo}</td>
       <td>${p.proveedor?.nombre ?? ''}</td>
-      <td>${p.proveedor?.isla ?? ''}</td>
     `;
     tabla.appendChild(fila);
   });
@@ -60,9 +56,8 @@ export function mostrarCategorias(categorias) {
   categorias.forEach(categoria => {
     const option = document.createElement("option");
 
-    // AQUÍ EL CAMBIO IMPORTANTE:
-    option.value = categoria.id;             // <-- ID numérico
-    option.textContent = categoria.nombre;   // <-- lo que ve el usuario
+    option.value = categoria.id;             
+    option.textContent = categoria.nombre;   
 
     selectCategoria.appendChild(option);
   });

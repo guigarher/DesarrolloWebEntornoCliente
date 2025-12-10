@@ -1,4 +1,3 @@
-// src/controllers/pedidosProfesoresController.js
 import { getProductos, crearPedidoProfesor } from "../services/economatoservice.js";
 import { pintarSugerenciasUI, renderizarTablaPedidoUI } from "../views/pedidosProfesUI.js";
 
@@ -18,7 +17,6 @@ export async function initPedidosProfesores() {
   inputBuscar.addEventListener("input", () => {
     const texto = inputBuscar.value.trim().toLowerCase();
 
-    // delegamos el pintado a la UI y le pasamos un callback
     pintarSugerenciasUI({
       productos,
       texto,
@@ -27,7 +25,7 @@ export async function initPedidosProfesores() {
     });
   });
 
-  // Añadir producto "libre" (fuera de inventario)
+  // Añadir producto "libre"
   btnProductoLibre.addEventListener("click", () => {
     const nombreLibre = inputProductoLibre.value.trim();
     if (!nombreLibre) {
@@ -46,9 +44,8 @@ export async function initPedidosProfesores() {
   renderizarTablaPedidoUI({ lineasPedido, productos });
 }
 
-// --------------------------
-// Añadir línea al pedido (producto del inventario)
-// --------------------------
+
+// Añadir línea al pedido 
 function pedirCantidadYAgregar(producto) {
   const cantidadStr = prompt(
     `Cantidad de "${producto.nombre}" (${producto.unidadMedida || ""}):`
@@ -70,7 +67,7 @@ function pedirCantidadYAgregar(producto) {
       productoId: producto.id,
       nombreProducto: producto.nombre,
       proveedorId: producto.proveedorId,
-      codigoBarras: producto.codigoBarras, // ⭐ ahora también guardamos el EAN
+      codigoBarras: producto.codigoBarras, 
       cantidad
     });
   }
@@ -78,9 +75,7 @@ function pedirCantidadYAgregar(producto) {
   renderizarTablaPedidoUI({ lineasPedido, productos });
 }
 
-// --------------------------
-// Añadir línea al pedido (producto libre / fuera de inventario)
-// --------------------------
+// Añadir línea al pedido fuera de inventario
 function pedirCantidadProductoLibre(nombreProducto) {
   const cantidadStr = prompt(
     `Cantidad de "${nombreProducto}" (unidades / kg / etc.):`
@@ -94,9 +89,8 @@ function pedirCantidadProductoLibre(nombreProducto) {
     return;
   }
 
-  // Creamos un "producto falso" solo para el pedido
   const productoLibre = {
-    id: `LIBRE-${Date.now()}`, // id inventado único
+    id: `LIBRE-${Date.now()}`,
     nombre: nombreProducto,
     proveedorId: null,
     unidadMedida: ""
@@ -113,7 +107,7 @@ function pedirCantidadProductoLibre(nombreProducto) {
       productoId: productoLibre.id,
       nombreProducto: productoLibre.nombre,
       proveedorId: productoLibre.proveedorId,
-      codigoBarras: null,  // no tiene código de barras
+      codigoBarras: null, 
       cantidad
     });
   }
@@ -121,9 +115,8 @@ function pedirCantidadProductoLibre(nombreProducto) {
   renderizarTablaPedidoUI({ lineasPedido, productos });
 }
 
-// --------------------------
+
 // Guardar pedido del profesor
-// --------------------------
 async function guardarPedidoProfesor() {
   if (lineasPedido.length === 0) {
     alert("No hay productos en el pedido");
@@ -137,7 +130,6 @@ async function guardarPedidoProfesor() {
   if (usuarioString) {
     try {
       const usuario = JSON.parse(usuarioString);
-      // intenta usar nombre, y si no hay, usa username
       profesor = usuario.nombre || usuario.username || "Desconocido";
     } catch (e) {
       console.error("Error al leer usuarioActivo:", e);
@@ -145,7 +137,7 @@ async function guardarPedidoProfesor() {
   }
 
   const pedido = {
-    profesor, // aquí ya va solo el nombre
+    profesor, 
     fecha: new Date().toLocaleString("es-ES"),
     estado: "pendiente",
     lineas: structuredClone(lineasPedido)

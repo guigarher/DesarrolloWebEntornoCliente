@@ -9,6 +9,16 @@
       "apellidos": "Castrillo Estévez",
       "email": "tcasest@gobiernodecanarias.org",
       "telefono": "+34 91 123 45 67"
+    },
+    {
+      "id": "174d",
+      "username": "guille",
+      "password": "guille",
+      "role": "alumno",
+      "nombre": "guillermo",
+      "apellidos": "",
+      "email": "",
+      "telefono": ""
     }
   ],
   "proveedores": [
@@ -77,20 +87,12 @@
       "direccion": "Bodegas Rioja, 56, Logroño"
     },
     {
-      "id": "6d69",
-      "nombre": "pepe el flecha",
-      "contacto": "pepito",
-      "telefono": "123",
-      "email": "123@123",
-      "direccion": "123"
-    },
-    {
-      "id": "0b83",
-      "nombre": "asd",
-      "contacto": "asd",
-      "telefono": "asd",
-      "email": "asd@asd",
-      "direccion": "asd"
+      "id": "6fa6",
+      "nombre": "1",
+      "contacto": "",
+      "telefono": "",
+      "email": "",
+      "direccion": ""
     }
   ],
   "categorias": [
@@ -160,14 +162,9 @@
       "descripcion": "Vinos, aguas y refrescos"
     },
     {
-      "id": "6bd9",
-      "nombre": "café",
-      "descripcion": "cafes"
-    },
-    {
-      "id": "98c4",
-      "nombre": "asd",
-      "descripcion": "asd"
+      "id": "f565",
+      "nombre": "1",
+      "descripcion": ""
     }
   ],
   "productos": [
@@ -1516,76 +1513,30 @@
       }
     },
     {
-      "id": "a1d2",
-      "nombre": "Almogrote",
-      "precio": 8,
-      "precioUnitario": "ud",
-      "unidadMedida": "ud",
-      "stock": 0,
-      "stockMinimo": 5,
-      "categoriaId": 8,
-      "proveedorId": 5,
-      "marca": "masapé",
-      "codigoBarras": "123",
-      "fechaCaducidad": null,
-      "alergenos": [],
-      "descripcion": "almogrote rico rico",
-      "imagen": "",
-      "activo": true
-    },
-    {
-      "id": "42e0",
-      "nombre": "cafe",
-      "precio": 4,
+      "id": "065c",
+      "nombre": "1",
+      "precio": 1,
       "precioUnitario": "kg",
       "unidadMedida": "kg",
-      "stock": 4,
-      "stockMinimo": 0,
-      "categoriaId": 8,
-      "proveedorId": 6,
-      "marca": "mocay",
-      "codigoBarras": "123123",
-      "fechaCaducidad": "0323-02-23",
-      "alergenos": [],
-      "descripcion": "",
-      "imagen": "",
-      "activo": true
-    },
-    {
-      "id": "b3ad",
-      "nombre": "asd",
-      "precio": 123,
-      "precioUnitario": "l",
-      "unidadMedida": "l",
       "stock": 0,
       "stockMinimo": 0,
-      "categoriaId": "98c4",
-      "proveedorId": "0b83",
+      "categoriaId": "f565",
+      "proveedorId": "6fa6",
       "marca": "",
-      "codigoBarras": "asd",
-      "fechaCaducidad": "0123-03-12",
-      "alergenos": [],
-      "descripcion": "",
-      "imagen": "",
-      "activo": true
-    },
-    {
-      "id": "3f90",
-      "nombre": "coco",
-      "precio": 453,
-      "precioUnitario": "kg",
-      "unidadMedida": "kg",
-      "stock": 4,
-      "stockMinimo": 0,
-      "categoriaId": null,
-      "proveedorId": null,
-      "marca": "",
-      "codigoBarras": "65656",
+      "codigoBarras": "1",
       "fechaCaducidad": null,
       "alergenos": [],
       "descripcion": "",
       "imagen": "",
-      "activo": true
+      "activo": true,
+      "categoria": {
+        "id": "f565",
+        "nombre": "1"
+      },
+      "proveedor": {
+        "id": "6fa6",
+        "nombre": "1"
+      }
     }
   ],
   "albaranes": [
@@ -2009,6 +1960,54 @@
       ],
       "pedidosProfesoresIds": [
         "409f"
+      ]
+    },
+    {
+      "id": "6914",
+      "numeroAlbaran": "5354545",
+      "fecha": "2025-12-10",
+      "proveedorId": 5,
+      "proveedorNombre": "Lácteos Valle Natural",
+      "incidencias": "",
+      "lineas": [
+        {
+          "codigoBarras": "123",
+          "cantidad": 5,
+          "nombreProducto": "Almogrote",
+          "pvp": 5
+        }
+      ]
+    },
+    {
+      "id": "6c85",
+      "numeroAlbaran": "555555",
+      "fecha": "2025-12-10",
+      "proveedorId": 5,
+      "proveedorNombre": "Lácteos Valle Natural",
+      "incidencias": "",
+      "lineas": [
+        {
+          "codigoBarras": "123",
+          "cantidad": 5,
+          "nombreProducto": "Almogrote",
+          "pvp": 5
+        }
+      ]
+    },
+    {
+      "id": "3a20",
+      "numeroAlbaran": "123512341234",
+      "fecha": "2025-12-10",
+      "proveedorId": 5,
+      "proveedorNombre": "Lácteos Valle Natural",
+      "incidencias": "",
+      "lineas": [
+        {
+          "codigoBarras": "123",
+          "cantidad": 5,
+          "nombreProducto": "Almogrote",
+          "pvp": 5
+        }
       ]
     }
   ],

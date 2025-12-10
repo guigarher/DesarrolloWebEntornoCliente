@@ -47,6 +47,8 @@ export async function initRegistro() {
 
   const btnRegistrarUsuario = document.getElementById("btnRegistrarUsuario");
   
+  let proveedores = [];
+  let categorias  = [];
   
   tabs.forEach(tab => {
     tab.addEventListener("click", () => {
@@ -62,7 +64,7 @@ export async function initRegistro() {
     });
   });
   try {
-      const proveedores = await getProveedores();
+      proveedores = await getProveedores();
       proveedores.forEach(proveedor => {
           const option = document.createElement("option");
           option.value = proveedor.id;
@@ -73,7 +75,7 @@ export async function initRegistro() {
       console.error("Error al cargar proveedores:", error);
     }
   try {
-    const categorias = await getCategorias(); 
+    categorias = await getCategorias(); 
     categorias.forEach(categoria => {
       const option = document.createElement("option");
       option.value = categoria.id;
@@ -262,8 +264,8 @@ btnBuscarOpenFood.addEventListener("click", async () => {
     unidadMedida: unidad,     
     stock,
     stockMinimo,
-    categoriaId: categoriaId ? Number(categoriaId) : null,
-    proveedorId: proveedorId ? Number(proveedorId) : null,
+    categoriaId: categoriaId || null,
+    proveedorId: proveedorId || null,
     marca,
     codigoBarras,
     fechaCaducidad: fechaCad,
@@ -272,6 +274,27 @@ btnBuscarOpenFood.addEventListener("click", async () => {
     imagen,
     activo: true
   };
+
+  const categoriaObj = categorias.find(
+  c => String(c.id) === String(nuevoProducto.categoriaId)
+  );
+  const proveedorObj = proveedores.find(
+  p => String(p.id) === String(nuevoProducto.proveedorId)
+  );
+
+  if (categoriaObj) {
+    nuevoProducto.categoria = {
+      id: categoriaObj.id,
+      nombre: categoriaObj.nombre
+    };
+  }
+
+  if (proveedorObj) {
+    nuevoProducto.proveedor = {
+      id: proveedorObj.id,
+      nombre: proveedorObj.nombre
+    };
+  }
 
   //Guardar en la API
   try {
@@ -348,6 +371,7 @@ btnBuscarOpenFood.addEventListener("click", async () => {
       option.textContent = creado.nombre;
       proveedorSelect.appendChild(option);
       proveedorSelect.value = creado.id;
+      proveedores.push(creado);
 
       // Limpiar formulario proveedor
       nombreProveedorInput.value   = "";
@@ -384,6 +408,14 @@ btnBuscarOpenFood.addEventListener("click", async () => {
     try{
       const creado = await crearCategoria(nuevaCategoria);
       alert(`Categoría "${creado.nombre}" registrada con éxito`);
+      const option = document.createElement("option");
+      option.value = creado.id;
+      option.textContent = creado.nombre;
+      categoriaSelect.appendChild(option);
+      categoriaSelect.value = creado.id;
+      categorias.push(creado);
+      nombreCategoriaInput.value = "";
+      descripcionCategoriaInput.value = "";
     } catch (error) {
       alert("Error al registrar la categoría.");
     }
@@ -405,24 +437,31 @@ btnBuscarOpenFood.addEventListener("click", async () => {
     //Validaciones
     if(!username){
       alert("Debes rellenar el campo usuario");
+      return;
     }
     if(!password){
       alert("Debes rellenar el campo contraseña");
+      return;
     }
     if(!role){
       alert("Debes seleccionar un rol");
+      return;
     }
     if(!nombre){
       alert("Debes rellenar el campo nombre");
+      return;
     }
     if(!apellidos){
       alert("Debes rellenar el campo apellidos");
+      return;
     }
     if(!email){
       alert("Debes rellenar el campo email");
+      return;
     }
     if(!telefono){
       alert("Debes rellenar el campo telefono");
+      return;
     }
 
     //Construir objeto usuario

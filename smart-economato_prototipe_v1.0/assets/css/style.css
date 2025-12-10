@@ -4,6 +4,7 @@
     box-sizing: border-box;
     font-family: Arial, sans-serif;
 }
+
 :root{
     --main-color: rgb(231, 57, 51);
     --secondary-color: rgb(248, 126, 105);
@@ -362,6 +363,14 @@ table {
     margin-top: 25px;
     margin-bottom: 25px;
 }
+/*pedidosProfes y resumen*/
+#tabla-pedido-profesor,
+#tabla-pedidos-profesores,
+h4,
+.tabla-resumen{
+    margin: 15px 0 15px;
+}
+
 @media (max-width: 1370px) {
     #form-producto{
         width: 90%;

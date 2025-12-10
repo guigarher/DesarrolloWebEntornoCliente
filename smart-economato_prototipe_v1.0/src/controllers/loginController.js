@@ -20,7 +20,6 @@ document.addEventListener("DOMContentLoaded", () =>{
             const user = await AuthService.login(username, password)
 
             if (!user) {
-                // El servicio ha devuelto null porque no hay coincidencias
                 LoginUI.showMessage("Usuario o contraseña incorrectos", "error");
                 return;
             }

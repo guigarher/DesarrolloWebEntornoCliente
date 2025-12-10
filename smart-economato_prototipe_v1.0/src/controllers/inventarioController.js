@@ -15,11 +15,9 @@ import {
   getCategorias
 } from '../services/economatoservice.js';
 
-// ------------------------
-// Estado global
-// ------------------------
-let productos = [];          // todos los productos
-let productosMostrados = []; // lo que se ve en la tabla
+
+let productos = [];          
+let productosMostrados = []; 
 
 // Referencias al DOM
 let controles;
@@ -27,17 +25,15 @@ let inputBusqueda;
 let selectCategoria;
 let selectOrden;
 
-// ------------------------
-// Helper para centralizar el pintado
-// ------------------------
+
 function actualizarTabla(lista) {     
   productosMostrados = [...lista];
   renderizarTabla(productosMostrados);
 }
 
-// ------------------------
-// Carga inicial de datos
-// ------------------------
+
+// Carga de datos
+
 async function cargarInicial() {
   try {
     productos = await getProductos();
@@ -51,9 +47,7 @@ async function cargarInicial() {
   }
 }
 
-// ------------------------
-// Inicialización del módulo 
-// ------------------------
+
 export function initAlmacen() {
   controles       = document.querySelector('.controles');
   inputBusqueda   = document.querySelector('#busqueda');
@@ -80,21 +74,29 @@ export function initAlmacen() {
     }
   });
 
+  if (inputBusqueda) {
+    inputBusqueda.addEventListener('input', () => {
+      console.log('EVENTO INPUT');
+      manejarBusqueda();
+    });
+  } else {
+    console.warn('No se ha encontrado el input de búsqueda #busqueda');
+  }
+
   cargarInicial();
 }
 
-// ------------------------
+
 // Acciones
-// ------------------------
+
 function manejarBusqueda() {
-  const nombre = (inputBusqueda?.value || '').trim();
+  const nombre = (inputBusqueda?.value || '').trim().toLowerCase();
 
   if (nombre) {
-    //Buscar 
-    const resultado = buscarProducto(productosMostrados, nombre);
-    actualizarTabla(resultado);        
+    const resultado = buscarProducto(productos, nombre);
+    actualizarTabla(resultado);
   } else {
-    actualizarTabla(productosMostrados);        
+    actualizarTabla(productos);
   }
 }
 

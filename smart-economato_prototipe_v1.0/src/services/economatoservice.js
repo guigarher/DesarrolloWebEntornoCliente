@@ -265,3 +265,24 @@ export async function actualizarEstadoPedidoProveedor(id, nuevoEstado) {
 
   return await res.json();
 }
+
+export async function actualizarProductoPorCodigo(codigoBarras, cambios) {
+  const productos = await getProductos();
+  const producto = productos.find(p => p.codigoBarras === codigoBarras);
+
+  if (!producto) {
+    throw new Error("Producto no encontrado para actualizar");
+  }
+
+  const res = await fetch(`${API_URL}/productos/${producto.id}`, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(cambios),
+  });
+
+  if (!res.ok) {
+    throw new Error("Error al actualizar el producto");
+  }
+
+  return await res.json();
+}

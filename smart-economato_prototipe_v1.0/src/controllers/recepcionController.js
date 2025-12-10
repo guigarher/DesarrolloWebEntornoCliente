@@ -2,7 +2,8 @@ import {
     getProveedores,
     buscarProductoPorCodigoBarras,
     incrementarStockPorCodigo,
-    crearAlbaran             
+    crearAlbaran,
+    actualizarProductoPorCodigo              
 } from "../services/economatoservice.js";
 import { renderizarTablaRecepcion } from "../views/recepcionui.js";    
 
@@ -194,8 +195,18 @@ export async function initRecepcion() {
             // Crear albarán en el sistema
             await crearAlbaran(nuevoAlbaran);
             // Actualizar stock para cada producto
-            for (const producto of productosAlbaran) {
-                await incrementarStockPorCodigo(producto.codigoBarras, producto.cantidad);
+            for (const linea of productosAlbaran) {
+                //Actualizamos stock
+                await incrementarStockPorCodigo(linea.codigoBarras, linea.cantidad);
+
+                const productoBD = await buscarProductoPorCodigoBarras(linea.codigoBarras);
+
+                //actualizar precio
+                if (productoBD && Number(productoBD.precio) !== Number(linea.pvp)) {
+                    await actualizarProductoPorCodigo(linea.codigoBarras, {
+                        precio: linea.pvp
+                    });
+                }
             }
             // Confirmación al usuario
             alert("Albarán registrado y stock actualizado correctamente.");
