@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
     link.addEventListener("click", async (e) => {
       e.preventDefault();
       const page = e.target.dataset.page;
-
+      //Validaciones
       if (page === "registro" && usuarioActivo.role === "alumno") {
         alert("No tienes permiso para acceder a esta sección.");
         return; 

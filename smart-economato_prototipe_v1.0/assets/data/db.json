@@ -173,7 +173,7 @@
       "nombre": "Tomate Raf",
       "precio": 4.2,
       "precioUnitario": "kg",
-      "stock": 350,
+      "stock": 354,
       "stockMinimo": 30,
       "categoriaId": 1,
       "proveedorId": 2,
@@ -199,7 +199,7 @@
       "nombre": "Lechuga Iceberg",
       "precio": 1.15,
       "precioUnitario": "unidad",
-      "stock": 439,
+      "stock": 440,
       "stockMinimo": 40,
       "categoriaId": 2,
       "proveedorId": 2,
@@ -2007,6 +2007,28 @@
           "cantidad": 5,
           "nombreProducto": "Almogrote",
           "pvp": 5
+        }
+      ]
+    },
+    {
+      "id": "73b4",
+      "numeroAlbaran": "2345234",
+      "fecha": "2025-12-10",
+      "proveedorId": 2,
+      "proveedorNombre": "Frutas y Verduras Frescas SL",
+      "incidencias": "",
+      "lineas": [
+        {
+          "codigoBarras": "8410001000015",
+          "cantidad": 4,
+          "nombreProducto": "Tomate Raf",
+          "pvp": 4.2
+        },
+        {
+          "codigoBarras": "8410001000022",
+          "cantidad": 1,
+          "nombreProducto": "Lechuga Iceberg",
+          "pvp": 1.15
         }
       ]
     }
