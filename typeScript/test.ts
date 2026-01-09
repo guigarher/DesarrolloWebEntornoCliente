@@ -17,10 +17,11 @@ let usuario = {
     edad: 34
 }
 
-//forma incorrecta
+/*forma incorrecta de objeto por parametro
 function saludar2({nombre:string, edad:number}){
     console.log(`Hola ${nombre}, tienes ${edad} años`)
 }
+*/
 //solucion 1
 function saludar3({nombre, edad}:{nombre:string, edad:number}){
     console.log(`Hola ${nombre}, tienes ${edad} años`)
@@ -71,6 +72,51 @@ const sumar = (a:number, b:number) : number => {
 const restar : (a:number, b:number) => number=(a,b) => {
     return a - b
 }
+
+//objetos en TypeScript
+
+// sin tipar
+
+let heroe = {
+    nombre : "Thor",
+    poder : 1500
+}
+
+function crearHeroe(nombre:string, poder:number){
+    return{nombre, poder}
+}
+
+const thor = crearHeroe("Thor", 1500)
+
+
+//Crear Alias en TS para crear un tipo propio
+
+type Heroe = {
+    //Mandatory properties
+    readonly id : number,
+    nombre : string,
+    poder : number,
+    //Optional properties
+    isActive? : boolean
+}
+
+let heroe1 : Heroe = {
+    id: 1,
+    nombre : "Spiderman",
+    poder : 900
+}
+
+function crearHeroe1(id:number, nombre:string, poder:number):Heroe{
+    return{id, nombre, poder}
+}
+/*
+function crearHeroe1(id:number, nombre:string, poder:number):Heroe{
+    return{id: crypto.randomUUID(), nombre, poder}
+}
+*/
+
+const spiderman = crearHeroe1(1, "Spiderman", 900)
+
 
 
 
