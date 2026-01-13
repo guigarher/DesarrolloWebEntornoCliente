@@ -43,7 +43,7 @@ function saludar5(persona:{nombre:string, edad:number}): number{
 //Tipo de dato especial, el tipo never
 
 function throwError(message:string):never {
-    throwError(message)
+    throw new Error(message)
 }
 
 let cadena : number
@@ -109,13 +109,107 @@ let heroe1 : Heroe = {
 function crearHeroe1(id:number, nombre:string, poder:number):Heroe{
     return{id, nombre, poder}
 }
+const spiderman = crearHeroe1(1, "Spiderman", 900)
 /*
 function crearHeroe1(id:number, nombre:string, poder:number):Heroe{
     return{id: crypto.randomUUID(), nombre, poder}
 }
 */
 
-const spiderman = crearHeroe1(1, "Spiderman", 900)
+//TEMPLATE UNION type
+
+type HeroeID = `${string}-${string}-${string}-${string}-${string}`
+
+let aHeroID : HeroeID = "asd-asd-asd-asd-asd"
+
+type HexadecimalColor = `#${string}`
+const color : HexadecimalColor = "#ff0000"
+
+//UNIONT TYPES
+
+type HeroeType = "Dios" | "SemiDios" | "SuperPoderes" | "RicoConPasta"
+
+let aHeroeType : HeroeType = "Dios"
+
+// vamos a ver los INTERSECTION TYPES
+
+type UserRequiredInfo ={
+    nombre : string,
+    apellidos : string,
+    dni : string
+}
+
+type UserOptionalInfo = {
+    telefono? : string,
+    fechaNacimiento? : Date,
+    direccion? : {
+        calle : string,
+        codigoPostal : number
+    }
+}
+
+type User = UserRequiredInfo & UserOptionalInfo
+
+let userBasicInfo : UserRequiredInfo = {
+    nombre : "Guillermo",
+    apellidos : "García Hernández",
+    dni : "12345678A"
+}
+
+function createUser(input : UserRequiredInfo): User {
+    return {
+        ...input
+    }
+}
+
+//TYPE INDEXING --- EXTRAEMOS EL TIPO DE DATOS DE UNA PROPIEDAD DE UN TIPO DE DATO 
+
+let direccion : UserOptionalInfo["direccion"]={
+    calle : "Calle Falsa 123",
+    codigoPostal : 28080
+}
+
+const pedri = {
+    nombre : "Pedri",
+    equipo : "FC Barcelona",
+    ciudad : "Barcelona",
+    deporte : "Fútbol"
+}
+
+type Deportista = typeof pedri
+
+let cristiano : Deportista = {
+    nombre : "Cristiano",
+    equipo : "Al Nassr",
+    ciudad : "Riad",
+    deporte : "Fútbol"
+}
+
+// Extraemos el tipo de dato del valor de retorno de una función
+
+function crearDeportista(){
+    return{
+        nombre : "Pedri",
+        equipo : "FC Barcelona",
+        ciudad : "Barcelona",
+        deporte : "Fútbol"
+    }
+}
+
+type DeportistaFromFunction = ReturnType<typeof crearDeportista>
+
+let messi : DeportistaFromFunction = {
+    nombre : "Messi",
+    equipo : "Inter Miami",
+    ciudad : "Miami",
+    deporte : "Fútbol"
+}
+
+
+
+
+
+
 
 
 
