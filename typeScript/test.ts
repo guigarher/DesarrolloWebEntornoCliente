@@ -206,6 +206,75 @@ let messi : DeportistaFromFunction = {
 }
 
 
+//Arrays
+
+let valores = []
+valores.push(1)
+valores.push("HOLA")
+valores.push(true)
+
+let numeros:number[]=[1,2,3]
+numeros.push(4)
+//numeros.push("HOLA") no nos deja
+
+//1ª forma de declaración de un array de String
+const lenguajes:string[]=[]
+
+const arrayAlterno : (string|number) [] = []
+
+//2ª forma de declaración
+const lenguajes2:Array<String>=[]
+
+const arrayAlterno2 : Array<String|number> = []
+
+
+//Esto es un arrayo bien de string o bien de tipo number
+const arrayTipoAElegir : string[] | number [] = []
+
+//Podemos crear arrays con los tipos propios
+const heroes : Array<Heroe> = []
+
+//Vamos a imaginarnos un tablero de 3 en raya
+/*
+[
+['X','0','X'],      <--- string[]
+['','0',''],        <--- string[]
+['X','','X']       <--- string[]
+]
+*/ 
+
+let tablero:string[][] = []
+
+tablero = [
+    ['X','0','X'],      
+    ['X','0','X'],        
+    ['X','0','X']
+]
+tablero[0][1] = "WTF!"
+
+type ValorPermitido = 'X' | '0' |''
+let tablero2:ValorPermitido[][] = []
+
+tablero2 = [
+    ['X','0','X','X','0'],      
+    ['X','0','X'],
+    ['X','0','X'],        
+    ['X','0','X']
+]
+//tablero2[0][1] = "WTF!" da error ahora, aún así no estamos controlando el tamaño del 3 en raya
+
+type TableroMejorado = [
+    [ValorPermitido, ValorPermitido, ValorPermitido],
+    [ValorPermitido, ValorPermitido, ValorPermitido],
+    [ValorPermitido, ValorPermitido, ValorPermitido]
+]
+
+let tablero3 : TableroMejorado = [
+    ['X','0','X',],      
+    ['X','0','X'],        
+    ['X','0','X']
+]
+
 
 
 
