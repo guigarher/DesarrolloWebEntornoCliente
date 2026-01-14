@@ -42,5 +42,30 @@
 - public: imágenes, iconos, fuentes,...
     * Se accede directamente desde el navegador
     * No pasan por el empaquetador de Vite
-- src: 
+- src: Carpeta principal con nuestro código fuente
+- src/assets: Recursos que usaremos desde los componentes e importaremos en nuestro código
+- src/App.tsx: Componente principal de la Aplicación
+    * Es un componente funcional
+    * Extensión TSX, combinación de JSX + TypeScript
+    * JSX es una extensión de JavaScript, usada en React, que nos permite escribir código similar a HTML dentro de archivos JS.
+- src/App.css: Estilos específicos del componente App
+    * Se importa en App.tsx
+    * Únicamente estilos del componente
+- src/main.tsx: Punto de entrada de React
+    * Monta React en el <div id = 'root'>
+- src/index.css: Estilos globales
+- .gitignore: Archivos que no se deben subir al repo
+- package.json
+    * Dependencias
+    * Scripts importantes
+- Typescript.json
+    * Nivel de JS permitido
+    * Comprobaciones de tipo
+    * Compatibilidad con JSX
+- tsconfig.node.json : Configuración específica TypeScript para Node/Vite
+- vite.config.ts: Configuración de Vite
+    * Configuración plugins
+    * build
+    * servidor...
+
 
