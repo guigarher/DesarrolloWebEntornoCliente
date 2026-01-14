@@ -1,0 +1,46 @@
+ # Temas que vamos a tratar
+
+ - Anatomía
+ - Componentes
+ - Propiedades
+ - Gestión del estado de los componentes
+ - Estilos de los componentes
+ - Formularios ( Uncontrolled & Controlled)
+ - Conectarnos con Servidores
+ - React Query
+ - Gestión Global del Estado 
+ - React Router
+ - Necesitaremos atacar con fetch (Intentaremos meter librería como Axios)
+
+ # ¿Que es REACT?
+
+ - Librería para crear aplicaciones Web y Nativas (Andriod|IOS|Windows|MacOS ...)
+
+ # ¿Que nos va a aportar?
+
+ - Hacer una aplicación mantenible y reutilizable
+
+ # Crear proyecto React
+
+ - Existía antigüamente la herramienta create-react-app (deprecated)
+
+ - Vite
+  * Más popular
+  * Empaqueta mejor nuestro código
+
+- En la terminal de vscode darle a la flecha y a Command promt si hay fallos al escribir el npm
+
+- npm create vite@latest
+
+- cd react-app
+- npm install
+- npm run dev
+
+# Estructura de carpetas de nuestro proyecto react
+
+- node_modules: Contiene todas las dependencias de nuestro proyecto (react, react-dom, TypeScript)
+- public: imágenes, iconos, fuentes,...
+    * Se accede directamente desde el navegador
+    * No pasan por el empaquetador de Vite
+- src: 
+
