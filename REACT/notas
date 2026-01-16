@@ -68,4 +68,13 @@
     * build
     * servidor...
 
+# Construcción de componentes
+
+- Crear Componentes
+- Trabajar un poco con JSX
+- Propiedades de los componentes (children)
+- Fragmentos
+
+- dentro de react-app -> npm i bootstrap@latest y vaciamos app.css e index.css para empezar a usar bootstrap
+
 
