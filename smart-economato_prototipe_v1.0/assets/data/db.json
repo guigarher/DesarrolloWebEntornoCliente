@@ -199,7 +199,7 @@
       "nombre": "Lechuga Iceberg",
       "precio": 1.15,
       "precioUnitario": "unidad",
-      "stock": 450,
+      "stock": 454,
       "stockMinimo": 40,
       "categoriaId": 2,
       "proveedorId": 2,
@@ -2421,6 +2421,22 @@
           "cantidad": 4,
           "nombreProducto": "Tomate Raf",
           "pvp": 4.2
+        }
+      ]
+    },
+    {
+      "id": "70c8",
+      "numeroAlbaran": "123123",
+      "fecha": "2025-12-11",
+      "proveedorId": 2,
+      "proveedorNombre": "Frutas y Verduras Frescas SL",
+      "incidencias": "",
+      "lineas": [
+        {
+          "codigoBarras": "8410001000022",
+          "cantidad": 4,
+          "nombreProducto": "Lechuga Iceberg",
+          "pvp": 1.15
         }
       ]
     }
