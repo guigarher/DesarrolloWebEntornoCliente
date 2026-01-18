@@ -93,11 +93,11 @@ main{
     grid-area: main;
     flex: 1;
     display: flex;
-    background-image: url("../img/2.png");
+    background-image: url("../img/fondowebp.webp");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-attachment: fixed;
+    /*background-attachment: fixed;*/
     position: relative;
 }
 footer{
