@@ -82,6 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (pageTitle) {
           pageTitle.textContent = TITULOS[page] || "Menú";
         }
+        document.title = `Smart-Economato · ${TITULOS[page] || "Menú"}`;
 
         if (page === "inventario") {
           initAlmacen();
