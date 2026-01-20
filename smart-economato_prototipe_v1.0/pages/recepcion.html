@@ -22,7 +22,6 @@
             </fieldset>
             <fieldset>
                 <legend>Albarán</legend>
-                </label>
                 <label class="form-field">
                     <span>Nº Albarán</span>
                     <input type="text" id ="numAlbaran" name="numAlbaran">
@@ -44,15 +43,16 @@
             </fieldset>
         </div>
             <button type="button" id="btnAddLinea" class="form-button">Añadir producto</button>
-            <div class="tabla-wrapper">
+            <div class="tabla-wrapper" tabindex="0" aria-label="Tabla de productos">
             <table class="tablaProductosRecepcion">
+                <caption>Productos añadidos a la recepción</caption>
                 <thead>
                 <tr>
-                    <th>Código</th>
-                    <th>Producto</th>
-                    <th>Cantidad</th>
-                    <th>PVP (€)</th>
-                    <th></th>
+                    <th scope="col">Código</th>
+                    <th scope="col">Producto</th>
+                    <th scope="col">Cantidad</th>
+                    <th scope="col">PVP (€)</th>
+                    <th scope="col"><span class="sr-only">Acciones</span></th>
                 </tr>
                 </thead>
                 <tbody id="tablaBody">

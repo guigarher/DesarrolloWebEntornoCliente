@@ -66,11 +66,15 @@ export function pintarResumenProveedoresUI({
     tabla.classList.add("tabla-resumen");
 
     const thead = document.createElement("thead");
+    const caption = document.createElement("caption");
+    caption.textContent = `Resumen de pedido por proveedor: ${grupo.nombreProveedor}`;
+    tabla.appendChild(caption);
+
     thead.innerHTML = `
       <tr>
-        <th>Producto</th>
-        <th>Cantidad total</th>
-        <th>Detalle por profesor</th>
+        <th scope="col">Producto</th>
+        <th scope="col">Cantidad total</th>
+        <th scope="col">Detalle por profesor</th>
       </tr>
     `;
     tabla.appendChild(thead);

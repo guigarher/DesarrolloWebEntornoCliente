@@ -53,6 +53,10 @@ export async function initResumenPedidos() {
     console.error("Error en initResumenPedidos:", e);
     alert("Error al cargar el resumen de pedidos");
   }
+  setTimeout(() => {
+    const titulo = document.getElementById("titulo-resumen");
+    if (titulo) titulo.focus();
+  }, 50);
 }
 
 async function limpiarLineasResueltas(productos) {

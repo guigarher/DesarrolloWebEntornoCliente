@@ -42,6 +42,12 @@ export async function initPedidosProfesores() {
 
   // Pintar tabla vacía
   renderizarTablaPedidoUI({ lineasPedido, productos });
+
+  // Enfocar campo código de barras al cargar la página
+    setTimeout(() => {
+        const codigoInput = document.getElementById("input-buscar-producto");
+        if (codigoInput) codigoInput.focus();
+    }, 50);
 }
 
 

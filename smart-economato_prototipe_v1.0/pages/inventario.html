@@ -1,33 +1,46 @@
-  <div class="inventario">
-    <div class="controles">
-      <button id="btnMostrarTodos" data-action="mostrar">Mostrar todos</button>
-      <input type="text" id="busqueda" placeholder="Buscar producto..." />
-      <button id="btnBuscar" data-action="buscar">Buscar</button>
+<div class="inventario">
+  <div class="controles">
+    <button id="btnMostrarTodos" data-action="mostrar">Mostrar todos</button>
 
-      <select id="categoriaSelect">
-      </select>
-      <button id="btnFiltrarCategoria" data-action="filtrar">Filtrar</button>
+    <label for="busqueda" class="sr-only">Buscar producto</label>
+    <input type="text" id="busqueda" placeholder="Buscar producto..." />
+    <button id="btnBuscar" data-action="buscar">Buscar</button>
 
-      <select id="ordenSelect">
-        <option value="asc">Precio ascendente</option>
-        <option value="desc">Precio descendente</option>
-      </select>
-      <button id="btnOrdenar" data-action="ordenar">Ordenar</button>
+    <label for="categoriaSelect" class="sr-only">Filtrar por categoría</label>
+    <select id="categoriaSelect"></select>
+    <button id="btnFiltrarCategoria" data-action="filtrar">Filtrar</button>
 
-      <button id="btnStock" data-action="stock">Comprobar stock</button>
-    </div>
-    <div class="tabla-wrapper">
+    <label for="ordenSelect" class="sr-only">Ordenar por precio</label>
+    <select id="ordenSelect">
+      <option value="asc">Precio ascendente</option>
+      <option value="desc">Precio descendente</option>
+    </select>
+    <button id="btnOrdenar" data-action="ordenar">Ordenar</button>
+
+    <button id="btnStock" data-action="stock">Comprobar stock</button>
+  </div>
+
+  <div class="tabla-wrapper">
     <table id="tablaProductos">
+      <caption class="sr-only">Listado de productos del inventario</caption>
+
       <thead>
         <tr>
-          <th>Código de Barras</th><th>Nombre</th><th>Categoría</th><th>Precio (€)</th>
-          <th>Stock</th><th>Stock Mínimo</th><th>Proveedor</th>
+          <th scope="col">Código de Barras</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Categoría</th>
+          <th scope="col">Precio (€)</th>
+          <th scope="col">Stock</th>
+          <th scope="col">Stock mínimo</th>
+          <th scope="col">Proveedor</th>
         </tr>
       </thead>
+
       <tbody></tbody>
+
       <tfoot>
-        <tr><td colspan="8" id="resumen"></td></tr>
+        <tr><td colspan="7" id="resumen"></td></tr>
       </tfoot>
     </table>
-    </div>
+  </div>
 </div>
