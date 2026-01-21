@@ -196,7 +196,10 @@ li:hover{
     background: var(--background2);
 }
 /*recepcion.html*/
-
+.tabla-wrapper:focus {
+  outline: 3px solid #000;
+  outline-offset: 4px;
+}
 #form-recepcion{
     width: 100%;
     margin: auto;
