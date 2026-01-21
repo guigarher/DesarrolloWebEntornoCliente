@@ -29,7 +29,7 @@ export function CardBody(props: CardBodyProps) {
   return (
     <>
       <h5 className="card-title text-center fw-bold">{title}</h5>
-      <p className="card-text fst-italic">{text}</p>
+      <p className="card-text text-center fst-italic">{text}</p>
     </>
   );
 }
