@@ -17,6 +17,7 @@ function App() {
     { id: "home", label: "Inicio", href: "#inicio" },
     { id: "prod", label: "Productos", href: "#productos" },
     { id: "cont", label: "Contacto", href: "#contacto" },
+    { id: "inv", label: "Inventario", href: "#inventario" },
   ];
 
   return (
