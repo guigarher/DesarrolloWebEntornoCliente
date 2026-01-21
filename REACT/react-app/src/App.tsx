@@ -1,4 +1,5 @@
-//import Titulo from "./components/Titulo"
+import Titulo from "./components/Titulo";
+import Navbar from "./components/Navbar";
 import Card from "./components/Card";
 import { CardBody } from "./components/Card";
 import "./App.css";
@@ -12,13 +13,26 @@ function App() {
   }
   return <p>Hola Mundo</p>*/
   //return <Card body="Hola Clase!"></Card>;
+  const menu = [
+    { id: "home", label: "Inicio", href: "#inicio" },
+    { id: "prod", label: "Productos", href: "#productos" },
+    { id: "cont", label: "Contacto", href: "#contacto" },
+  ];
+
   return (
-    <Card>
-      <CardBody
-        title="Titulo de la tarjeta"
-        text="Descripción de la tarjeta"
-      ></CardBody>
-    </Card>
+    <div className="min-vh-100 bg-light m-0 p-0">
+      <Titulo texto="Mi primera app en React" />
+      <details className="container mt-3">
+        <summary className="mb-2">Abrir menú</summary>
+        <Navbar brand="Smart-Economato" items={menu} />
+      </details>
+
+      <div className="container mt-4">
+        <Card>
+          <CardBody title="Título de tarjeta" text="Texto de tarjeta en cursiva pues por probar bootstrap" />
+        </Card>
+      </div>
+    </div>
   );
 }
 

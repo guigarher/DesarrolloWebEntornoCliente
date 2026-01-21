@@ -8,7 +8,7 @@ type CardProps = {
 function Card(props: CardProps) {
   const { children } = props;
   return (
-    <div className="card shadow-sm">
+    <div className="card border border-2 border-primary shadow">
       <div className="card-body">
         {/*<CardBody></CardBody>*/}
         {children}
@@ -28,8 +28,8 @@ export function CardBody(props: CardBodyProps) {
   const { title, text } = props;
   return (
     <>
-      <h5 className="card-title">{title}</h5>
-      <p className="card-text">{text}</p>
+      <h5 className="card-title text-center fw-bold">{title}</h5>
+      <p className="card-text fst-italic">{text}</p>
     </>
   );
 }
