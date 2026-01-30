@@ -1,6 +1,7 @@
 import Titulo from "./components/Titulo";
 import Navbar from "./components/Navbar";
 import Card from "./components/Card";
+import Button from "./components/Button";
 import { CardBody } from "./components/Card";
 import "./App.css";
 
@@ -20,6 +21,7 @@ function App() {
     { id: "inv", label: "Inventario", href: "#inventario" },
   ];
 
+
   return (
     <div className="min-vh-100 bg-light m-0 p-0">
       <Titulo texto="Mi primera app en React" />
@@ -30,6 +32,8 @@ function App() {
 
       <div className="container mt-4">
         <Card>
+          <Button>Añadir</Button>
+          <Button>Eliminar</Button>
           <CardBody title="Título de tarjeta" text="Texto de tarjeta en cursiva pues por probar bootstrap" />
         </Card>
       </div>
