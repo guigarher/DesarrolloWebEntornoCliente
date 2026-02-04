@@ -1,12 +1,19 @@
 import Titulo from "./components/Titulo";
 import Navbar from "./components/Navbar";
-import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
-import List from "./components/List";
-
+import Card from "./components/Card";
+import Button from "./components/Button";
+import { CardBody } from "./components/Card";
 import "./App.css";
 
 function App() {
+  //Esto es JSX. Parecido al HTML pero con restricciones ---> React.createElement("p","Hola Mundo") babel.js pagina que te traduce este JSX y te enseña lo que esta haciendo REACT que es lo del comentario más o menos
+  /*const nombre = "Clase"
+
+  if(nombre){
+    return <p>Hola {nombre}!</p>
+  }
+  return <p>Hola Mundo</p>*/
+  //return <Card body="Hola Clase!"></Card>;
   const menu = [
     { id: "home", label: "Inicio", href: "#inicio" },
     { id: "prod", label: "Productos", href: "#productos" },
@@ -14,7 +21,6 @@ function App() {
     { id: "inv", label: "Inventario", href: "#inventario" },
   ];
 
-  const listaInventario = ["Manzanas", "Plátanos", "Leche", "Pan", "Huevos"];
 
   return (
     <div className="min-vh-100 bg-light m-0 p-0">
@@ -25,16 +31,10 @@ function App() {
       </details>
 
       <div className="container mt-4">
-        <Card style={{ width: "18rem" }}>
-          <Card.Body>
-            <Card.Title>Inventario</Card.Title>
-
-            <List data={listaInventario} />
-
-            <Button variant="primary" className="mt-3">
-              Añadir producto
-            </Button>
-          </Card.Body>
+        <Card>
+          <Button>Añadir</Button>
+          <Button>Eliminar</Button>
+          <CardBody title="Título de tarjeta" text="Texto de tarjeta en cursiva pues por probar bootstrap" />
         </Card>
       </div>
     </div>
